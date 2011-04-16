@@ -65,7 +65,7 @@
 		102048F51356430F00F1CF43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAdvancedTestTableViewController.h; sourceTree = "<group>"; };
 		102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAdvancedTestTableViewController.m; sourceTree = "<group>"; };
-		10204903135671FB00F1CF43 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		10204903135671FB00F1CF43 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; path = README.textile; sourceTree = "<group>"; };
 		108A6D841355264700B9AAC4 /* SKTableViewDataSourceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKTableViewDataSourceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		108A6D8B1355264800B9AAC4 /* SKTableViewDataSourceApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKTableViewDataSourceApp-Info.plist"; sourceTree = "<group>"; };
 		108A6D8D1355264800B9AAC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		10204902135671D200F1CF43 /* README */ = {
 			isa = PBXGroup;
 			children = (
-				10204903135671FB00F1CF43 /* README */,
+				10204903135671FB00F1CF43 /* README.textile */,
 			);
 			name = README;
 			sourceTree = "<group>";
