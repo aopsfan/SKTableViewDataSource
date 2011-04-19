@@ -18,6 +18,11 @@
 		102048FC1356432200F1CF43 /* SKTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8049213452C0B001F253F /* SKTableViewDataSource.m */; };
 		102048FF1356435200F1CF43 /* SKAdvancedTestTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */; };
 		102049011356459400F1CF43 /* SKAdvancedTestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */; };
+		10717404135C5DC400CECDD8 /* Transaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 10717402135C5DC400CECDD8 /* Transaction.h */; };
+		10717408135C5E6500CECDD8 /* TransactionDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 10717406135C5E6500CECDD8 /* TransactionDataSource.h */; };
+		10717409135C5E6500CECDD8 /* TransactionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10717407135C5E6500CECDD8 /* TransactionDataSource.m */; };
+		1071740A135C616F00CECDD8 /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10717403135C5DC400CECDD8 /* Transaction.m */; };
+		1071740B135C769500CECDD8 /* TransactionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10717407135C5E6500CECDD8 /* TransactionDataSource.m */; };
 		108A6D861355264800B9AAC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8049613452C86001F253F /* UIKit.framework */; };
 		108A6D871355264800B9AAC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
 		108A6D881355264800B9AAC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8047913452B73001F253F /* CoreGraphics.framework */; };
@@ -65,7 +70,11 @@
 		102048F51356430F00F1CF43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAdvancedTestTableViewController.h; sourceTree = "<group>"; };
 		102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAdvancedTestTableViewController.m; sourceTree = "<group>"; };
-		10204903135671FB00F1CF43 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; path = README.textile; sourceTree = "<group>"; };
+		10204903135671FB00F1CF43 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
+		10717402135C5DC400CECDD8 /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
+		10717403135C5DC400CECDD8 /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
+		10717406135C5E6500CECDD8 /* TransactionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDataSource.h; sourceTree = "<group>"; };
+		10717407135C5E6500CECDD8 /* TransactionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDataSource.m; sourceTree = "<group>"; };
 		108A6D841355264700B9AAC4 /* SKTableViewDataSourceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKTableViewDataSourceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		108A6D8B1355264800B9AAC4 /* SKTableViewDataSourceApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKTableViewDataSourceApp-Info.plist"; sourceTree = "<group>"; };
 		108A6D8D1355264800B9AAC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -147,6 +156,8 @@
 				102048E91356430F00F1CF43 /* Supporting Files */,
 				102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */,
 				102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */,
+				10717406135C5E6500CECDD8 /* TransactionDataSource.h */,
+				10717407135C5E6500CECDD8 /* TransactionDataSource.m */,
 			);
 			path = SKTableViewDataSourceAdvancedApp;
 			sourceTree = "<group>";
@@ -194,20 +205,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		108A6D9D13552CA500B9AAC4 /* Dude Class */ = {
+		108A6D9D13552CA500B9AAC4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				108A6D9E13552CC100B9AAC4 /* Dude.h */,
 				108A6D9F13552CC100B9AAC4 /* Dude.m */,
+				10717402135C5DC400CECDD8 /* Transaction.h */,
+				10717403135C5DC400CECDD8 /* Transaction.m */,
 			);
-			name = "Dude Class";
+			name = Models;
 			sourceTree = "<group>";
 		};
 		10E8045D13452B73001F253F = {
 			isa = PBXGroup;
 			children = (
 				10204902135671D200F1CF43 /* README */,
-				108A6D9D13552CA500B9AAC4 /* Dude Class */,
+				108A6D9D13552CA500B9AAC4 /* Models */,
 				10E8046D13452B73001F253F /* SKTableViewDataSource */,
 				10E8047E13452B73001F253F /* SKTableViewDataSourceTests */,
 				108A6D891355264800B9AAC4 /* SKTableViewDataSourceApp */,
@@ -287,6 +300,8 @@
 				10E8049313452C0B001F253F /* SKTableViewDataSource.h in Headers */,
 				108A6DA013552CC100B9AAC4 /* Dude.h in Headers */,
 				102048FF1356435200F1CF43 /* SKAdvancedTestTableViewController.h in Headers */,
+				10717404135C5DC400CECDD8 /* Transaction.h in Headers */,
+				10717408135C5E6500CECDD8 /* TransactionDataSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +457,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1071740B135C769500CECDD8 /* TransactionDataSource.m in Sources */,
+				1071740A135C616F00CECDD8 /* Transaction.m in Sources */,
 				102049011356459400F1CF43 /* SKAdvancedTestTableViewController.m in Sources */,
 				102048FC1356432200F1CF43 /* SKTableViewDataSource.m in Sources */,
 				102048FB1356431700F1CF43 /* Dude.m in Sources */,
@@ -467,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10E8049413452C0B001F253F /* SKTableViewDataSource.m in Sources */,
+				10717409135C5E6500CECDD8 /* TransactionDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

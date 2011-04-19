@@ -24,6 +24,7 @@
     dataSource                       = [[SKTableViewDataSource alloc] initWithSet:[NSSet setWithArray:objects]];
     dataSource.sortSelector          = @selector(height);
     dataSource.sectionOrderAscending = YES;
+    dataSource.rowOrderAscending     = YES;
 }
 
 - (void)tearDown

@@ -18,6 +18,7 @@
         objects = [[NSMutableSet alloc] init];
         dictionary = [[NSMutableDictionary alloc] init];
         sectionOrderAscending = YES;
+        rowOrderAscending = YES;
         shouldReloadDictionary = YES;
     }
     

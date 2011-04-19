@@ -7,7 +7,7 @@
 //
 
 #import "SKAdvancedTestTableViewController.h"
-#import "Dude.h"
+#import "Transaction.h"
 
 @implementation SKAdvancedTestTableViewController
 
@@ -16,21 +16,34 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        Dude *emily      = [[[Dude alloc] initWithName:@"Emily Simpson Miller" hairColor:[UIColor grayColor] height:[NSNumber numberWithInt:67]] autorelease];
-        Dude *tom        = [[[Dude alloc] initWithName:@"Tom Charles Simpson" hairColor:[UIColor brownColor] height:[NSNumber numberWithInt:83]] autorelease];
-        Dude *emilysTwin = [[[Dude alloc] initWithName:@"Ylime Simpson Miller" hairColor:[UIColor grayColor] height:[NSNumber numberWithInt:67]] autorelease];
-        Dude *tomsTwin   = [[[Dude alloc] initWithName:@"Mot Charles Simpson" hairColor:[UIColor brownColor] height:[NSNumber numberWithInt:83]] autorelease];
-        Dude *guy        = [[[Dude alloc] initWithName:@"Guy Moron Idiot" hairColor:[UIColor blackColor] height:[NSNumber numberWithInt:67]] autorelease];
-        data = [[NSSet alloc] initWithObjects:emily, tom, emilysTwin, tomsTwin, guy, nil];
+        Transaction *apples = [[[Transaction alloc] initWithTitle:@"Apples" price:2.19 date:[NSDate date]] autorelease];
+        Transaction *oranges = [[[Transaction alloc] initWithTitle:@"Four Oranges" price:3.99 date:[NSDate date]] autorelease];
+        Transaction *pears = [[[Transaction alloc] initWithTitle:@"Five Pears" price:8.29 date:[NSDate date]] autorelease];
         
-        dataSource = [[SKTableViewDataSource alloc] initWithSet:data];
+        Transaction *lunchable = [[[Transaction alloc] initWithTitle:@"Lunchable!" price:2.99
+                                                                date:[NSDate dateWithTimeIntervalSinceNow:86400]] autorelease];
+        Transaction *burger = [[[Transaction alloc] initWithTitle:@"Five Guys burger" price:4.99
+                                                             date:[NSDate dateWithTimeIntervalSinceNow:86400]] autorelease];
+        
+        Transaction *plunger = [[[Transaction alloc] initWithTitle:@"Plunger; the old one broke" price:9.99
+                                                              date:[NSDate dateWithTimeIntervalSinceNow:-86400]] autorelease];
+        
+        data = [[NSSet alloc] initWithObjects:apples, oranges, pears, lunchable, burger, plunger, nil];
+        
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        
+        numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        
+        dataSource = [[TransactionDataSource alloc] initWithSet:data];
         dataSource.methodSource = self;
-        dataSource.sectionOrderAscending = YES;
-        dataSource.sortSelector = @selector(initial);
+        dataSource.sectionOrderAscending = NO;
+        dataSource.sortSelector = @selector(displayableDate);
         
         self.tableView.dataSource = dataSource;
         
-        self.title = @"Dudes";
+        self.title = @"Transactions";
     }
     return self;
 }
@@ -39,6 +52,8 @@
 {
     [data release];
     [dataSource release];
+    [dateFormatter release];
+    [numberFormatter release];
     
     [super dealloc];
 }
@@ -64,7 +79,7 @@
 #pragma mark - SKTableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return (NSString *)[dataSource objectForHeaderInSection:section];
+    return [dateFormatter stringFromDate:(NSDate *)[dataSource objectForHeaderInSection:section]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,13 +88,12 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    Dude *dude = (Dude *)[dataSource objectForIndexPath:indexPath];
-    cell.textLabel.text = dude.name;
-    
-    // Configure the cell...
+    Transaction *transaction = (Transaction *)[dataSource objectForIndexPath:indexPath];
+    cell.textLabel.text = transaction.title;
+    cell.detailTextLabel.text = [numberFormatter stringFromNumber:transaction.price];
     
     return cell;
 }

@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SKTableViewDataSource.h"
+#import "TransactionDataSource.h"
 
 @interface SKAdvancedTestTableViewController : UITableViewController <SKTableViewDataSource>
 {
     NSSet *data;
-    SKTableViewDataSource *dataSource;
+    TransactionDataSource *dataSource;
+    NSDateFormatter *dateFormatter;
+    NSNumberFormatter *numberFormatter;
 }
 
 @end
