@@ -78,6 +78,8 @@
         return [NSMutableDictionary dictionaryWithDictionary:dictionary];
     }
     
+    [dictionary removeAllObjects];
+    
     for (id object in objects) {
         if (![dictionary objectForKey:[object performSelector:sortSelector]]) {
             if (![object respondsToSelector:sortSelector]) {
@@ -226,7 +228,6 @@
             return [self.dictionary allKeys];
         }
     }
-    
     NSArray *retVal = [[self.dictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
     
     if (!sectionOrderAscending) {
