@@ -4,9 +4,17 @@ h2. Overview
 
 SKTableViewDataSource is an Objective-C library that aims at simplifying UITableViewControllers. Many times we need a quick way to display an array of custom object data in a sectioned list; this now very straight-forward. SKTableViewDataSource also implements certain UITableViewDataSource protocol methods so you don't have to.
 
+h2. How to get this awesome project on your computer
+
+@cd@ into your project directory and run <code>git clone git@github.com:aopsfan/SKTableViewDataSource.git</code>. Feel free to send me a pull request if you make some good changes!
+
 h2. How it works
 
 SKTableViewDataSource takes an NSSet of custom objects, and, given a selector to sort with, creates an organized UITableView.  It implements @numberOfSectionsInTableView@ and @numberOfRowsInSection:@, and produces helpful convenience methods so you can customize your table, such as @objectForHeaderInSection:@ and @objectForIndexPath:@.
+
+h2. What you get
+
+This repository comes with @SKTableViewDataSource@ itself, two dummy data models for testing (@Dude@ and @Transaction@), and two test projects; one is simple, demonstrating how easy it is to set up a table; and the other is more complex, demonstrating how to subclass @SKTableViewDataSource@ for more advanced work.
 
 h2. Example
 
@@ -105,6 +113,8 @@ h2. Doing More
 If you'd like to order your sections descending, simply add this line to your @initWithStyle:@ method in your controller:
 
 <pre><code>dataSource.sectionOrderAscending = NO;</code></pre>
+
+Likewise, run <code>dataSource.rowOrderAscending = NO;</code> to order the rows in each section descending.
 
 If you'd like to section Dudes by the first letter of their last name, follow these steps:
 
