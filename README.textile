@@ -1,8 +1,12 @@
 h1. SKTableViewDataSource
 
-h2. Overview
+h2. Overview (Layman)
 
-SKTableViewDataSource is an Objective-C library that aims at simplifying UITableViewControllers. Many times we need a quick way to display an array of custom object data in a sectioned list; this now very straight-forward. SKTableViewDataSource also implements certain UITableViewDataSource protocol methods so you don't have to.
+@SKTableViewDataSource@ is an Objective-C library that simplifies @NSFetchedResultsController@. Many times we need a quick way to display an array of custom object data in a sectioned list; this now very straight-forward. @SKTableViewDataSource@ also implements certain @UITableViewDataSource@ protocol methods so you don't have to. In short, it sorts a collection into a displayable list. Please note that @SKTableViewDataSource@ is designed only for @UIKit@, so it won't work on your Mac apps.
+
+h2. Overview (Compared to NSFetchedResultsController)
+
+@NSFetchedResultsController@ uses a complex key-value system to sort your @UITableView@. @SKTableViewDataSource@ relies on a single @sortSelector@. This way, you can section your table by non-accessor values. For instance, if you have a collection of @Dude@ objects, you could sort them by the first letter of their last name (like in the Contacts app) with a @-initial@ method on @Dude@. This is much less of a hassle than creating a @initial@ instance variable and having to update him whenever the appropriate @Dude@ 's name changes.
 
 h2. How to get this awesome project on your computer
 
