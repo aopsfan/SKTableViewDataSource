@@ -81,14 +81,13 @@
     [dictionary removeAllObjects];
     
     for (id object in objects) {
+        if (![object respondsToSelector:sortSelector]) {
+            NSException *exception = [NSException exceptionWithName:@"Objects should respond to your sortSelector"
+                                                             reason:[NSString stringWithFormat:@"The following object doesn't respond to your sortSelector (%@): %@", NSStringFromSelector(sortSelector), object]
+                                                           userInfo:nil];
+            [exception raise];
+        }
         if (![dictionary objectForKey:[object performSelector:sortSelector]]) {
-            if (![object respondsToSelector:sortSelector]) {
-                NSLog(@"ERROR while trying to create dictionary in dictionary method:");
-                NSLog(@">>>>> Object %@ in your data array doesn't respond to your sortSelector, %@", object, NSStringFromSelector(sortSelector));
-                NSLog(@">>>>> Returning an empty dictionary");
-                dictionary = [NSMutableDictionary dictionary];
-                return dictionary;
-            }
             [dictionary setObject:[NSMutableArray arrayWithObject:object]
                            forKey:[object performSelector:sortSelector]];
         } else {
@@ -206,6 +205,16 @@
 - (NSArray *)orderedObjectsForSection:(NSUInteger)section {    
     id key = [self objectForHeaderInSection:section];
     NSArray *array = (NSArray *)[self.dictionary objectForKey:key];
+    
+    for (id object in array) {
+        if (![object respondsToSelector:@selector(compare:)]) {
+            NSException *exception = [NSException exceptionWithName:@"Object should respond to compare:"
+                                                             reason:[NSString stringWithFormat:@"The following object does not implement @selector(compare:), therefore I can't order your objects in section %i: %@", section, object]
+                                                           userInfo:nil];
+            [exception raise];
+        }
+    }
+    
     NSArray *newArray = [array sortedArrayUsingSelector:@selector(compare:)];
     
     if (!rowOrderAscending) {
@@ -218,14 +227,10 @@
 - (NSArray *)orderedSectionsForTableView {
     for (id object in [self.dictionary allKeys]) {
         if (![object respondsToSelector:@selector(compare:)]) {
-            NSLog(@"ERROR while trying to sort sections in sortedSectionsForTableView method:");
-            NSLog(@">>>>> Object %@ (one of your sections) doesn't respond to @selector(compare:)", object);
-            NSLog(@">>>>> Please note that SKTableViewDataSource is only meant to sort sections if they are NSNumbers, NSStrings, and NSDates.");
-            NSLog(@">>>>> If you need to have sections of a type that cannot implement - (NSComparisonResult)compare:(ObjectType *)otherObject,");
-            NSLog(@">>>>> you may need to subclass SKTableViewDataSource and overide - (NSArray *)sortedSectionsForTableView");
-            NSLog(@">>>>> Returning an unsorted array of headers");
-            
-            return [self.dictionary allKeys];
+            NSException *exception = [NSException exceptionWithName:@"Object should respond to compare:"
+                                                             reason:[NSString stringWithFormat:@"The following section identifier does not implement @selector(compare:), therefore I can't order your sections: %@", object]
+                                                           userInfo:nil];
+            [exception raise];
         }
     }
     NSArray *retVal = [[self.dictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
