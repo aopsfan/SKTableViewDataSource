@@ -14,7 +14,7 @@ h2. How to get this awesome project on your computer
 
 h2. How it works
 
-SKTableViewDataSource takes an NSSet of custom objects, and, given a selector to sort with, creates an organized UITableView.  It implements @numberOfSectionsInTableView@ and @numberOfRowsInSection:@, and produces helpful convenience methods so you can customize your table, such as @objectForHeaderInSection:@ and @objectForIndexPath:@.
+SKTableViewDataSource takes an NSSet of custom objects, and, given a selector to sort with, creates an organized UITableView.  It implements @numberOfSectionsInTableView@ and @numberOfRowsInSection:@, and produces helpful convenience methods so you can customize your table, such as @identifierForSection:@ and @objectForIndexPath:@.
 
 h2. What you get
 
@@ -87,7 +87,7 @@ Delete the @numberOfSectionsInTableView@ and @numberOfRowsInSection:@ methods.
 If you'd like section headers, implement @titleForHeaderInSection:@
 
 <pre><code>- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [(NSNumber *)[dataSource objectForHeaderInSection:section] stringValue];
+    return [(NSNumber *)[dataSource identifierForSection:section] stringValue];
 }</code></pre>
 
 Since we're sectioning Dudes by their height, which is an @NSNumber@, we must convert it to an NSString.
@@ -139,4 +139,4 @@ If you'd like to section Dudes by the first letter of their last name, follow th
 
 3. Update @titleForHeaderInSection:@
 
-<pre><code>return (NSString *)[dataSource objectForHeaderInSection:section];</code></pre>
+<pre><code>return (NSString *)[dataSource identifierForSection:section];</code></pre>

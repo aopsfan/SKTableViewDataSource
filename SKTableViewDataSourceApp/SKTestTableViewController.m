@@ -37,7 +37,7 @@
 #pragma mark - SKTableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return (NSString *)[dataSource objectForHeaderInSection:section];
+    return (NSString *)[dataSource identifierForSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

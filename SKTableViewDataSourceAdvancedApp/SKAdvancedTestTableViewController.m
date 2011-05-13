@@ -79,7 +79,7 @@
 #pragma mark - SKTableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [dateFormatter stringFromDate:(NSDate *)[dataSource objectForHeaderInSection:section]];
+    return [dateFormatter stringFromDate:(NSDate *)[dataSource identifierForSection:section]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

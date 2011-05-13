@@ -203,7 +203,7 @@
 #pragma mark Ordering
 
 - (NSArray *)orderedObjectsForSection:(NSUInteger)section {    
-    id key = [self objectForHeaderInSection:section];
+    id key = [self identifierForSection:section];
     NSArray *array = (NSArray *)[self.dictionary objectForKey:key];
     
     for (id object in array) {
@@ -244,8 +244,8 @@
 
 #pragma mark Other
 
-- (id)objectForHeaderInSection:(NSUInteger)section {
-    return [[self orderedSectionsForTableView] objectAtIndex:section];
+- (id)identifierForSection:(NSUInteger)section {
+    return [[self orderedSectionsForTableView] objectAtIndex:section];    
 }
 
 - (id)objectForIndexPath:(NSIndexPath *)indexPath {

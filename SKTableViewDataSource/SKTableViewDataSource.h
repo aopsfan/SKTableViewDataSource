@@ -60,7 +60,7 @@
 
 #pragma mark Other
 
-- (id)objectForHeaderInSection:(NSUInteger)section;
+- (id)identifierForSection:(NSUInteger)section;
 - (id)objectForIndexPath:(NSIndexPath *)indexPath;
 
 @end
