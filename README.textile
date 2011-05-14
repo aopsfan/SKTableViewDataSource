@@ -83,13 +83,12 @@ Dude *tomsTwin   = [[[Dude alloc] initWithName:@"Mot Charles Simpson" hairColor:
 Dude *guy        = [[[Dude alloc] initWithName:@"Guy Moron Idiot" hairColor:[UIColor blackColor] height:[NSNumber numberWithInt:67]] autorelease];
 data = [[NSSet alloc] initWithObjects:emily, tom, emilysTwin, tomsTwin, guy, nil];
 
-dataSource = [[SKTableViewDataSource alloc] initWithSet:data];
-dataSource.methodSource = self;
+dataSource = [[SKTableViewDataSource alloc] initWithSet:data target:self];
 dataSource.sortSelector = @selector(height);
 
 self.tableView.dataSource = dataSource;</code></pre>
 
-@dataSource.methodSource = self@ lets your dataSource know where to access the "extra" UITableViewDataSource methods.
+@dataSource = [[SKTableViewDataSource alloc] initWithSet:data target:self]@ lets your dataSource know a) what set of data to format for your tables, and b) where to access the "extra" UITableViewDataSource methods.
 <code>dataSource.sortSelector = @selector(height)</code> tells the dataSource to section the table by the height method on Dude. (Remember, getters are still methods)
 Finally, @self.tableView.dataSource = dataSource@ tells your tableView to use @dataSource@.
 

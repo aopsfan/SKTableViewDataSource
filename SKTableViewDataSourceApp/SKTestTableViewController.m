@@ -15,8 +15,7 @@
         Dude *guy        = [[[Dude alloc] initWithName:@"Guy Moron Idiot" hairColor:[UIColor blackColor] height:[NSNumber numberWithInt:67]] autorelease];
         data = [[NSSet alloc] initWithObjects:emily, tom, emilysTwin, tomsTwin, guy, nil];
         
-        dataSource = [[SKTableViewDataSource alloc] initWithSet:data];
-        dataSource.methodSource = self;
+        dataSource = [[SKTableViewDataSource alloc] initWithSet:data target:self];
         dataSource.sortSelector = @selector(initial);
         
         self.tableView.dataSource = dataSource;

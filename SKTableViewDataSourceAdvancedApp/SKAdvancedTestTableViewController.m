@@ -36,8 +36,7 @@
         numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         
-        dataSource = [[TransactionDataSource alloc] initWithSet:data];
-        dataSource.methodSource = self;
+        dataSource = [[TransactionDataSource alloc] initWithSet:data target:self];
         dataSource.sectionOrderAscending = NO;
         dataSource.sortSelector = @selector(displayableDate);
         

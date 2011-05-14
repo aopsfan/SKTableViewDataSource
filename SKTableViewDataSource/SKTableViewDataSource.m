@@ -9,7 +9,7 @@
 #import "SKTableViewDataSource.h"
 
 @implementation SKTableViewDataSource
-@synthesize sortSelector, sectionOrderAscending, rowOrderAscending, methodSource, dictionary;
+@synthesize sortSelector, sectionOrderAscending, rowOrderAscending, target, dictionary;
 
 #pragma mark Object Management
 
@@ -25,9 +25,10 @@
     return self;
 }
 
-- (id)initWithSet:(NSSet *)initialObjects {
+- (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget {
     if ((self = [self init])) {
         [objects addObjectsFromArray:[initialObjects allObjects]];
+        target = aTarget;
     }
     
     return self;
@@ -53,7 +54,7 @@
 }
 
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath {
-    id key = [self objectForHeaderInSection:indexPath.section];
+    id key = [self identifierForSection:indexPath.section];
     BOOL retVal = [[self.dictionary objectForKey:key] count] == 1;
     
     [objects removeObject:[self objectForIndexPath:indexPath]];
@@ -65,7 +66,7 @@
 - (void)dealloc {
     [objects release];
     [dictionary release];
-    [methodSource release];
+    [target release];
     
     [super dealloc];
 }
@@ -134,66 +135,66 @@
 #pragma mark SKTableViewDataSource protocol -- required
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [methodSource tableView:tableView cellForRowAtIndexPath:indexPath];
+    return [target tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 #pragma mark SKTableViewDataSource protocol -- optional
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    if ([methodSource respondsToSelector:@selector(sectionIndexTitlesForTableView:)]) {
-        return [methodSource sectionIndexTitlesForTableView:tableView];
+    if ([target respondsToSelector:@selector(sectionIndexTitlesForTableView:)]) {
+        return [target sectionIndexTitlesForTableView:tableView];
     }
     
     return nil;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([methodSource respondsToSelector:@selector(tableView:canEditRowAtIndexPath:)]) {
-        return [methodSource tableView:tableView canEditRowAtIndexPath:indexPath];
+    if ([target respondsToSelector:@selector(tableView:canEditRowAtIndexPath:)]) {
+        return [target tableView:tableView canEditRowAtIndexPath:indexPath];
     }
     
     return NO;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([methodSource respondsToSelector:@selector(tableView:canMoveRowAtIndexPath:)]) {
-        return [methodSource tableView:tableView canMoveRowAtIndexPath:indexPath];
+    if ([target respondsToSelector:@selector(tableView:canMoveRowAtIndexPath:)]) {
+        return [target tableView:tableView canMoveRowAtIndexPath:indexPath];
     }
     
     return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([methodSource respondsToSelector:@selector(tableView:commitEditingStyle:forRowAtIndexPath:)]) {
-        [methodSource tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+    if ([target respondsToSelector:@selector(tableView:commitEditingStyle:forRowAtIndexPath:)]) {
+        [target tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
     }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    if ([methodSource respondsToSelector:@selector(tableView:moveRowAtIndexPath:toIndexPath:)]) {
-        [methodSource tableView:tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+    if ([target respondsToSelector:@selector(tableView:moveRowAtIndexPath:toIndexPath:)]) {
+        [target tableView:tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    if ([methodSource respondsToSelector:@selector(tableView:sectionForSectionIndexTitle:atIndex:)]) {
-        return [methodSource tableView:tableView sectionForSectionIndexTitle:title atIndex:index];
+    if ([target respondsToSelector:@selector(tableView:sectionForSectionIndexTitle:atIndex:)]) {
+        return [target tableView:tableView sectionForSectionIndexTitle:title atIndex:index];
     }
     
     return index;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if ([methodSource respondsToSelector:@selector(tableView:titleForFooterInSection:)]) {
-        return [methodSource tableView:tableView titleForFooterInSection:section];
+    if ([target respondsToSelector:@selector(tableView:titleForFooterInSection:)]) {
+        return [target tableView:tableView titleForFooterInSection:section];
     }
     
     return nil;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if ([methodSource respondsToSelector:@selector(tableView:titleForHeaderInSection:)]) {
-        return [methodSource tableView:tableView titleForHeaderInSection:section];
+    if ([target respondsToSelector:@selector(tableView:titleForHeaderInSection:)]) {
+        return [target tableView:tableView titleForHeaderInSection:section];
     }
     
     return nil;

@@ -36,18 +36,18 @@
     
     BOOL shouldReloadDictionary;
     
-    id methodSource;
+    id target;
 }
 
 @property (readonly, copy) NSMutableDictionary *dictionary;
 @property BOOL sectionOrderAscending;
 @property BOOL rowOrderAscending;
 @property SEL sortSelector;
-@property (nonatomic, retain) id methodSource;
+@property (nonatomic, readonly) id target;
 
 #pragma mark Object Management
 
-- (id)initWithSet:(NSSet *)initialObjects;
+- (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget;
 - (void)setObjects:(NSSet *)newObjects;
 - (void)addObject:(id)anObject;
 - (void)deleteObject:(id)anObject;
