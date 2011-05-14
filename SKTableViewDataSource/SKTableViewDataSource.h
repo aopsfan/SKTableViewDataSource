@@ -24,9 +24,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section;
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
 
+- (void)contentUpdated;
+
 @end
 
-@interface SKTableViewDataSource : NSObject <UITableViewDataSource> {
+@interface SKTableViewDataSource : NSObject <UITableViewDataSource, SKTableViewDataSource> {
     NSMutableSet *objects;
     NSMutableDictionary *dictionary;
     

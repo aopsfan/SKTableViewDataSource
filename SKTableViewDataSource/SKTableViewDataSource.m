@@ -104,6 +104,10 @@
     return dictionary;
 }
 
+- (void)setShouldReloadDictionary {
+    [self contentUpdated];
+}
+
 - (void)setSortSelector:(SEL)newSortSelector {
     sortSelector = newSortSelector;
     
@@ -198,6 +202,10 @@
     }
     
     return nil;
+}
+
+- (void)contentUpdated {
+    
 }
 
 
