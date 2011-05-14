@@ -43,8 +43,19 @@ To create a table displaying Dudes and organized by height, here are the necessa
 
 1. Create a @compare:@ method on Dude. SKTableViewDataSource automatically calls this method on each of your Dudes to sort the cells for each section:
 
-<pre><code>- (NSComparisonResult)compare:(Dude *)otherDude {
-    return [[self name] compare:[otherDude name]];
+<pre><code>- (NSString *)lastName {
+    NSArray *arrayOfNames = [self.name componentsSeparatedByString:@" "]; // Get an array of names (i.e. @"Guy", @"Moron", @"Idiot" from @"Guy Moron Idiot");
+    return [arrayOfNames objectAtIndex:[arrayOfNames count]-1]; // Return the last one
+}
+
+- (NSComparisonResult)compare:(Dude *)otherDude {
+    NSComparisonResult comparisonResult = [[self lastName] compare:[otherDude lastName]]; // Compare the last names
+    
+    if (comparisonResult == NSOrderedSame) {
+        return [[self name] compare:[otherDude name]]; // If the last names are the same, use the first name for ordering as well.
+    }
+    
+    return comparisonResult;
 }</code></pre>
 
 This will order Dude objects in each section by their name.

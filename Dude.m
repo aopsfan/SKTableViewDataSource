@@ -35,8 +35,19 @@
     return dude;
 }
 
+- (NSString *)lastName {
+    NSArray *arrayOfNames = [self.name componentsSeparatedByString:@" "];
+    return [arrayOfNames objectAtIndex:[arrayOfNames count]-1];
+}
+
 - (NSComparisonResult)compare:(Dude *)otherDude {
-    return [[self name] compare:[otherDude name]];
+    NSComparisonResult comparisonResult = [[self lastName] compare:[otherDude lastName]];
+    
+    if (comparisonResult == NSOrderedSame) {
+        return [[self name] compare:[otherDude name]];
+    }
+    
+    return comparisonResult;
 }
 
 - (void)dealloc {
@@ -44,7 +55,6 @@
     
     [super dealloc];
 }
-
 
 - (NSString *)initial {
     NSArray *arrayOfNames = [self.name componentsSeparatedByString:@" "];
