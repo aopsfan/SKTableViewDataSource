@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TransactionDataSource.h"
 
-@interface SKAdvancedTestTableViewController : UITableViewController <SKTableViewDataSource>
+@interface SKAdvancedTestTableViewController : UITableViewController
 {
     NSSet *data;
     TransactionDataSource *dataSource;

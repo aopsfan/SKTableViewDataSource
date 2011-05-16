@@ -10,25 +10,15 @@
 #import <UIKit/UIKit.h>
 
 @protocol SKTableViewDataSource
-
-@required
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-
 @optional
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView;
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath;
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index;
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section;
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
 
 - (void)contentUpdated;
+- (void)objectAdded:(id)object;
+- (void)objectDeleted:(id)object;
 
 @end
 
-@interface SKTableViewDataSource : NSObject <UITableViewDataSource, SKTableViewDataSource> {
+@interface SKTableViewDataSource : NSObject <UITableViewDataSource> {
     NSMutableSet *objects;
     NSMutableDictionary *dictionary;
     
@@ -38,7 +28,7 @@
     
     BOOL shouldReloadDictionary;
     
-    id target;
+    id<SKTableViewDataSource, UITableViewDataSource> target;
 }
 
 @property (readonly, copy) NSMutableDictionary *dictionary;

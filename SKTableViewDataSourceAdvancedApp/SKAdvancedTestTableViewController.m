@@ -75,7 +75,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - SKTableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [dateFormatter stringFromDate:(NSDate *)[dataSource identifierForSection:section]];

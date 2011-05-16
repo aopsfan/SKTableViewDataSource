@@ -33,7 +33,7 @@
     [super dealloc];
 }
 
-#pragma mark - SKTableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return (NSString *)[dataSource identifierForSection:section];

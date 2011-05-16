@@ -11,6 +11,26 @@
 @implementation SKTableViewDataSource
 @synthesize sortSelector, sectionOrderAscending, rowOrderAscending, target, dictionary;
 
+#pragma mark Protocol Stuff
+
+- (void)contentUpdated {
+    if ([target respondsToSelector:@selector(contentUpdated)]) {
+        [target contentUpdated];
+    }
+}
+
+- (void)objectAdded:(id)anObject {
+    if ([target respondsToSelector:@selector(objectAdded:)]) {
+        [target objectAdded:anObject];
+    }
+}
+
+- (void)objectDeleted:(id)anObject {
+    if ([target respondsToSelector:@selector(objectDeleted:)]) {
+        [target objectDeleted:anObject];
+    }
+}
+
 #pragma mark Object Management
 
 - (id)init {
@@ -38,17 +58,25 @@
     [objects removeAllObjects];
     [objects addObjectsFromArray:[newObjects allObjects]];
     
+    [self contentUpdated];
+    
     shouldReloadDictionary = YES;
 }
 
 - (void)addObject:(id)anObject {
     [objects addObject:anObject];
     
+    [self contentUpdated];
+    [self objectAdded:anObject];
+    
     shouldReloadDictionary = YES;
 }
 
 - (void)deleteObject:(id)anObject {
     [objects removeObject:anObject];
+    
+    [self contentUpdated];
+    [self objectDeleted:anObject];
     
     shouldReloadDictionary = YES;
 }
@@ -57,8 +85,7 @@
     id key = [self identifierForSection:indexPath.section];
     BOOL retVal = [[self.dictionary objectForKey:key] count] == 1;
     
-    [objects removeObject:[self objectForIndexPath:indexPath]];
-    shouldReloadDictionary = YES;
+    [self deleteObject:[self objectForIndexPath:indexPath]];
     
     return retVal;
 }
@@ -104,9 +131,6 @@
     return dictionary;
 }
 
-- (void)setShouldReloadDictionary {
-    [self contentUpdated];
-}
 
 - (void)setSortSelector:(SEL)newSortSelector {
     sortSelector = newSortSelector;
@@ -136,13 +160,11 @@
     return [[self.dictionary allKeys] count];
 }
 
-#pragma mark SKTableViewDataSource protocol -- required
+#pragma mark UITableViewDataSource protocol
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [target tableView:tableView cellForRowAtIndexPath:indexPath];
 }
-
-#pragma mark SKTableViewDataSource protocol -- optional
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     if ([target respondsToSelector:@selector(sectionIndexTitlesForTableView:)]) {
@@ -203,11 +225,6 @@
     
     return nil;
 }
-
-- (void)contentUpdated {
-    
-}
-
 
 #pragma mark Ordering
 

@@ -64,14 +64,12 @@ This will order Dude objects in each section by their name.
 
 <pre><code>#import "SKTableViewDataSource.h"
 
-@interface SKTestTableViewController : UITableViewController <SKTableViewDataSource> {
+@interface SKTestTableViewController : UITableViewController {
     NSSet *data;
     SKTableViewDataSource *dataSource;
 }
 
 @end</code></pre>
-
-The SKTableViewDataSource protocol lets you customize your table with extra UITableViewDataSource methods that this project can't implement.
 
 3. Update your controller's @.m@ file to use SKTableViewDataSource:
 
@@ -88,8 +86,8 @@ dataSource.sortSelector = @selector(height);
 
 self.tableView.dataSource = dataSource;</code></pre>
 
-@dataSource = [[SKTableViewDataSource alloc] initWithSet:data target:self]@ lets your dataSource know a) what set of data to format for your tables, and b) where to access the "extra" UITableViewDataSource methods.
-<code>dataSource.sortSelector = @selector(height)</code> tells the dataSource to section the table by the height method on Dude. (Remember, getters are still methods)
+@dataSource = [[SKTableViewDataSource alloc] initWithSet:data target:self]@ lets your dataSource know a) what set of data to format for your tables, and b) who to access extra @UITableViewDataSource@ methods from (that @SKTableViewDataSource@ can't implement) to "pass them on" to the table.
+<code>dataSource.sortSelector = @selector(height)</code> tells the dataSource to section the table by the height method on Dude. (Remember, getters are still methods.)
 Finally, @self.tableView.dataSource = dataSource@ tells your tableView to use @dataSource@.
 
 Delete the @numberOfSectionsInTableView@ and @numberOfRowsInSection:@ methods.
@@ -124,11 +122,15 @@ h3. 83
 
 h2. Doing More
 
+h3. Ascending and Descending
+
 If you'd like to order your sections descending, simply add this line to your @initWithStyle:@ method in your controller:
 
 <pre><code>dataSource.sectionOrderAscending = NO;</code></pre>
 
 Likewise, run <code>dataSource.rowOrderAscending = NO;</code> to order the rows in each section descending.
+
+h3. Fun with the sortSelector
 
 If you'd like to section Dudes by the first letter of their last name, follow these steps:
 
@@ -150,3 +152,7 @@ If you'd like to section Dudes by the first letter of their last name, follow th
 3. Update @titleForHeaderInSection:@
 
 <pre><code>return (NSString *)[dataSource identifierForSection:section];</code></pre>
+
+h3. SKTableViewDataSource protocol
+
+If you's like to have more control over your table, you can try out the SKTableViewDataSource protocol, which includes delegate-like methods for you to implement. So far, the protocol includes the following methods: @contentUpdated@, @objectAdded:@, and @objectDeleted:@. Other than conforming to the @SKTableViewDataSource@ protocol in your controller's @.h@ file, no additional setup is required.
