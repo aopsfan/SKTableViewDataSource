@@ -40,6 +40,7 @@
 #pragma mark Object Management
 
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget;
+- (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget sortSelector:(SEL)aSortSelector;
 - (void)setObjects:(NSSet *)newObjects;
 - (void)addObject:(id)anObject;
 - (void)deleteObject:(id)anObject;

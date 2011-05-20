@@ -54,6 +54,14 @@
     return self;
 }
 
+- (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget sortSelector:(SEL)aSortSelector {
+    if ((self = [self initWithSet:initialObjects target:aTarget])) {
+        sortSelector = aSortSelector;
+    }
+    
+    return self;
+}
+
 - (void)setObjects:(NSSet *)newObjects {
     [objects removeAllObjects];
     [objects addObjectsFromArray:[newObjects allObjects]];
@@ -104,6 +112,11 @@
 - (NSMutableDictionary *)dictionary {
     if (!shouldReloadDictionary) {
         return [NSMutableDictionary dictionaryWithDictionary:dictionary];
+    }
+    
+    if (!sortSelector) {
+        NSException *exc = [NSException exceptionWithName:@"sortSelector should not be null" reason:[NSString stringWithFormat:@"Your sortSelector for the following instance of SKTableViewDataSource is null: %@", self] userInfo:nil];
+        [exc raise];
     }
     
     [dictionary removeAllObjects];
