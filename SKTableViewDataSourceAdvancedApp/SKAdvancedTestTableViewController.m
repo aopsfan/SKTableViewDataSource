@@ -56,24 +56,6 @@
     [super dealloc];
 }
 
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    UISegmentedControl *segmentedControl = [[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Name", @"Height", nil]] autorelease];
-    UIBarButtonItem *item = [[[UIBarButtonItem alloc] initWithCustomView:segmentedControl] autorelease];
-    
-    self.toolbarItems = [NSArray arrayWithObject:item];
-    self.navigationController.toolbarHidden = NO;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

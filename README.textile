@@ -18,7 +18,7 @@ SKTableViewDataSource takes an NSSet of custom objects, and, given a selector to
 
 h2. What you get
 
-This repository comes with @SKTableViewDataSource@ itself, two dummy data models for testing (@Dude@ and @Transaction@), and two test projects; one is simple, demonstrating how easy it is to set up a table; and the other is more complex, demonstrating how to subclass @SKTableViewDataSource@ for more advanced work.
+This repository comes with @SKTableViewDataSource@ itself, @SKTableViewController@ (a convenient subclass of @UITableViewController@), two dummy data models for testing (@Dude@ and @Transaction@), and three test projects; one uses @SKTableViewController@ for a very simple project; one is like the first except doesn't use @SKTableViewController@; and one is more complex, demonstrating how to subclass @SKTableViewDataSource@ for more advanced work.
 
 h2. Example
 
@@ -60,15 +60,11 @@ To create a table displaying Dudes and organized by height, here are the necessa
 
 This will order Dude objects in each section by their name.
 
-2. Update your UITableViewController's header file to use SKTableViewDataSource:
+2. Update your UITableViewController's header file to subclass SKTableViewController:
 
 <pre><code>#import "SKTableViewDataSource.h"
 
-@interface SKTestTableViewController : UITableViewController {
-    NSSet *data;
-    SKTableViewDataSource *dataSource;
-}
-
+@interface SKTestTableViewController : SKTableViewController
 @end</code></pre>
 
 3. Update your controller's @.m@ file to use SKTableViewDataSource:
@@ -79,18 +75,17 @@ Dude *tom        = [[[Dude alloc] initWithName:@"Tom Charles Simpson" hairColor:
 Dude *emilysTwin = [[[Dude alloc] initWithName:@"Ylime Simpson Miller" hairColor:[UIColor grayColor] height:[NSNumber numberWithInt:67]] autorelease];
 Dude *tomsTwin   = [[[Dude alloc] initWithName:@"Mot Charles Simpson" hairColor:[UIColor brownColor] height:[NSNumber numberWithInt:83]] autorelease];
 Dude *guy        = [[[Dude alloc] initWithName:@"Guy Moron Idiot" hairColor:[UIColor blackColor] height:[NSNumber numberWithInt:67]] autorelease];
-data = [[NSSet alloc] initWithObjects:emily, tom, emilysTwin, tomsTwin, guy, nil];
 
-dataSource = [[SKTableViewDataSource alloc] initWithSet:data target:self];
+[dataSource setObjects:[NSSet setWithObjects:emily, tom, emilysTwin, tomsTwin, guy, nil]];
 dataSource.sortSelector = @selector(height);
 
-self.tableView.dataSource = dataSource;</code></pre>
+self.title = @"Dudes";
+</code></pre>
 
-@dataSource = [[SKTableViewDataSource alloc] initWithSet:data target:self]@ lets your dataSource know a) what set of data to format for your tables, and b) who to access extra @UITableViewDataSource@ methods from (that @SKTableViewDataSource@ can't implement) to "pass them on" to the table.
+@dataSource setObjects@ lets your dataSource know what set of data to format for your tables.
 <code>dataSource.sortSelector = @selector(height)</code> tells the dataSource to section the table by the height method on Dude. (Remember, getters are still methods.)
-Finally, @self.tableView.dataSource = dataSource@ tells your tableView to use @dataSource@.
 
-Delete the @numberOfSectionsInTableView@ and @numberOfRowsInSection:@ methods.
+Make sure the @numberOfSectionsInTableView@ and @numberOfRowsInSection:@ methods are not implemented; SKTableViewDataSource will do this job.
 
 If you'd like section headers, implement @titleForHeaderInSection:@
 
@@ -155,4 +150,4 @@ If you'd like to section Dudes by the first letter of their last name, follow th
 
 h3. SKTableViewDataSource protocol
 
-If you's like to have more control over your table, you can try out the SKTableViewDataSource protocol, which includes delegate-like methods for you to implement. So far, the protocol includes the following methods: @contentUpdated@, @objectAdded:@, and @objectDeleted:@. Other than conforming to the @SKTableViewDataSource@ protocol in your controller's @.h@ file, no additional setup is required.
+If you's like to have more control over your table, you can try out the SKTableViewDataSource protocol, which includes delegate-like methods for you to implement. So far, the protocol includes the following methods: @contentUpdated@, @objectAdded:@, and @objectDeleted:@. Other than conforming to the @SKTableViewDataSource@ protocol in your controller's @.h@ file, no additional setup is required; in fact, even this isn't necessary when subclassing @SKTableViewController@.

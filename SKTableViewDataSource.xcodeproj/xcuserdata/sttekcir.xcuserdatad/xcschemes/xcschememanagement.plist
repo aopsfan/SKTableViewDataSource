@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>SKTableViewController.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>SKTableViewControllerApp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>SKTableViewDataSource.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -28,6 +38,16 @@
 			<true/>
 		</dict>
 		<key>108A6D831355264700B9AAC4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>10B88B3713869FFA00B76488</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>10B88B4C1386A3E300B76488</key>
 		<dict>
 			<key>primary</key>
 			<true/>
