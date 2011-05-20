@@ -13,7 +13,7 @@
         Dude *guy        = [[[Dude alloc] initWithName:@"Guy Moron Idiot" hairColor:[UIColor blackColor] height:[NSNumber numberWithInt:67]] autorelease];
         
         [dataSource setObjects:[NSSet setWithObjects:emily, tom, emilysTwin, tomsTwin, guy, nil]];
-        dataSource.sortSelector = @selector(initial);
+        dataSource.sortSelector = @selector(height);
         
         self.title = @"Dudes";
     }
@@ -22,7 +22,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return (NSString *)[dataSource identifierForSection:section];
+    return [(NSNumber *)[dataSource identifierForSection:section] stringValue];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
