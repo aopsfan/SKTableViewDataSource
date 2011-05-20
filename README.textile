@@ -104,16 +104,7 @@ Here we use SKTableViewDataSource's @objectForIndexPath:@ method to find a Dude 
 
 h3. Thats It! Your table should look like this:
 
-h3. 67
-
-- Emily Simpson Miller
-- Guy Moron Idiot
-- Ylime Simpson Miller
-
-h3. 83
-
-- Tom Charles Simpson
-- Mot Charles Simpson
+!https://github.com/aopsfan/SKTableViewDataSource/raw/master/screenshot.png!
 
 h2. Doing More
 
