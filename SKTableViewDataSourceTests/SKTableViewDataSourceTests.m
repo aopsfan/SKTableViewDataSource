@@ -95,4 +95,15 @@
     STAssertEqualObjects(dude, emily, @"dude (%@) should be emily (%@)", dude.name, emily.name);
 }
 
+- (void)testSectionForSectionIdentifier {
+    STAssertTrue([dataSource sectionForSectionIdentifier:[NSNumber numberWithInt:83]] == 1,
+                 @"section is %i", [dataSource sectionForSectionIdentifier:[NSNumber numberWithInt:83]]);
+}
+
+- (void)testIndexPathOfObject {
+    NSIndexPath *testIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    
+    STAssertEqualObjects([dataSource indexPathForObject:tom], testIndexPath, @"index path is %@", [dataSource indexPathForObject:tom]);
+}
+
 @end

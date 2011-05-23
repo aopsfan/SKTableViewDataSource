@@ -45,6 +45,14 @@
     return self;
 }
 
+- (id)initWithSet:(NSSet *)initialObjects {
+    if ((self = [self init])) {
+        [objects addObjectsFromArray:[initialObjects allObjects]];
+    }
+    
+    return self;
+}
+
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget {
     if ((self = [self init])) {
         [objects addObjectsFromArray:[initialObjects allObjects]];
@@ -287,10 +295,36 @@
     return [[self orderedSectionsForTableView] objectAtIndex:section];    
 }
 
+- (NSUInteger)sectionForSectionIdentifier:(id)identifier {
+    for (id key in [self.dictionary allKeys]) {
+        if ([key isEqual:identifier]) {
+            return [[self orderedSectionsForTableView] indexOfObject:key];
+        }
+    }
+    
+    return 0;
+}
+
 - (id)objectForIndexPath:(NSIndexPath *)indexPath {
     NSArray *array = [self orderedObjectsForSection:indexPath.section];
     
     return [array objectAtIndex:indexPath.row];
+}
+
+- (NSIndexPath *)indexPathForObject:(id)object {
+    id identifier = [object performSelector:sortSelector];
+    NSMutableArray *array = (NSMutableArray *)[self.dictionary objectForKey:identifier];
+    NSUInteger section = [self sectionForSectionIdentifier:identifier];
+    NSUInteger row;
+    
+    for (id anObject in array) {
+        if ([object isEqual:anObject]) {
+            row = [array indexOfObject:anObject];
+            return [NSIndexPath indexPathForRow:row inSection:section];
+        }
+    }
+    
+    return nil;
 }
 
 @end

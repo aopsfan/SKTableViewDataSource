@@ -39,6 +39,7 @@
 
 #pragma mark Object Management
 
+- (id)initWithSet:(NSSet *)initialObjects;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget sortSelector:(SEL)aSortSelector;
 - (void)setObjects:(NSSet *)newObjects;
@@ -54,6 +55,8 @@
 #pragma mark Other
 
 - (id)identifierForSection:(NSUInteger)section;
+- (NSUInteger)sectionForSectionIdentifier:(id)identifier;
 - (id)objectForIndexPath:(NSIndexPath *)indexPath;
+- (NSIndexPath *)indexPathForObject:(id)object;
 
 @end
