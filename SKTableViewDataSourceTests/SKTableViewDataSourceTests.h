@@ -16,9 +16,13 @@
     NSMutableArray *objects;
     
     Dude *emily;
+    Dude *bruce;
     Dude *tom;
+    Dude *michael;
     Dude *emilysTwin;
     Dude *tomsTwin;
+    Dude *michaelsTwin;
+    Dude *brucesTwin;
 }
 
 @end

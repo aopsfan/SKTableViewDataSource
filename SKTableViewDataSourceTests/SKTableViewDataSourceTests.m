@@ -15,12 +15,17 @@
 {
     [super setUp];
     
-    emily      = [[Dude alloc] initWithName:@"Emily Simpson Miller" hairColor:[UIColor grayColor] height:[NSNumber numberWithInt:67]];
-    tom        = [[Dude alloc] initWithName:@"Tom Charles Simpson" hairColor:[UIColor brownColor] height:[NSNumber numberWithInt:83]];
-    emilysTwin = [[Dude alloc] initWithName:@"Ylime Simpson Miller" hairColor:[UIColor grayColor] height:[NSNumber numberWithInt:67]];
-    tomsTwin   = [[Dude alloc] initWithName:@"Mot Charles Simpson" hairColor:[UIColor brownColor] height:[NSNumber numberWithInt:83]];
+    emily        = [[Dude alloc] initWithName:@"Emily Simpson Miller" hairColor:[UIColor grayColor] height:[NSNumber numberWithInt:67]];
+    bruce        = [[Dude alloc] initWithName:@"Bruce Young Ricketts" hairColor:[UIColor brownColor] height:[NSNumber numberWithInt:67]];
+    tom          = [[Dude alloc] initWithName:@"Tom Charles Simpson" hairColor:[UIColor brownColor] height:[NSNumber numberWithInt:83]];
+    michael      = [[Dude alloc] initWithName:@"Michael Jordan" hairColor:[UIColor clearColor] height:[NSNumber numberWithInt:100]];
+    emilysTwin   = [[Dude alloc] initWithName:@"Ylime Simpson Miller" hairColor:[UIColor grayColor] height:[NSNumber numberWithInt:67]];
+    brucesTwin   = [[Dude alloc] initWithName:@"Ecurb Young Ricketts" hairColor:[UIColor brownColor] height:[NSNumber numberWithInt:67]];
+    tomsTwin     = [[Dude alloc] initWithName:@"Mot Charles Simpson" hairColor:[UIColor brownColor] height:[NSNumber numberWithInt:83]];
+    michaelsTwin = [[Dude alloc] initWithName:@"Sleahcim Jordan" hairColor:[UIColor clearColor] height:[NSNumber numberWithInt:100]];
     
-    objects                          = [[NSMutableArray alloc] initWithObjects:emily, tom, emilysTwin, tomsTwin, nil];
+    
+    objects                          = [[NSMutableArray alloc] initWithObjects:emily, bruce, tom, michael, emilysTwin, brucesTwin, tomsTwin, michaelsTwin, nil];
     dataSource                       = [[SKTableViewDataSource alloc] initWithSet:[NSSet setWithArray:objects]];
     dataSource.sortSelector          = @selector(height);
     dataSource.sectionOrderAscending = YES;
@@ -32,9 +37,13 @@
     [dataSource release];
     [objects release];
     [emily release];
+    [bruce release];
     [tom release];
+    [michael release];
     [emilysTwin release];
     [tomsTwin release];
+    [brucesTwin release];
+    [michaelsTwin release];
     
     [super tearDown];
 }
@@ -63,7 +72,7 @@
 
 - (void)testRowOrderDescending {
     dataSource.rowOrderAscending = NO;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
     Dude *dude = (Dude *)[dataSource objectForIndexPath:indexPath];
     NSString *testName = @"Ylime Simpson Miller";
     
@@ -74,17 +83,17 @@
 
 - (void)testSectionOrderDescending {
     dataSource.sectionOrderAscending = NO;
-    NSNumber *height = (NSNumber *)[[dataSource orderedSectionsForTableView] objectAtIndex:0];
+    NSNumber *height = (NSNumber *)[[dataSource orderedSectionsForTableView] objectAtIndex:1];
     NSNumber *testHeight = [NSNumber numberWithInt:83];
     
-    STAssertEqualObjects(height, testHeight, @"The first object in the ordered sections should be 83, it is %@", height);
+    STAssertEqualObjects(height, testHeight, @"The second object in the ordered sections should be 83, it is %@", height);
     
     dataSource.sectionOrderAscending = YES;
 }
 
 - (void)testObjectsInSection {
     NSSet *someObjects = [NSSet setWithArray:[dataSource orderedObjectsForSection:0]];
-    NSSet *testObjects = [NSSet setWithObjects:emily, emilysTwin, nil];
+    NSSet *testObjects = [NSSet setWithObjects:emily, emilysTwin, bruce, brucesTwin, nil];
     
     STAssertEqualObjects(someObjects, testObjects, @"In section 0, you have %@ instead of %@", someObjects, testObjects);
 }
@@ -101,9 +110,9 @@
 }
 
 - (void)testIndexPathOfObject {
-    NSIndexPath *testIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    NSIndexPath *testIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
     
-    STAssertEqualObjects([dataSource indexPathForObject:tom], testIndexPath, @"index path is %@", [dataSource indexPathForObject:tom]);
+    STAssertEqualObjects([dataSource indexPathForObject:bruce], testIndexPath, @"index path is %@", [dataSource indexPathForObject:tom]);
 }
 
 @end
