@@ -83,7 +83,6 @@
 }
 
 - (void)addObject:(id)anObject {
-    NSLog(@"current diff is added: %@, deleted: %@", currentDiff.addedObjects, currentDiff.deletedObjects);
     [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:[NSSet setWithObject:anObject] deletedObjects:[NSSet set]]];
     [objects addObject:anObject];
     
@@ -128,7 +127,7 @@
     if (!shouldReloadDictionary) {
         return [NSMutableDictionary dictionaryWithDictionary:dictionary];
     }
-    
+        
     if (!sortSelector) {
         NSException *exc = [NSException exceptionWithName:@"sortSelector should not be null" reason:[NSString stringWithFormat:@"Your sortSelector for the following instance of SKTableViewDataSource is null: %@", self] userInfo:nil];
         [exc raise];
@@ -155,6 +154,10 @@
     for (id deleteObject in currentDiff.deletedObjects) {
         NSMutableArray *array = (NSMutableArray *)[dictionary objectForKey:[deleteObject performSelector:sortSelector]];
         [array removeObject:deleteObject];
+        
+        if ([array count] == 0) {
+            [dictionary removeObjectForKey:[deleteObject performSelector:sortSelector]];
+        }
     }
     
     shouldReloadDictionary = NO;
