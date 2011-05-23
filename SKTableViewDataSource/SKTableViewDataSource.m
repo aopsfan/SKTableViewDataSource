@@ -132,9 +132,7 @@
         NSException *exc = [NSException exceptionWithName:@"sortSelector should not be null" reason:[NSString stringWithFormat:@"Your sortSelector for the following instance of SKTableViewDataSource is null: %@", self] userInfo:nil];
         [exc raise];
     }
-    
-    NSLog(@"current diff is: added: %@, deleted: %@", currentDiff.addedObjects, currentDiff.deletedObjects);
-    
+        
     for (id object in currentDiff.addedObjects) {
         if (![object respondsToSelector:sortSelector]) {
             NSException *exception = [NSException exceptionWithName:@"Objects should respond to your sortSelector"
