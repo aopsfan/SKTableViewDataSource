@@ -83,6 +83,7 @@
 }
 
 - (void)addObject:(id)anObject {
+    NSLog(@"current diff is added: %@, deleted: %@", currentDiff.addedObjects, currentDiff.deletedObjects);
     [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:[NSSet setWithObject:anObject] deletedObjects:[NSSet set]]];
     [objects addObject:anObject];
     
@@ -157,6 +158,7 @@
     }
     
     shouldReloadDictionary = NO;
+    [currentDiff setDiff:[SKCollectionDiff diff]];
     
     return dictionary;
 }
