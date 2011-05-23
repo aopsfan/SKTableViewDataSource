@@ -39,7 +39,8 @@
         dictionary = [[NSMutableDictionary alloc] init];
         sectionOrderAscending = YES;
         rowOrderAscending = YES;
-        shouldReloadDictionary = YES;
+        shouldReloadDictionary = NO;
+        currentDiff = [[SKCollectionDiff alloc] initWithAddedObjects:[NSSet set] deletedObjects:[NSSet set]];
     }
     
     return self;
@@ -47,15 +48,17 @@
 
 - (id)initWithSet:(NSSet *)initialObjects {
     if ((self = [self init])) {
+        [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:initialObjects deletedObjects:[NSSet set]]];
         [objects addObjectsFromArray:[initialObjects allObjects]];
+        
+        shouldReloadDictionary = YES;
     }
     
     return self;
 }
 
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget {
-    if ((self = [self init])) {
-        [objects addObjectsFromArray:[initialObjects allObjects]];
+    if ((self = [self initWithSet:initialObjects])) {
         target = aTarget;
     }
     
@@ -71,8 +74,8 @@
 }
 
 - (void)setObjects:(NSSet *)newObjects {
-    [objects removeAllObjects];
-    [objects addObjectsFromArray:[newObjects allObjects]];
+    [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:objects newObjects:newObjects]];
+    [objects submitDiff:currentDiff];
     
     [self contentUpdated];
     
@@ -80,6 +83,7 @@
 }
 
 - (void)addObject:(id)anObject {
+    [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:[NSSet setWithObject:anObject] deletedObjects:[NSSet set]]];
     [objects addObject:anObject];
     
     [self contentUpdated];
@@ -89,6 +93,7 @@
 }
 
 - (void)deleteObject:(id)anObject {
+    [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:[NSSet set] deletedObjects:[NSSet setWithObject:anObject]]];
     [objects removeObject:anObject];
     
     [self contentUpdated];
@@ -110,6 +115,7 @@
     [objects release];
     [dictionary release];
     [target release];
+    [currentDiff release];
     
     [super dealloc];
 }
@@ -127,9 +133,9 @@
         [exc raise];
     }
     
-    [dictionary removeAllObjects];
+    NSLog(@"current diff is: added: %@, deleted: %@", currentDiff.addedObjects, currentDiff.deletedObjects);
     
-    for (id object in objects) {
+    for (id object in currentDiff.addedObjects) {
         if (![object respondsToSelector:sortSelector]) {
             NSException *exception = [NSException exceptionWithName:@"Objects should respond to your sortSelector"
                                                              reason:[NSString stringWithFormat:@"The following object doesn't respond to your sortSelector (%@): %@", NSStringFromSelector(sortSelector), object]
@@ -145,6 +151,11 @@
             [dictionary setObject:tempObjects
                            forKey:[object performSelector:sortSelector]];
         }
+    }
+    
+    for (id deleteObject in currentDiff.deletedObjects) {
+        NSMutableArray *array = (NSMutableArray *)[dictionary objectForKey:[deleteObject performSelector:sortSelector]];
+        [array removeObject:deleteObject];
     }
     
     shouldReloadDictionary = NO;
@@ -313,8 +324,8 @@
 
 - (NSIndexPath *)indexPathForObject:(id)object {
     id identifier = [object performSelector:sortSelector];
-    NSMutableArray *array = (NSMutableArray *)[self.dictionary objectForKey:identifier];
     NSUInteger section = [self sectionForSectionIdentifier:identifier];
+    NSArray *array = [self orderedObjectsForSection:section];
     NSUInteger row;
     
     for (id anObject in array) {

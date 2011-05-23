@@ -24,14 +24,7 @@
 }
 
 + (Dude *)dudeWithName:(NSString *)aName hairColor:(UIColor *)aHairColor height:(NSNumber *)aHeight {
-    Dude *dude;
-    
-    if (dude) {
-        dude.name = aName;
-        dude.hairColor = aHairColor;
-        dude.height = aHeight;
-    }
-    
+    Dude *dude = [[[Dude alloc] initWithName:aName hairColor:aHairColor height:aHeight] autorelease];
     return dude;
 }
 

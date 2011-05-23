@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SKCollectionDiff.h"
 #import <UIKit/UIKit.h>
 
 @protocol SKTableViewDataSource
@@ -27,6 +28,7 @@
     SEL sortSelector;
     
     BOOL shouldReloadDictionary;
+    SKCollectionDiff *currentDiff;
     
     id<SKTableViewDataSource, UITableViewDataSource> target;
 }
