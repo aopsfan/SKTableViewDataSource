@@ -1,11 +1,3 @@
-//
-//  SKTableViewFormatter.m
-//  SKTableViewFormatter
-//
-//  Created by Bruce Ricketts on 3/29/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import "SKTableViewDataSource.h"
 
 @implementation SKTableViewDataSource

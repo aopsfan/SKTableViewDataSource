@@ -1,11 +1,3 @@
-//
-//  CollectionDefs.m
-//  SKCollectionDiff
-//
-//  Created by Bruce Ricketts on 5/18/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import "CollectionDefs.h"
 #import "SKCollectionDiff.h"
 

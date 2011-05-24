@@ -1,11 +1,3 @@
-//
-//  Transaction.m
-//  SKTableViewDataSource
-//
-//  Created by Bruce Ricketts on 4/18/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import "Transaction.h"
 
 @implementation NSDate (DateWithoutTime)

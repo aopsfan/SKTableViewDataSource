@@ -1,11 +1,3 @@
-//
-//  SKTableViewInfo.m
-//  SKTableViewDataSource
-//
-//  Created by Bruce Ricketts on 5/23/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import "SKTableViewInfo.h"
 
 

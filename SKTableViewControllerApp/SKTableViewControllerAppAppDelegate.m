@@ -1,11 +1,3 @@
-//
-//  SKTableViewControllerAppAppDelegate.m
-//  SKTableViewControllerApp
-//
-//  Created by Bruce Ricketts on 5/20/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import "SKTableViewControllerAppAppDelegate.h"
 #import "SKControllerTestViewController.h"
 

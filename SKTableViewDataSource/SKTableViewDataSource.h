@@ -1,11 +1,3 @@
-//
-//  SKTableViewFormatter.h
-//  SKTableViewFormatter
-//
-//  Created by Bruce Ricketts on 3/29/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "SKCollectionDiff.h"
 #import "SKTableViewInfo.h"

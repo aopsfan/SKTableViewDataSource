@@ -1,11 +1,3 @@
-//
-//  SKTableViewDataSourceTests.h
-//  SKTableViewDataSourceTests
-//
-//  Created by Bruce Ricketts on 3/31/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import <SenTestingKit/SenTestingKit.h>
 #import "SKTableViewDataSource.h"
 #import "Dude.h"

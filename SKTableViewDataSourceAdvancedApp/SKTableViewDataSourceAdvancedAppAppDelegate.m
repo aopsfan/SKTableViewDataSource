@@ -1,11 +1,3 @@
-//
-//  SKTableViewDataSourceAdvancedAppAppDelegate.m
-//  SKTableViewDataSourceAdvancedApp
-//
-//  Created by Bruce Ricketts on 4/13/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import "SKTableViewDataSourceAdvancedAppAppDelegate.h"
 #import "SKAdvancedTestTableViewController.h"
 

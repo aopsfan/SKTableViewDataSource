@@ -1,11 +1,3 @@
-//
-//  Dude.m
-//  SKTableViewDataSource
-//
-//  Created by Bruce Ricketts on 4/12/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import "Dude.h"
 
 @implementation Dude

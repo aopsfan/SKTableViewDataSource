@@ -1,11 +1,3 @@
-//
-//  CollectionDefs.h
-//  SKCollectionDiff
-//
-//  Created by Bruce Ricketts on 5/18/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 @class SKCollectionDiff;
