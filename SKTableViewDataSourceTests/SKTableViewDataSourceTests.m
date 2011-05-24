@@ -48,9 +48,9 @@
     [super tearDown];
 }
 
-- (void)testDictionaryHasOutput
+- (void)testTableViewInfoHasOutput
 {
-    STAssertNotNil(dataSource.dictionary, @"dictionary (%@) should contain objects", dataSource.dictionary);
+    STAssertNotNil(dataSource.tableViewInfo, @"info (%@) should contain objects", dataSource.tableViewInfo);
 }
 
 - (void)testSectionOrderAscending {

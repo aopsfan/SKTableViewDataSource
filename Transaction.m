@@ -38,8 +38,7 @@
         title = aTitle;
         price = [[NSNumber alloc] initWithDouble:aPrice];
         
-        date = [[NSDate alloc] init];
-        date = aDate;
+        date = [[NSDate alloc] initWithTimeInterval:0 sinceDate:aDate];
     }
     
     return self;

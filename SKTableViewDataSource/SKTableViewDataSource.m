@@ -9,7 +9,7 @@
 #import "SKTableViewDataSource.h"
 
 @implementation SKTableViewDataSource
-@synthesize sortSelector, sectionOrderAscending, rowOrderAscending, target, dictionary;
+@synthesize sortSelector, sectionOrderAscending, rowOrderAscending, target, tableViewInfo;
 
 #pragma mark Protocol Stuff
 
@@ -36,7 +36,7 @@
 - (id)init {
     if ((self = [super init])) {
         objects = [[NSMutableSet alloc] init];
-        dictionary = [[NSMutableDictionary alloc] init];
+        tableViewInfo = [[SKTableViewInfo alloc] init];
         sectionOrderAscending = YES;
         rowOrderAscending = YES;
         shouldReloadDictionary = NO;
@@ -103,8 +103,8 @@
 }
 
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath {
-    id key = [self identifierForSection:indexPath.section];
-    BOOL retVal = [[self.dictionary objectForKey:key] count] == 1;
+    id identifier = [self identifierForSection:indexPath.section];
+    BOOL retVal = [[self.tableViewInfo objectsForIdentifier:identifier] count] == 1;
     
     [self deleteObject:[self objectForIndexPath:indexPath]];
     
@@ -113,7 +113,7 @@
 
 - (void)dealloc {
     [objects release];
-    [dictionary release];
+    [tableViewInfo release];
     [target release];
     [currentDiff release];
     
@@ -123,16 +123,16 @@
 
 #pragma mark Property overrides
 
-- (NSMutableDictionary *)dictionary {
+- (SKTableViewInfo *)tableViewInfo {
     if (!shouldReloadDictionary) {
-        return [NSMutableDictionary dictionaryWithDictionary:dictionary];
+        return tableViewInfo;
     }
-        
+    
     if (!sortSelector) {
         NSException *exc = [NSException exceptionWithName:@"sortSelector should not be null" reason:[NSString stringWithFormat:@"Your sortSelector for the following instance of SKTableViewDataSource is null: %@", self] userInfo:nil];
         [exc raise];
     }
-        
+    
     for (id object in currentDiff.addedObjects) {
         if (![object respondsToSelector:sortSelector]) {
             NSException *exception = [NSException exceptionWithName:@"Objects should respond to your sortSelector"
@@ -140,30 +140,33 @@
                                                            userInfo:nil];
             [exception raise];
         }
-        if (![dictionary objectForKey:[object performSelector:sortSelector]]) {
-            [dictionary setObject:[NSMutableArray arrayWithObject:object]
-                           forKey:[object performSelector:sortSelector]];
+        if (![tableViewInfo objectsForIdentifier:[object performSelector:sortSelector]]) {
+            [tableViewInfo setObjects:[NSSet setWithObject:object]
+                        forIdentifier:[object performSelector:sortSelector]];
         } else {
-            NSMutableArray *tempObjects = [dictionary objectForKey:[object performSelector:sortSelector]];
+            NSMutableSet *tempObjects = [NSMutableSet setWithSet:[tableViewInfo objectsForIdentifier:[object performSelector:sortSelector]]];
             [tempObjects addObject:object];
-            [dictionary setObject:tempObjects
-                           forKey:[object performSelector:sortSelector]];
+            [tableViewInfo setObjects:[NSSet setWithSet:tempObjects]
+                        forIdentifier:[object performSelector:sortSelector]];
         }
     }
     
     for (id deleteObject in currentDiff.deletedObjects) {
-        NSMutableArray *array = (NSMutableArray *)[dictionary objectForKey:[deleteObject performSelector:sortSelector]];
-        [array removeObject:deleteObject];
+        [tableViewInfo log];
         
-        if ([array count] == 0) {
-            [dictionary removeObjectForKey:[deleteObject performSelector:sortSelector]];
+        NSMutableSet *set = [tableViewInfo objectsForIdentifier:[deleteObject performSelector:sortSelector]];
+                
+        [set removeObject:deleteObject];
+        
+        if ([set count] == 0) {
+            [tableViewInfo removeObjectsForIdentifier:[deleteObject performSelector:sortSelector]];
         }
     }
     
     shouldReloadDictionary = NO;
     [currentDiff setDiff:[SKCollectionDiff diff]];
     
-    return dictionary;
+    return tableViewInfo;
 }
 
 
@@ -192,7 +195,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self.dictionary allKeys] count];
+    return [[self.tableViewInfo allIdentifiers] count];
 }
 
 #pragma mark UITableViewDataSource protocol
@@ -264,10 +267,10 @@
 #pragma mark Ordering
 
 - (NSArray *)orderedObjectsForSection:(NSUInteger)section {    
-    id key = [self identifierForSection:section];
-    NSArray *array = (NSArray *)[self.dictionary objectForKey:key];
+    id identifier = [self identifierForSection:section];
+    NSSet *set = [self.tableViewInfo objectsForIdentifier:identifier];
     
-    for (id object in array) {
+    for (id object in set) {
         if (![object respondsToSelector:@selector(compare:)]) {
             NSException *exception = [NSException exceptionWithName:@"Object should respond to compare:"
                                                              reason:[NSString stringWithFormat:@"The following object does not implement @selector(compare:), therefore I can't order your objects in section %i: %@", section, object]
@@ -276,7 +279,7 @@
         }
     }
     
-    NSArray *newArray = [array sortedArrayUsingSelector:@selector(compare:)];
+    NSArray *newArray = [[set allObjects] sortedArrayUsingSelector:@selector(compare:)];
     
     if (!rowOrderAscending) {
         newArray = [[newArray reverseObjectEnumerator] allObjects];
@@ -286,7 +289,7 @@
 }
 
 - (NSArray *)orderedSectionsForTableView {
-    for (id object in [self.dictionary allKeys]) {
+    for (id object in [self.tableViewInfo allIdentifiers]) {
         if (![object respondsToSelector:@selector(compare:)]) {
             NSException *exception = [NSException exceptionWithName:@"Object should respond to compare:"
                                                              reason:[NSString stringWithFormat:@"The following section identifier does not implement @selector(compare:), therefore I can't order your sections: %@", object]
@@ -294,7 +297,7 @@
             [exception raise];
         }
     }
-    NSArray *retVal = [[self.dictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    NSArray *retVal = [[[self.tableViewInfo allIdentifiers] allObjects] sortedArrayUsingSelector:@selector(compare:)];
     
     if (!sectionOrderAscending) {
         retVal = [[retVal reverseObjectEnumerator] allObjects];
@@ -310,7 +313,7 @@
 }
 
 - (NSUInteger)sectionForSectionIdentifier:(id)identifier {
-    for (id key in [self.dictionary allKeys]) {
+    for (id key in [self.tableViewInfo allIdentifiers]) {
         if ([key isEqual:identifier]) {
             return [[self orderedSectionsForTableView] indexOfObject:key];
         }

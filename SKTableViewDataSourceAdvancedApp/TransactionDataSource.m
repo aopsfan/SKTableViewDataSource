@@ -14,16 +14,19 @@
 - (NSArray *)orderedSectionsForTableView {
     NSMutableArray *initialSections = [NSMutableArray arrayWithArray:[super orderedSectionsForTableView]];
     NSMutableArray *newSections = [NSMutableArray arrayWithCapacity:[initialSections count]-1];
-    NSDate *deleteThisDate;
+    NSDate *deleteThisDate = nil;
     
     for (NSDate *date in initialSections) {
         if ([date isEqualToDate:[[NSDate date] dateWithoutTime]]) {
-            [newSections addObject:date];
-            deleteThisDate = date;
+            [newSections addObject:[date dateWithoutTime]];
+            deleteThisDate = [NSDate dateWithTimeInterval:0 sinceDate:[date dateWithoutTime]];
         }
     }
     
-    [initialSections removeObject:deleteThisDate];
+    if (deleteThisDate) {
+        [initialSections removeObject:deleteThisDate];
+    }
+    
     [newSections addObjectsFromArray:initialSections];
     return newSections;
 }

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SKCollectionDiff.h"
+#import "SKTableViewInfo.h"
 #import <UIKit/UIKit.h>
 
 @protocol SKTableViewDataSource
@@ -21,7 +22,7 @@
 
 @interface SKTableViewDataSource : NSObject <UITableViewDataSource> {
     NSMutableSet *objects;
-    NSMutableDictionary *dictionary;
+    SKTableViewInfo *tableViewInfo;
     
     BOOL sectionOrderAscending;
     BOOL rowOrderAscending;
@@ -33,7 +34,7 @@
     id<SKTableViewDataSource, UITableViewDataSource> target;
 }
 
-@property (readonly, copy) NSMutableDictionary *dictionary;
+@property (readonly, retain) SKTableViewInfo *tableViewInfo;
 @property BOOL sectionOrderAscending;
 @property BOOL rowOrderAscending;
 @property SEL sortSelector;
