@@ -29,6 +29,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>SKTableViewDataSourceCoreDataTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -58,6 +63,11 @@
 			<true/>
 		</dict>
 		<key>10E8047413452B73001F253F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>10ED2041138FDE0E00DEC984</key>
 		<dict>
 			<key>primary</key>
 			<true/>

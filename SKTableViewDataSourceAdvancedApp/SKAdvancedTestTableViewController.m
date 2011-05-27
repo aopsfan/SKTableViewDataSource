@@ -1,34 +1,15 @@
-//
-//  SKAdvancedTestTableViewController.m
-//  SKTableViewDataSource
-//
-//  Created by Bruce Ricketts on 4/13/11.
-//  Copyright 2011 n-genius. All rights reserved.
-//
-
 #import "SKAdvancedTestTableViewController.h"
+#import <CoreData/CoreData.h>
 #import "Transaction.h"
 
 @implementation SKAdvancedTestTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style context:(NSManagedObjectContext *)aContext
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
-        Transaction *apples = [[[Transaction alloc] initWithTitle:@"Apples" price:2.19 date:[NSDate date]] autorelease];
-        Transaction *oranges = [[[Transaction alloc] initWithTitle:@"Four Oranges" price:3.99 date:[NSDate date]] autorelease];
-        Transaction *pears = [[[Transaction alloc] initWithTitle:@"Five Pears" price:8.29 date:[NSDate date]] autorelease];
-        
-        Transaction *lunchable = [[[Transaction alloc] initWithTitle:@"Lunchable!" price:2.99
-                                                                date:[NSDate dateWithTimeIntervalSinceNow:86400]] autorelease];
-        Transaction *burger = [[[Transaction alloc] initWithTitle:@"Five Guys burger" price:4.99
-                                                             date:[NSDate dateWithTimeIntervalSinceNow:86400]] autorelease];
-        
-        Transaction *plunger = [[[Transaction alloc] initWithTitle:@"Plunger; the old one broke" price:9.99
-                                                              date:[NSDate dateWithTimeIntervalSinceNow:-86400]] autorelease];
-        
-        data = [[NSSet alloc] initWithObjects:apples, oranges, pears, lunchable, burger, plunger, nil];
+        // Custom initialization        
+        context = aContext;
         
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
@@ -36,7 +17,10 @@
         numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         
-        dataSource = [[TransactionDataSource alloc] initWithSet:data target:self sortSelector:@selector(displayableDate)];
+        dataSource = [[TransactionDataSource alloc] initWithEntityName:@"Transaction"
+                                                inManagedObjectContext:context
+                                                                target:self];
+        dataSource.sortSelector = @selector(displayableDate);
         dataSource.sectionOrderAscending = NO;
         
         self.tableView.dataSource = dataSource;
@@ -48,7 +32,6 @@
 
 - (void)dealloc
 {
-    [data release];
     [dataSource release];
     [dateFormatter release];
     [numberFormatter release];
@@ -80,6 +63,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [context deleteObject:[dataSource objectForIndexPath:indexPath]];
         BOOL shouldDeleteSection = [dataSource deleteObjectAtIndexPath:indexPath];
         
         if (shouldDeleteSection) {

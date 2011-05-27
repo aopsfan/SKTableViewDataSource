@@ -2,6 +2,7 @@
 #import "SKCollectionDiff.h"
 #import "SKTableViewInfo.h"
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @protocol SKTableViewDataSource
 @optional
@@ -37,7 +38,9 @@
 - (id)initWithSet:(NSSet *)initialObjects;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget sortSelector:(SEL)aSortSelector;
+- (id)initWithEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context target:(id)aTarget;
 - (void)setObjects:(NSSet *)newObjects;
+- (void)setEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context;
 - (void)addObject:(id)anObject;
 - (void)deleteObject:(id)anObject;
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;

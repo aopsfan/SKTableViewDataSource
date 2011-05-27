@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 @interface NSDate (DateWithoutTime)
 
@@ -6,18 +7,14 @@
 
 @end
 
-@interface Transaction : NSObject {
-    NSString *title;
-    NSNumber *price;
-    NSDate *date;
-}
-
-@property (nonatomic, copy) NSString *title;
+@interface Transaction : NSManagedObject
+@property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSNumber *price;
 @property (nonatomic, retain) NSDate *date;
 
-- (id)initWithTitle:(NSString *)aTitle price:(double)aPrice date:(NSDate *)aDate;
 - (NSDate *)displayableDate;
 - (NSComparisonResult)compare:(Transaction *)transaction;
+
++ (void)createDefaults:(NSManagedObjectContext *)context;
 
 @end
