@@ -39,8 +39,10 @@
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget sortSelector:(SEL)aSortSelector;
 - (id)initWithEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context target:(id)aTarget;
+- (id)initWithFetchRequest:(NSFetchRequest *)fetchRequest inManagedObjectContext:(NSManagedObjectContext *)context;
 - (void)setObjects:(NSSet *)newObjects;
-- (void)setEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context;
+- (void)setObjectsWithEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context;
+- (void)setObjectsWithFetchRequest:(NSFetchRequest *)fetchRequest inManagedObjectContext:(NSManagedObjectContext *)context;
 - (void)addObject:(id)anObject;
 - (void)deleteObject:(id)anObject;
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;

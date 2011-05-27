@@ -90,6 +90,25 @@
     return self;
 }
 
+- (id)initWithFetchRequest:(NSFetchRequest *)fetchRequest inManagedObjectContext:(NSManagedObjectContext *)context {
+    if ((self = [self init])) {
+        NSError *error = nil;
+        NSMutableSet *set = [NSMutableSet setWithArray:[context executeFetchRequest:fetchRequest error:&error]];
+        
+        if (set == nil) {
+            NSException *exception = [NSException exceptionWithName:@"Entity name/context should be valid"
+                                                             reason:[NSString stringWithFormat:@"Error is %@", error]
+                                                           userInfo:nil];
+            [exception raise];
+        }
+        
+        [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:set deletedObjects:[NSSet set]]];
+        [objects submitDiff:currentDiff];
+    }
+    
+    return self;
+}
+
 - (void)setObjects:(NSSet *)newObjects {
     [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:objects newObjects:newObjects]];
     [objects submitDiff:currentDiff];
@@ -99,7 +118,7 @@
     shouldReloadDictionary = YES;
 }
 
-- (void)setEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context {
+- (void)setObjectsWithEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context {
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
     [fetchRequest setEntity:entityDescription];
@@ -120,6 +139,21 @@
     [self contentUpdated];
     
     shouldReloadDictionary = YES;
+}
+
+- (void)setObjectsWithFetchRequest:(NSFetchRequest *)fetchRequest inManagedObjectContext:(NSManagedObjectContext *)context {
+    NSError *error = nil;
+    NSMutableSet *set = [NSMutableSet setWithArray:[context executeFetchRequest:fetchRequest error:&error]];
+    
+    if (set == nil) {
+        NSException *exception = [NSException exceptionWithName:@"Entity name/context should be valid"
+                                                         reason:[NSString stringWithFormat:@"Error is %@", error]
+                                                       userInfo:nil];
+        [exception raise];
+    }
+    
+    [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:set deletedObjects:[NSSet set]]];
+    [objects submitDiff:currentDiff];
 }
 
 - (void)addObject:(id)anObject {
