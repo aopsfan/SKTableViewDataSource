@@ -273,7 +273,22 @@
 #pragma mark UITableViewDataSource protocol
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [target tableView:tableView cellForRowAtIndexPath:indexPath];
+    if ([target respondsToSelector:@selector(cellForObject:)]) {
+        return [target cellForObject:[self objectForIndexPath:indexPath]];
+    }
+    
+    if ([target respondsToSelector:@selector(tableView:cellForRowAtIndexPath:)]) {
+        return [target tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    
+    NSException *exc = [NSException exceptionWithName:
+                        @"You should implement either cellForObject (SKTableViewDataSource) or cellForRowAtIndexPath (UITableViewDataSource)"
+                                               reason:
+                        [NSString stringWithFormat:@"You don't implement either of the above methods in your controller, %@", target]
+                                             userInfo:nil];
+    [exc raise];
+    
+    return nil;
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {

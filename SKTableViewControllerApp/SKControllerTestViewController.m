@@ -25,18 +25,18 @@
     return [(NSNumber *)[dataSource identifierForSection:section] stringValue];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)cellForObject:(id)object {
+    
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+        
+    cell.textLabel.text = [(Dude *)object name];
     
-    Dude *dude = (Dude *)[dataSource objectForIndexPath:indexPath];
-    cell.textLabel.text = dude.name;
-    
-    return cell;
+    return cell;    
 }
 
 @end

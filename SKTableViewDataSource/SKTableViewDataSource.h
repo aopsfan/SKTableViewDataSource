@@ -4,12 +4,14 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@protocol SKTableViewDataSource
+@protocol SKTableViewDataSource <NSObject>
 @optional
 
 - (void)contentUpdated;
 - (void)objectAdded:(id)object;
 - (void)objectDeleted:(id)object;
+
+- (UITableViewCell *)cellForObject:(id)object;
 
 @end
 

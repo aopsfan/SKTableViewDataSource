@@ -33,8 +33,4 @@
     return [basePath stringByAppendingPathComponent:@"SKTableViewDataSourceTests"];
 }
 
-- (void)testFail {
-    STFail(@"FAIL", @"FAIL");
-}
-
 @end
