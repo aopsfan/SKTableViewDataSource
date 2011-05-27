@@ -20,6 +20,10 @@ h2. What you get
 
 This repository comes with @SKTableViewDataSource@ itself, @SKTableViewController@ (a convenient subclass of @UITableViewController@), two dummy data models for testing (@Dude@ and @Transaction@), and three test projects; one uses @SKTableViewController@ for a very simple project; one is like the first except doesn't use @SKTableViewController@; and one is more complex, demonstrating how to subclass @SKTableViewDataSource@ for more advanced work.
 
+h2. Usage
+
+After cloning the repo in your project directory, open the @.xcodeproj@ files for both your project and @SKTableViewDataSource@. Drag over the @SKTableViewDataSource@ group and deselect the option to copy files. This will give you just the essentials to work with.
+
 h2. Example
 
 Let's say you have a collection of Dude objects, and your Dude.h file looks like this:
