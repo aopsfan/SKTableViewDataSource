@@ -2,10 +2,8 @@
 *~.nib
 build/
 *.pbxuser
-*.pbxproj
 *.xcworkspace
 *.perspective
 *.perspectivev3
 *.mode1v3
 *.mode2v3
-*.xcscheme

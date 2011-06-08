@@ -1,0 +1,1196 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1017B70D138DDC9B0021BE50 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
+		102048E51356430F00F1CF43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8049613452C86001F253F /* UIKit.framework */; };
+		102048E61356430F00F1CF43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
+		102048E71356430F00F1CF43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8047913452B73001F253F /* CoreGraphics.framework */; };
+		102048ED1356430F00F1CF43 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 102048EB1356430F00F1CF43 /* InfoPlist.strings */; };
+		102048F01356430F00F1CF43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 102048EF1356430F00F1CF43 /* main.m */; };
+		102048F31356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 102048F21356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.m */; };
+		102048F61356430F00F1CF43 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 102048F41356430F00F1CF43 /* MainWindow.xib */; };
+		102048FB1356431700F1CF43 /* Dude.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D9F13552CC100B9AAC4 /* Dude.m */; };
+		102048FC1356432200F1CF43 /* SKTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8049213452C0B001F253F /* SKTableViewDataSource.m */; };
+		102048FF1356435200F1CF43 /* SKAdvancedTestTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */; };
+		102049011356459400F1CF43 /* SKAdvancedTestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */; };
+		106A4867138B16A90011AF47 /* SKTableViewInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 106A4865138B16A90011AF47 /* SKTableViewInfo.h */; };
+		106A4869138B30CA0011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
+		106A486A138B30D10011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
+		106A486B138B30D70011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
+		106A486C138B30DC0011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
+		106A486D138B30DF0011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
+		10717408135C5E6500CECDD8 /* TransactionDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 10717406135C5E6500CECDD8 /* TransactionDataSource.h */; };
+		10717409135C5E6500CECDD8 /* TransactionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10717407135C5E6500CECDD8 /* TransactionDataSource.m */; };
+		1071740B135C769500CECDD8 /* TransactionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10717407135C5E6500CECDD8 /* TransactionDataSource.m */; };
+		1073EE04138AC7D800C886A5 /* CollectionDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 1073EE02138AC7D800C886A5 /* CollectionDefs.h */; };
+		1073EE08138AC80D00C886A5 /* SKCollectionDiff.h in Headers */ = {isa = PBXBuildFile; fileRef = 1073EE06138AC80D00C886A5 /* SKCollectionDiff.h */; };
+		1073EE0A138AC8DF00C886A5 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
+		1073EE0B138AC8E500C886A5 /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
+		1073EE0C138AC8F100C886A5 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
+		1073EE0D138AC8F400C886A5 /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
+		1073EE0E138AC8F900C886A5 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
+		1073EE0F138AC8FC00C886A5 /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
+		1073EE10138AC90000C886A5 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
+		1073EE11138AC90400C886A5 /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
+		1073EE12138AC90A00C886A5 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
+		1073EE13138AC90C00C886A5 /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
+		108A6D861355264800B9AAC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8049613452C86001F253F /* UIKit.framework */; };
+		108A6D871355264800B9AAC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
+		108A6D881355264800B9AAC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8047913452B73001F253F /* CoreGraphics.framework */; };
+		108A6D8E1355264800B9AAC4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 108A6D8C1355264800B9AAC4 /* InfoPlist.strings */; };
+		108A6D911355264800B9AAC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D901355264800B9AAC4 /* main.m */; };
+		108A6D941355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D931355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.m */; };
+		108A6D971355264800B9AAC4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108A6D951355264800B9AAC4 /* MainWindow.xib */; };
+		108A6D9C1355266800B9AAC4 /* SKTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8049213452C0B001F253F /* SKTableViewDataSource.m */; };
+		108A6DA013552CC100B9AAC4 /* Dude.h in Headers */ = {isa = PBXBuildFile; fileRef = 108A6D9E13552CC100B9AAC4 /* Dude.h */; };
+		108A6DA213552CC100B9AAC4 /* Dude.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D9F13552CC100B9AAC4 /* Dude.m */; };
+		108A6DA313552CC100B9AAC4 /* Dude.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D9F13552CC100B9AAC4 /* Dude.m */; };
+		10A04D081355E4CD00EEC9D3 /* SKTestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04D071355E4CD00EEC9D3 /* SKTestTableViewController.m */; };
+		10B88B3913869FFA00B76488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
+		10B88B431386A04E00B76488 /* SKTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B88B411386A04E00B76488 /* SKTableViewController.h */; };
+		10B88B441386A04E00B76488 /* SKTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B88B411386A04E00B76488 /* SKTableViewController.h */; };
+		10B88B451386A04E00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
+		10B88B461386A04E00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
+		10B88B471386A04E00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
+		10B88B481386A04E00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
+		10B88B4F1386A3E300B76488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8049613452C86001F253F /* UIKit.framework */; };
+		10B88B501386A3E300B76488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
+		10B88B511386A3E300B76488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8047913452B73001F253F /* CoreGraphics.framework */; };
+		10B88B571386A3E300B76488 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10B88B551386A3E300B76488 /* InfoPlist.strings */; };
+		10B88B5A1386A3E300B76488 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B591386A3E300B76488 /* main.m */; };
+		10B88B5D1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B5C1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.m */; };
+		10B88B601386A3E300B76488 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10B88B5E1386A3E300B76488 /* MainWindow.xib */; };
+		10B88B661386A41C00B76488 /* SKControllerTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B88B641386A41C00B76488 /* SKControllerTestViewController.h */; };
+		10B88B671386A41C00B76488 /* SKControllerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B651386A41C00B76488 /* SKControllerTestViewController.m */; };
+		10B88B681386A43B00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
+		10B88B691386A44200B76488 /* SKTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8049213452C0B001F253F /* SKTableViewDataSource.m */; };
+		10B88B6A1386A6A000B76488 /* SKControllerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B651386A41C00B76488 /* SKControllerTestViewController.m */; };
+		10B88B6B1386A6DD00B76488 /* Dude.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D9F13552CC100B9AAC4 /* Dude.m */; };
+		10B9ACAC13902EBE0010E72B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
+		10B9ACAD13902EC80010E72B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
+		10B9ACAE13902ECE0010E72B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
+		10B9ACAF139039BD0010E72B /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
+		10D652DC138DD4D700BFA33D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
+		10D652E0138DD72700BFA33D /* SKTableViewDataSourceCoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D652DF138DD72700BFA33D /* SKTableViewDataSourceCoreDataTests.m */; };
+		10D652E3138DD84700BFA33D /* TransactionDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D652E1138DD84700BFA33D /* TransactionDataModel.xcdatamodeld */; };
+		10D652E4138DD84700BFA33D /* TransactionDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D652E1138DD84700BFA33D /* TransactionDataModel.xcdatamodeld */; };
+		10D652E7138DD9BE00BFA33D /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D652E6138DD9BE00BFA33D /* Transaction.m */; };
+		10D652E8138DD9BE00BFA33D /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D652E6138DD9BE00BFA33D /* Transaction.m */; };
+		10D8D482138E99250032ABFF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
+		10DDCD84139D6F67000837F7 /* SKControllerTestCoreDataController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10DDCD82139D6F67000837F7 /* SKControllerTestCoreDataController.h */; };
+		10DDCD85139D6F67000837F7 /* SKControllerTestCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DDCD83139D6F67000837F7 /* SKControllerTestCoreDataController.m */; };
+		10E8046C13452B73001F253F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
+		10E8047713452B73001F253F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8047613452B73001F253F /* UIKit.framework */; };
+		10E8047813452B73001F253F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
+		10E8047A13452B73001F253F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8047913452B73001F253F /* CoreGraphics.framework */; };
+		10E8047D13452B73001F253F /* libSKTableViewDataSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046813452B73001F253F /* libSKTableViewDataSource.a */; };
+		10E8048313452B73001F253F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10E8048113452B73001F253F /* InfoPlist.strings */; };
+		10E8048613452B73001F253F /* SKTableViewDataSourceTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 10E8048513452B73001F253F /* SKTableViewDataSourceTests.h */; };
+		10E8048813452B73001F253F /* SKTableViewDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8048713452B73001F253F /* SKTableViewDataSourceTests.m */; };
+		10E8049313452C0B001F253F /* SKTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 10E8049113452C0B001F253F /* SKTableViewDataSource.h */; };
+		10E8049413452C0B001F253F /* SKTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8049213452C0B001F253F /* SKTableViewDataSource.m */; };
+		10E8049513452C0B001F253F /* SKTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8049213452C0B001F253F /* SKTableViewDataSource.m */; };
+		10E8049713452C86001F253F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8049613452C86001F253F /* UIKit.framework */; };
+		10ED2056138FF7F500DEC984 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
+		10ED2057138FF7FB00DEC984 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		10E8047B13452B73001F253F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10E8045F13452B73001F253F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10E8046713452B73001F253F;
+			remoteInfo = SKTableViewDataSource;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1003F4A5137DCE6D00A4C4F0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		102048E31356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKTableViewDataSourceAdvancedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		102048EA1356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKTableViewDataSourceAdvancedApp-Info.plist"; sourceTree = "<group>"; };
+		102048EC1356430F00F1CF43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		102048EE1356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewDataSourceAdvancedApp-Prefix.pch"; sourceTree = "<group>"; };
+		102048EF1356430F00F1CF43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		102048F11356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKTableViewDataSourceAdvancedAppAppDelegate.h; sourceTree = "<group>"; };
+		102048F21356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKTableViewDataSourceAdvancedAppAppDelegate.m; sourceTree = "<group>"; };
+		102048F51356430F00F1CF43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAdvancedTestTableViewController.h; sourceTree = "<group>"; };
+		102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SKAdvancedTestTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		10204903135671FB00F1CF43 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = README.textile; sourceTree = "<group>"; };
+		106A4865138B16A90011AF47 /* SKTableViewInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTableViewInfo.h; sourceTree = "<group>"; };
+		106A4866138B16A90011AF47 /* SKTableViewInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTableViewInfo.m; sourceTree = "<group>"; };
+		10717406135C5E6500CECDD8 /* TransactionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDataSource.h; sourceTree = "<group>"; };
+		10717407135C5E6500CECDD8 /* TransactionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDataSource.m; sourceTree = "<group>"; };
+		1073EE02138AC7D800C886A5 /* CollectionDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionDefs.h; sourceTree = "<group>"; };
+		1073EE03138AC7D800C886A5 /* CollectionDefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionDefs.m; sourceTree = "<group>"; };
+		1073EE06138AC80D00C886A5 /* SKCollectionDiff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKCollectionDiff.h; sourceTree = "<group>"; };
+		1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKCollectionDiff.m; sourceTree = "<group>"; };
+		108A6D841355264700B9AAC4 /* SKTableViewDataSourceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKTableViewDataSourceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		108A6D8B1355264800B9AAC4 /* SKTableViewDataSourceApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKTableViewDataSourceApp-Info.plist"; sourceTree = "<group>"; };
+		108A6D8D1355264800B9AAC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		108A6D8F1355264800B9AAC4 /* SKTableViewDataSourceApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewDataSourceApp-Prefix.pch"; sourceTree = "<group>"; };
+		108A6D901355264800B9AAC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		108A6D921355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKTableViewDataSourceAppAppDelegate.h; sourceTree = "<group>"; };
+		108A6D931355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKTableViewDataSourceAppAppDelegate.m; sourceTree = "<group>"; };
+		108A6D961355264800B9AAC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		108A6D9E13552CC100B9AAC4 /* Dude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dude.h; sourceTree = "<group>"; };
+		108A6D9F13552CC100B9AAC4 /* Dude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dude.m; sourceTree = "<group>"; };
+		10A04D061355E4CD00EEC9D3 /* SKTestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTestTableViewController.h; sourceTree = "<group>"; };
+		10A04D071355E4CD00EEC9D3 /* SKTestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SKTestTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		10B88B3813869FFA00B76488 /* libSKTableViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSKTableViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		10B88B3C13869FFA00B76488 /* SKTableViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewController-Prefix.pch"; sourceTree = "<group>"; };
+		10B88B411386A04E00B76488 /* SKTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTableViewController.h; sourceTree = "<group>"; };
+		10B88B421386A04E00B76488 /* SKTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTableViewController.m; sourceTree = "<group>"; };
+		10B88B4D1386A3E300B76488 /* SKTableViewControllerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKTableViewControllerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10B88B541386A3E300B76488 /* SKTableViewControllerApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKTableViewControllerApp-Info.plist"; sourceTree = "<group>"; };
+		10B88B561386A3E300B76488 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		10B88B581386A3E300B76488 /* SKTableViewControllerApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewControllerApp-Prefix.pch"; sourceTree = "<group>"; };
+		10B88B591386A3E300B76488 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		10B88B5B1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKTableViewControllerAppAppDelegate.h; sourceTree = "<group>"; };
+		10B88B5C1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKTableViewControllerAppAppDelegate.m; sourceTree = "<group>"; };
+		10B88B5F1386A3E300B76488 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		10B88B641386A41C00B76488 /* SKControllerTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKControllerTestViewController.h; sourceTree = "<group>"; };
+		10B88B651386A41C00B76488 /* SKControllerTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKControllerTestViewController.m; sourceTree = "<group>"; };
+		10D652DB138DD4D700BFA33D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		10D652DE138DD72700BFA33D /* SKTableViewDataSourceCoreDataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTableViewDataSourceCoreDataTests.h; sourceTree = "<group>"; };
+		10D652DF138DD72700BFA33D /* SKTableViewDataSourceCoreDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTableViewDataSourceCoreDataTests.m; sourceTree = "<group>"; };
+		10D652E2138DD84700BFA33D /* TransactionDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TransactionDataModel.xcdatamodel; sourceTree = "<group>"; };
+		10D652E5138DD9BE00BFA33D /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
+		10D652E6138DD9BE00BFA33D /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
+		10DDCD5F139D1E77000837F7 /* SKTableViewControllerCoreDataApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKTableViewControllerCoreDataApp-Info.plist"; sourceTree = "<group>"; };
+		10DDCD61139D1E77000837F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		10DDCD63139D1E77000837F7 /* SKTableViewControllerCoreDataApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewControllerCoreDataApp-Prefix.pch"; sourceTree = "<group>"; };
+		10DDCD64139D1E77000837F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		10DDCD66139D1E77000837F7 /* SKTableViewControllerCoreDataAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKTableViewControllerCoreDataAppAppDelegate.h; sourceTree = "<group>"; };
+		10DDCD67139D1E77000837F7 /* SKTableViewControllerCoreDataAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKTableViewControllerCoreDataAppAppDelegate.m; sourceTree = "<group>"; };
+		10DDCD6A139D1E78000837F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		10DDCD82139D6F67000837F7 /* SKControllerTestCoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKControllerTestCoreDataController.h; sourceTree = "<group>"; };
+		10DDCD83139D6F67000837F7 /* SKControllerTestCoreDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKControllerTestCoreDataController.m; sourceTree = "<group>"; };
+		10E8046813452B73001F253F /* libSKTableViewDataSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSKTableViewDataSource.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		10E8046B13452B73001F253F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		10E8046F13452B73001F253F /* SKTableViewDataSource-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewDataSource-Prefix.pch"; sourceTree = "<group>"; };
+		10E8047513452B73001F253F /* SKTableViewDataSourceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKTableViewDataSourceTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10E8047613452B73001F253F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		10E8047913452B73001F253F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		10E8048013452B73001F253F /* SKTableViewDataSourceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKTableViewDataSourceTests-Info.plist"; sourceTree = "<group>"; };
+		10E8048213452B73001F253F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		10E8048413452B73001F253F /* SKTableViewDataSourceTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewDataSourceTests-Prefix.pch"; sourceTree = "<group>"; };
+		10E8048513452B73001F253F /* SKTableViewDataSourceTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKTableViewDataSourceTests.h; sourceTree = "<group>"; };
+		10E8048713452B73001F253F /* SKTableViewDataSourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKTableViewDataSourceTests.m; sourceTree = "<group>"; };
+		10E8049113452C0B001F253F /* SKTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SKTableViewDataSource.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		10E8049213452C0B001F253F /* SKTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SKTableViewDataSource.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		10E8049613452C86001F253F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		102048E01356430F00F1CF43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				102048E51356430F00F1CF43 /* UIKit.framework in Frameworks */,
+				1017B70D138DDC9B0021BE50 /* CoreData.framework in Frameworks */,
+				102048E61356430F00F1CF43 /* Foundation.framework in Frameworks */,
+				102048E71356430F00F1CF43 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		108A6D811355264700B9AAC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10B9ACAC13902EBE0010E72B /* CoreData.framework in Frameworks */,
+				108A6D861355264800B9AAC4 /* UIKit.framework in Frameworks */,
+				108A6D871355264800B9AAC4 /* Foundation.framework in Frameworks */,
+				108A6D881355264800B9AAC4 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10B88B3513869FFA00B76488 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10B88B3913869FFA00B76488 /* Foundation.framework in Frameworks */,
+				10B9ACAD13902EC80010E72B /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10B88B4A1386A3E300B76488 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10B9ACAE13902ECE0010E72B /* CoreData.framework in Frameworks */,
+				10B88B4F1386A3E300B76488 /* UIKit.framework in Frameworks */,
+				10B88B501386A3E300B76488 /* Foundation.framework in Frameworks */,
+				10B88B511386A3E300B76488 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10E8046513452B73001F253F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10E8049713452C86001F253F /* UIKit.framework in Frameworks */,
+				10E8046C13452B73001F253F /* Foundation.framework in Frameworks */,
+				10D8D482138E99250032ABFF /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10E8047113452B73001F253F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D652DC138DD4D700BFA33D /* CoreData.framework in Frameworks */,
+				10E8047713452B73001F253F /* UIKit.framework in Frameworks */,
+				10E8047813452B73001F253F /* Foundation.framework in Frameworks */,
+				10E8047A13452B73001F253F /* CoreGraphics.framework in Frameworks */,
+				10E8047D13452B73001F253F /* libSKTableViewDataSource.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		102048E81356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp */ = {
+			isa = PBXGroup;
+			children = (
+				102048F11356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.h */,
+				102048F21356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.m */,
+				102048F41356430F00F1CF43 /* MainWindow.xib */,
+				102048E91356430F00F1CF43 /* Supporting Files */,
+				102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */,
+				102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */,
+				10717406135C5E6500CECDD8 /* TransactionDataSource.h */,
+				10717407135C5E6500CECDD8 /* TransactionDataSource.m */,
+			);
+			path = SKTableViewDataSourceAdvancedApp;
+			sourceTree = "<group>";
+		};
+		102048E91356430F00F1CF43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				102048EA1356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp-Info.plist */,
+				102048EB1356430F00F1CF43 /* InfoPlist.strings */,
+				102048EE1356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp-Prefix.pch */,
+				102048EF1356430F00F1CF43 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10204902135671D200F1CF43 /* README */ = {
+			isa = PBXGroup;
+			children = (
+				10204903135671FB00F1CF43 /* README.textile */,
+			);
+			name = README;
+			sourceTree = "<group>";
+		};
+		106A4863138B16710011AF47 /* SKTableViewInfo */ = {
+			isa = PBXGroup;
+			children = (
+				106A4865138B16A90011AF47 /* SKTableViewInfo.h */,
+				106A4866138B16A90011AF47 /* SKTableViewInfo.m */,
+			);
+			name = SKTableViewInfo;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		1073EE01138AC71100C886A5 /* SKCollectionDiff */ = {
+			isa = PBXGroup;
+			children = (
+				1073EE02138AC7D800C886A5 /* CollectionDefs.h */,
+				1073EE03138AC7D800C886A5 /* CollectionDefs.m */,
+				1073EE06138AC80D00C886A5 /* SKCollectionDiff.h */,
+				1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */,
+			);
+			name = SKCollectionDiff;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		108A6D891355264800B9AAC4 /* SKTableViewDataSourceApp */ = {
+			isa = PBXGroup;
+			children = (
+				108A6D921355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.h */,
+				108A6D931355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.m */,
+				108A6D951355264800B9AAC4 /* MainWindow.xib */,
+				108A6D8A1355264800B9AAC4 /* Supporting Files */,
+				10A04D061355E4CD00EEC9D3 /* SKTestTableViewController.h */,
+				10A04D071355E4CD00EEC9D3 /* SKTestTableViewController.m */,
+			);
+			path = SKTableViewDataSourceApp;
+			sourceTree = "<group>";
+		};
+		108A6D8A1355264800B9AAC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				108A6D8B1355264800B9AAC4 /* SKTableViewDataSourceApp-Info.plist */,
+				108A6D8C1355264800B9AAC4 /* InfoPlist.strings */,
+				108A6D8F1355264800B9AAC4 /* SKTableViewDataSourceApp-Prefix.pch */,
+				108A6D901355264800B9AAC4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		108A6D9D13552CA500B9AAC4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				108A6D9E13552CC100B9AAC4 /* Dude.h */,
+				108A6D9F13552CC100B9AAC4 /* Dude.m */,
+				10D652E1138DD84700BFA33D /* TransactionDataModel.xcdatamodeld */,
+				10D652E5138DD9BE00BFA33D /* Transaction.h */,
+				10D652E6138DD9BE00BFA33D /* Transaction.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		10B88B3A13869FFA00B76488 /* SKTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10B88B3B13869FFA00B76488 /* Supporting Files */,
+				10B88B411386A04E00B76488 /* SKTableViewController.h */,
+				10B88B421386A04E00B76488 /* SKTableViewController.m */,
+			);
+			name = SKTableViewController;
+			path = ../SKTableViewController;
+			sourceTree = "<group>";
+		};
+		10B88B3B13869FFA00B76488 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10B88B3C13869FFA00B76488 /* SKTableViewController-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10B88B521386A3E300B76488 /* SKTableViewControllerApp */ = {
+			isa = PBXGroup;
+			children = (
+				10B88B5B1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.h */,
+				10B88B5C1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.m */,
+				10B88B5E1386A3E300B76488 /* MainWindow.xib */,
+				10B88B531386A3E300B76488 /* Supporting Files */,
+				10B88B641386A41C00B76488 /* SKControllerTestViewController.h */,
+				10B88B651386A41C00B76488 /* SKControllerTestViewController.m */,
+			);
+			path = SKTableViewControllerApp;
+			sourceTree = "<group>";
+		};
+		10B88B531386A3E300B76488 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10B88B541386A3E300B76488 /* SKTableViewControllerApp-Info.plist */,
+				10B88B551386A3E300B76488 /* InfoPlist.strings */,
+				10B88B581386A3E300B76488 /* SKTableViewControllerApp-Prefix.pch */,
+				10B88B591386A3E300B76488 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10DDCD5D139D1E77000837F7 /* SKTableViewControllerCoreDataApp */ = {
+			isa = PBXGroup;
+			children = (
+				10DDCD66139D1E77000837F7 /* SKTableViewControllerCoreDataAppAppDelegate.h */,
+				10DDCD67139D1E77000837F7 /* SKTableViewControllerCoreDataAppAppDelegate.m */,
+				10DDCD69139D1E78000837F7 /* MainWindow.xib */,
+				10DDCD5E139D1E77000837F7 /* Supporting Files */,
+				10DDCD82139D6F67000837F7 /* SKControllerTestCoreDataController.h */,
+				10DDCD83139D6F67000837F7 /* SKControllerTestCoreDataController.m */,
+			);
+			path = SKTableViewControllerCoreDataApp;
+			sourceTree = "<group>";
+		};
+		10DDCD5E139D1E77000837F7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10DDCD5F139D1E77000837F7 /* SKTableViewControllerCoreDataApp-Info.plist */,
+				10DDCD60139D1E77000837F7 /* InfoPlist.strings */,
+				10DDCD63139D1E77000837F7 /* SKTableViewControllerCoreDataApp-Prefix.pch */,
+				10DDCD64139D1E77000837F7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10E8045D13452B73001F253F = {
+			isa = PBXGroup;
+			children = (
+				1003F4A5137DCE6D00A4C4F0 /* .gitignore */,
+				10204902135671D200F1CF43 /* README */,
+				108A6D9D13552CA500B9AAC4 /* Models */,
+				10E8046D13452B73001F253F /* SKTableViewDataSource */,
+				10E8047E13452B73001F253F /* SKTableViewDataSourceTests */,
+				108A6D891355264800B9AAC4 /* SKTableViewDataSourceApp */,
+				102048E81356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp */,
+				10B88B521386A3E300B76488 /* SKTableViewControllerApp */,
+				10DDCD5D139D1E77000837F7 /* SKTableViewControllerCoreDataApp */,
+				10E8046A13452B73001F253F /* Frameworks */,
+				10E8046913452B73001F253F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10E8046913452B73001F253F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10E8046813452B73001F253F /* libSKTableViewDataSource.a */,
+				10E8047513452B73001F253F /* SKTableViewDataSourceTests.octest */,
+				108A6D841355264700B9AAC4 /* SKTableViewDataSourceApp.app */,
+				102048E31356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp.app */,
+				10B88B3813869FFA00B76488 /* libSKTableViewController.a */,
+				10B88B4D1386A3E300B76488 /* SKTableViewControllerApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10E8046A13452B73001F253F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10D652DB138DD4D700BFA33D /* CoreData.framework */,
+				10E8049613452C86001F253F /* UIKit.framework */,
+				10E8046B13452B73001F253F /* Foundation.framework */,
+				10E8047613452B73001F253F /* UIKit.framework */,
+				10E8047913452B73001F253F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		10E8046D13452B73001F253F /* SKTableViewDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				10E8046E13452B73001F253F /* Supporting Files */,
+				10E8049113452C0B001F253F /* SKTableViewDataSource.h */,
+				10E8049213452C0B001F253F /* SKTableViewDataSource.m */,
+				1073EE01138AC71100C886A5 /* SKCollectionDiff */,
+				106A4863138B16710011AF47 /* SKTableViewInfo */,
+				10B88B3A13869FFA00B76488 /* SKTableViewController */,
+			);
+			path = SKTableViewDataSource;
+			sourceTree = "<group>";
+		};
+		10E8046E13452B73001F253F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10E8046F13452B73001F253F /* SKTableViewDataSource-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10E8047E13452B73001F253F /* SKTableViewDataSourceTests */ = {
+			isa = PBXGroup;
+			children = (
+				10E8048513452B73001F253F /* SKTableViewDataSourceTests.h */,
+				10E8048713452B73001F253F /* SKTableViewDataSourceTests.m */,
+				10E8047F13452B73001F253F /* Supporting Files */,
+				10D652DE138DD72700BFA33D /* SKTableViewDataSourceCoreDataTests.h */,
+				10D652DF138DD72700BFA33D /* SKTableViewDataSourceCoreDataTests.m */,
+			);
+			path = SKTableViewDataSourceTests;
+			sourceTree = "<group>";
+		};
+		10E8047F13452B73001F253F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10E8048013452B73001F253F /* SKTableViewDataSourceTests-Info.plist */,
+				10E8048113452B73001F253F /* InfoPlist.strings */,
+				10E8048413452B73001F253F /* SKTableViewDataSourceTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		10B88B3613869FFA00B76488 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10B88B441386A04E00B76488 /* SKTableViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10E8046613452B73001F253F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10E8049313452C0B001F253F /* SKTableViewDataSource.h in Headers */,
+				108A6DA013552CC100B9AAC4 /* Dude.h in Headers */,
+				102048FF1356435200F1CF43 /* SKAdvancedTestTableViewController.h in Headers */,
+				10717408135C5E6500CECDD8 /* TransactionDataSource.h in Headers */,
+				10B88B431386A04E00B76488 /* SKTableViewController.h in Headers */,
+				10B88B661386A41C00B76488 /* SKControllerTestViewController.h in Headers */,
+				1073EE04138AC7D800C886A5 /* CollectionDefs.h in Headers */,
+				1073EE08138AC80D00C886A5 /* SKCollectionDiff.h in Headers */,
+				106A4867138B16A90011AF47 /* SKTableViewInfo.h in Headers */,
+				10DDCD84139D6F67000837F7 /* SKControllerTestCoreDataController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		102048E21356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 102048F91356430F00F1CF43 /* Build configuration list for PBXNativeTarget "SKTableViewDataSourceAdvancedApp" */;
+			buildPhases = (
+				102048DF1356430F00F1CF43 /* Sources */,
+				102048E01356430F00F1CF43 /* Frameworks */,
+				102048E11356430F00F1CF43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SKTableViewDataSourceAdvancedApp;
+			productName = SKTableViewDataSourceAdvancedApp;
+			productReference = 102048E31356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		108A6D831355264700B9AAC4 /* SKTableViewDataSourceApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 108A6D9A1355264800B9AAC4 /* Build configuration list for PBXNativeTarget "SKTableViewDataSourceApp" */;
+			buildPhases = (
+				108A6D801355264700B9AAC4 /* Sources */,
+				108A6D811355264700B9AAC4 /* Frameworks */,
+				108A6D821355264700B9AAC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SKTableViewDataSourceApp;
+			productName = SKTableViewDataSourceApp;
+			productReference = 108A6D841355264700B9AAC4 /* SKTableViewDataSourceApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		10B88B3713869FFA00B76488 /* SKTableViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10B88B3F13869FFA00B76488 /* Build configuration list for PBXNativeTarget "SKTableViewController" */;
+			buildPhases = (
+				10B88B3413869FFA00B76488 /* Sources */,
+				10B88B3513869FFA00B76488 /* Frameworks */,
+				10B88B3613869FFA00B76488 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SKTableViewController;
+			productName = SKTableViewController;
+			productReference = 10B88B3813869FFA00B76488 /* libSKTableViewController.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		10B88B4C1386A3E300B76488 /* SKTableViewControllerApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10B88B611386A3E300B76488 /* Build configuration list for PBXNativeTarget "SKTableViewControllerApp" */;
+			buildPhases = (
+				10B88B491386A3E300B76488 /* Sources */,
+				10B88B4A1386A3E300B76488 /* Frameworks */,
+				10B88B4B1386A3E300B76488 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SKTableViewControllerApp;
+			productName = SKTableViewControllerApp;
+			productReference = 10B88B4D1386A3E300B76488 /* SKTableViewControllerApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		10E8046713452B73001F253F /* SKTableViewDataSource */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10E8048B13452B73001F253F /* Build configuration list for PBXNativeTarget "SKTableViewDataSource" */;
+			buildPhases = (
+				10E8046413452B73001F253F /* Sources */,
+				10E8046513452B73001F253F /* Frameworks */,
+				10E8046613452B73001F253F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SKTableViewDataSource;
+			productName = SKTableViewDataSource;
+			productReference = 10E8046813452B73001F253F /* libSKTableViewDataSource.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		10E8047413452B73001F253F /* SKTableViewDataSourceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10E8048E13452B73001F253F /* Build configuration list for PBXNativeTarget "SKTableViewDataSourceTests" */;
+			buildPhases = (
+				10E8047013452B73001F253F /* Sources */,
+				10E8047113452B73001F253F /* Frameworks */,
+				10E8047213452B73001F253F /* Resources */,
+				10E8047313452B73001F253F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10E8047C13452B73001F253F /* PBXTargetDependency */,
+			);
+			name = SKTableViewDataSourceTests;
+			productName = SKTableViewDataSourceTests;
+			productReference = 10E8047513452B73001F253F /* SKTableViewDataSourceTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10E8045F13452B73001F253F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "n-genius";
+			};
+			buildConfigurationList = 10E8046213452B73001F253F /* Build configuration list for PBXProject "SKTableViewDataSource" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 10E8045D13452B73001F253F;
+			productRefGroup = 10E8046913452B73001F253F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10E8046713452B73001F253F /* SKTableViewDataSource */,
+				10B88B3713869FFA00B76488 /* SKTableViewController */,
+				10E8047413452B73001F253F /* SKTableViewDataSourceTests */,
+				10B88B4C1386A3E300B76488 /* SKTableViewControllerApp */,
+				108A6D831355264700B9AAC4 /* SKTableViewDataSourceApp */,
+				102048E21356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		102048E11356430F00F1CF43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				102048ED1356430F00F1CF43 /* InfoPlist.strings in Resources */,
+				102048F61356430F00F1CF43 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		108A6D821355264700B9AAC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				108A6D8E1355264800B9AAC4 /* InfoPlist.strings in Resources */,
+				108A6D971355264800B9AAC4 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10B88B4B1386A3E300B76488 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10B88B571386A3E300B76488 /* InfoPlist.strings in Resources */,
+				10B88B601386A3E300B76488 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10E8047213452B73001F253F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10E8048313452B73001F253F /* InfoPlist.strings in Resources */,
+				10E8048613452B73001F253F /* SKTableViewDataSourceTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10E8047313452B73001F253F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		102048DF1356430F00F1CF43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106A486B138B30D70011AF47 /* SKTableViewInfo.m in Sources */,
+				1073EE0F138AC8FC00C886A5 /* SKCollectionDiff.m in Sources */,
+				1073EE0E138AC8F900C886A5 /* CollectionDefs.m in Sources */,
+				1071740B135C769500CECDD8 /* TransactionDataSource.m in Sources */,
+				102049011356459400F1CF43 /* SKAdvancedTestTableViewController.m in Sources */,
+				102048FC1356432200F1CF43 /* SKTableViewDataSource.m in Sources */,
+				102048FB1356431700F1CF43 /* Dude.m in Sources */,
+				102048F01356430F00F1CF43 /* main.m in Sources */,
+				102048F31356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.m in Sources */,
+				10B88B471386A04E00B76488 /* SKTableViewController.m in Sources */,
+				10D652E4138DD84700BFA33D /* TransactionDataModel.xcdatamodeld in Sources */,
+				10D652E8138DD9BE00BFA33D /* Transaction.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		108A6D801355264700B9AAC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106A486A138B30D10011AF47 /* SKTableViewInfo.m in Sources */,
+				1073EE0D138AC8F400C886A5 /* SKCollectionDiff.m in Sources */,
+				1073EE0C138AC8F100C886A5 /* CollectionDefs.m in Sources */,
+				108A6D9C1355266800B9AAC4 /* SKTableViewDataSource.m in Sources */,
+				108A6D911355264800B9AAC4 /* main.m in Sources */,
+				108A6D941355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.m in Sources */,
+				108A6DA313552CC100B9AAC4 /* Dude.m in Sources */,
+				10A04D081355E4CD00EEC9D3 /* SKTestTableViewController.m in Sources */,
+				10B88B461386A04E00B76488 /* SKTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10B88B3413869FFA00B76488 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106A486C138B30DC0011AF47 /* SKTableViewInfo.m in Sources */,
+				1073EE11138AC90400C886A5 /* SKCollectionDiff.m in Sources */,
+				1073EE10138AC90000C886A5 /* CollectionDefs.m in Sources */,
+				10B88B481386A04E00B76488 /* SKTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10B88B491386A3E300B76488 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106A486D138B30DF0011AF47 /* SKTableViewInfo.m in Sources */,
+				1073EE13138AC90C00C886A5 /* SKCollectionDiff.m in Sources */,
+				1073EE12138AC90A00C886A5 /* CollectionDefs.m in Sources */,
+				10B88B6B1386A6DD00B76488 /* Dude.m in Sources */,
+				10B88B6A1386A6A000B76488 /* SKControllerTestViewController.m in Sources */,
+				10B88B691386A44200B76488 /* SKTableViewDataSource.m in Sources */,
+				10B88B681386A43B00B76488 /* SKTableViewController.m in Sources */,
+				10B88B5A1386A3E300B76488 /* main.m in Sources */,
+				10B88B5D1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10E8046413452B73001F253F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10B9ACAF139039BD0010E72B /* SKCollectionDiff.m in Sources */,
+				10ED2057138FF7FB00DEC984 /* CollectionDefs.m in Sources */,
+				10ED2056138FF7F500DEC984 /* SKTableViewInfo.m in Sources */,
+				10E8049413452C0B001F253F /* SKTableViewDataSource.m in Sources */,
+				10717409135C5E6500CECDD8 /* TransactionDataSource.m in Sources */,
+				10B88B451386A04E00B76488 /* SKTableViewController.m in Sources */,
+				10B88B671386A41C00B76488 /* SKControllerTestViewController.m in Sources */,
+				10DDCD85139D6F67000837F7 /* SKControllerTestCoreDataController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10E8047013452B73001F253F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106A4869138B30CA0011AF47 /* SKTableViewInfo.m in Sources */,
+				1073EE0B138AC8E500C886A5 /* SKCollectionDiff.m in Sources */,
+				1073EE0A138AC8DF00C886A5 /* CollectionDefs.m in Sources */,
+				10E8048813452B73001F253F /* SKTableViewDataSourceTests.m in Sources */,
+				10E8049513452C0B001F253F /* SKTableViewDataSource.m in Sources */,
+				108A6DA213552CC100B9AAC4 /* Dude.m in Sources */,
+				10D652E0138DD72700BFA33D /* SKTableViewDataSourceCoreDataTests.m in Sources */,
+				10D652E3138DD84700BFA33D /* TransactionDataModel.xcdatamodeld in Sources */,
+				10D652E7138DD9BE00BFA33D /* Transaction.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		10E8047C13452B73001F253F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10E8046713452B73001F253F /* SKTableViewDataSource */;
+			targetProxy = 10E8047B13452B73001F253F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		102048EB1356430F00F1CF43 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				102048EC1356430F00F1CF43 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		102048F41356430F00F1CF43 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				102048F51356430F00F1CF43 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		108A6D8C1355264800B9AAC4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				108A6D8D1355264800B9AAC4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		108A6D951355264800B9AAC4 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				108A6D961355264800B9AAC4 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		10B88B551386A3E300B76488 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10B88B561386A3E300B76488 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		10B88B5E1386A3E300B76488 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10B88B5F1386A3E300B76488 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		10DDCD60139D1E77000837F7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10DDCD61139D1E77000837F7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		10DDCD69139D1E78000837F7 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10DDCD6A139D1E78000837F7 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		10E8048113452B73001F253F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10E8048213452B73001F253F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		102048F71356430F00F1CF43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewDataSourceAdvancedApp/SKTableViewDataSourceAdvancedApp-Prefix.pch";
+				INFOPLIST_FILE = "SKTableViewDataSourceAdvancedApp/SKTableViewDataSourceAdvancedApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		102048F81356430F00F1CF43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewDataSourceAdvancedApp/SKTableViewDataSourceAdvancedApp-Prefix.pch";
+				INFOPLIST_FILE = "SKTableViewDataSourceAdvancedApp/SKTableViewDataSourceAdvancedApp-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		108A6D981355264800B9AAC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewDataSourceApp/SKTableViewDataSourceApp-Prefix.pch";
+				INFOPLIST_FILE = "SKTableViewDataSourceApp/SKTableViewDataSourceApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		108A6D991355264800B9AAC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewDataSourceApp/SKTableViewDataSourceApp-Prefix.pch";
+				INFOPLIST_FILE = "SKTableViewDataSourceApp/SKTableViewDataSourceApp-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		10B88B3D13869FFA00B76488 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/SKTableViewController.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewController/SKTableViewController-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		10B88B3E13869FFA00B76488 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/SKTableViewController.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewController/SKTableViewController-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		10B88B621386A3E300B76488 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewControllerApp/SKTableViewControllerApp-Prefix.pch";
+				INFOPLIST_FILE = "SKTableViewControllerApp/SKTableViewControllerApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		10B88B631386A3E300B76488 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewControllerApp/SKTableViewControllerApp-Prefix.pch";
+				INFOPLIST_FILE = "SKTableViewControllerApp/SKTableViewControllerApp-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		10E8048913452B73001F253F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		10E8048A13452B73001F253F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		10E8048C13452B73001F253F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/SKTableViewDataSource.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewDataSource/SKTableViewDataSource-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		10E8048D13452B73001F253F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/SKTableViewDataSource.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewDataSource/SKTableViewDataSource-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		10E8048F13452B73001F253F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewDataSourceTests/SKTableViewDataSourceTests-Prefix.pch";
+				INFOPLIST_FILE = "SKTableViewDataSourceTests/SKTableViewDataSourceTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		10E8049013452B73001F253F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SKTableViewDataSourceTests/SKTableViewDataSourceTests-Prefix.pch";
+				INFOPLIST_FILE = "SKTableViewDataSourceTests/SKTableViewDataSourceTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		102048F91356430F00F1CF43 /* Build configuration list for PBXNativeTarget "SKTableViewDataSourceAdvancedApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				102048F71356430F00F1CF43 /* Debug */,
+				102048F81356430F00F1CF43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		108A6D9A1355264800B9AAC4 /* Build configuration list for PBXNativeTarget "SKTableViewDataSourceApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				108A6D981355264800B9AAC4 /* Debug */,
+				108A6D991355264800B9AAC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10B88B3F13869FFA00B76488 /* Build configuration list for PBXNativeTarget "SKTableViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10B88B3D13869FFA00B76488 /* Debug */,
+				10B88B3E13869FFA00B76488 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10B88B611386A3E300B76488 /* Build configuration list for PBXNativeTarget "SKTableViewControllerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10B88B621386A3E300B76488 /* Debug */,
+				10B88B631386A3E300B76488 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10E8046213452B73001F253F /* Build configuration list for PBXProject "SKTableViewDataSource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10E8048913452B73001F253F /* Debug */,
+				10E8048A13452B73001F253F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10E8048B13452B73001F253F /* Build configuration list for PBXNativeTarget "SKTableViewDataSource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10E8048C13452B73001F253F /* Debug */,
+				10E8048D13452B73001F253F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10E8048E13452B73001F253F /* Build configuration list for PBXNativeTarget "SKTableViewDataSourceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10E8048F13452B73001F253F /* Debug */,
+				10E8049013452B73001F253F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		10D652E1138DD84700BFA33D /* TransactionDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				10D652E2138DD84700BFA33D /* TransactionDataModel.xcdatamodel */,
+			);
+			currentVersion = 10D652E2138DD84700BFA33D /* TransactionDataModel.xcdatamodel */;
+			path = TransactionDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 10E8045F13452B73001F253F /* Project object */;
+}
