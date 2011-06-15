@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "SKCollectionDiff.h"
 #import "SKTableViewInfo.h"
+#import "SKFilteredSet.h"
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
@@ -16,7 +17,7 @@
 @end
 
 @interface SKTableViewDataSource : NSObject <UITableViewDataSource> {
-    NSMutableSet *objects;
+    SKFilteredSet *objects;
     SKTableViewInfo *tableViewInfo;
     
     BOOL sectionOrderAscending;
@@ -29,13 +30,18 @@
     id<SKTableViewDataSource, UITableViewDataSource> target;
 }
 
-@property (readonly, retain) SKTableViewInfo *tableViewInfo;
+@property (readonly) SKTableViewInfo *tableViewInfo;
 @property BOOL sectionOrderAscending;
 @property BOOL rowOrderAscending;
 @property SEL sortSelector;
-@property (nonatomic, readonly) id target;
+@property (nonatomic, retain) id target;
 
-#pragma mark Object Management
+#pragma mark Data
+
+- (NSSet *)objects;
+- (NSUInteger)numberOfObjects;
+
+#pragma mark Updating Content
 
 - (id)initWithSet:(NSSet *)initialObjects;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget;
@@ -48,6 +54,15 @@
 - (void)addObject:(id)anObject;
 - (void)deleteObject:(id)anObject;
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;
+- (void)removeFilteredObjects;
+
+#pragma mark Filtering Objects
+
+- (NSSet *)filteredObjects;
+- (NSSet *)allObjects;
+- (void)deleteFilteredObjects;
+- (void)addFilter:(SKDataFilter *)filter;
+- (void)removeFilter:(SKDataFilter *)filter;
 
 #pragma mark Ordering
 

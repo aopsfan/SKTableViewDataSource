@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "SKFilteredSet.h"
 
 @class SKCollectionDiff;
 
@@ -15,5 +16,10 @@
 @end
 
 @interface NSMutableSet (Diff)
+- (void)submitDiff:(SKCollectionDiff *)diff;
+@end
+
+@interface SKFilteredSet (Diff)
+- (SKFilteredSet *)setBySubmittingDiff:(SKCollectionDiff *)diff;
 - (void)submitDiff:(SKCollectionDiff *)diff;
 @end

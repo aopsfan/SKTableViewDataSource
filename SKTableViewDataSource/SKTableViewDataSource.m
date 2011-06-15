@@ -23,11 +23,22 @@
     }
 }
 
-#pragma mark Object Management
+#pragma mark Data
+
+- (NSSet *)objects {
+    return [NSSet setWithSet:[objects allObjects]];
+}
+
+- (NSUInteger)numberOfObjects {
+    return [[objects allObjects] count];
+}
+
+
+#pragma mark Content Updating
 
 - (id)init {
     if ((self = [super init])) {
-        objects = [[NSMutableSet alloc] init];
+        objects = [[SKFilteredSet alloc] init];
         tableViewInfo = [[SKTableViewInfo alloc] init];
         sectionOrderAscending = YES;
         rowOrderAscending = YES;
@@ -110,7 +121,7 @@
 }
 
 - (void)setObjects:(NSSet *)newObjects {
-    [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:objects newObjects:newObjects]];
+    [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:[objects allObjects] newObjects:newObjects]];
     [objects submitDiff:currentDiff];
     
     [self contentUpdated];
@@ -133,7 +144,7 @@
         [exception raise];
     }
     
-    [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:objects newObjects:set]];
+    [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:[objects allObjects] newObjects:set]];
     [objects submitDiff:currentDiff];
     
     [self contentUpdated];
@@ -185,6 +196,10 @@
     return retVal;
 }
 
+- (void)removeFilteredObjects {
+    [objects removeFilteredObjects];
+}
+
 - (void)dealloc {
     [objects release];
     [tableViewInfo release];
@@ -192,6 +207,37 @@
     [currentDiff release];
     
     [super dealloc];
+}
+
+#pragma mark Filtering Objects
+
+- (NSSet *)filteredObjects {
+    return [objects filteredObjects];
+}
+
+- (NSSet *)allObjects {
+    return [objects allObjects];
+}
+
+- (void)deleteFilteredObjects {
+    [objects deleteFilteredObjects];
+}
+
+- (void)addFilter:(SKDataFilter *)filter {
+    NSSet *old = [objects unfilteredObjects];
+    [objects addFilter:filter];
+    NSSet *new = [objects unfilteredObjects];
+    
+    [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:old newObjects:new]];
+}
+
+- (void)removeFilter:(SKDataFilter *)filter {
+    NSSet *old = [objects unfilteredObjects];
+    [objects removeFilter:filter];
+    NSSet *new = [objects unfilteredObjects];
+    
+    SKCollectionDiff *diff = [SKCollectionDiff diffWithOldObjects:old newObjects:new];
+    [currentDiff addDiff:diff];
 }
 
 

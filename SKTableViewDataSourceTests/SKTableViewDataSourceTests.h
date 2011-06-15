@@ -1,20 +1,4 @@
-#import <SenTestingKit/SenTestingKit.h>
-#import "SKTableViewDataSource.h"
-#import "Dude.h"
+#import "TestFileSetup.h"
 
-@interface SKTableViewDataSourceTests : SenTestCase {
-@private
-    SKTableViewDataSource *dataSource;
-    NSMutableArray *objects;
-    
-    Dude *emily;
-    Dude *bruce;
-    Dude *tom;
-    Dude *michael;
-    Dude *emilysTwin;
-    Dude *tomsTwin;
-    Dude *michaelsTwin;
-    Dude *brucesTwin;
-}
-
+@interface SKTableViewDataSourceTests : TestFileSetup
 @end

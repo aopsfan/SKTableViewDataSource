@@ -68,3 +68,33 @@
 }
 
 @end
+
+@implementation SKFilteredSet (Diff)
+
+- (SKFilteredSet *)setBySubmittingDiff:(SKCollectionDiff *)diff {
+    NSMutableSet *aSet = [[[self allObjects] setByAddingObjectsFromArray:[diff.addedObjects allObjects]] mutableCopy];
+    
+    for (id object in diff.deletedObjects) {
+        if ([aSet containsObject:object]) {
+            [aSet removeObject:object];
+        } else {
+            NSLog(@"WARNING: attempt to remove object %@ from set %@ failed because the object is not in the array", object, aSet);
+        }
+    }
+    
+    return [NSSet setWithSet:aSet];
+}
+
+- (void)submitDiff:(SKCollectionDiff *)diff {
+    [self addObjectsFromArray:[diff.addedObjects allObjects]];
+    
+    for (id object in diff.deletedObjects) {
+        if ([[self allObjects] containsObject:object]) {
+            [self removeObject:object];
+        } else {
+            NSLog(@"WARNING: attempt to remove object %@ from set %@ failed because the object is not in the array", object, [self allObjects]);
+        }
+    }
+}
+
+@end

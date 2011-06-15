@@ -61,8 +61,21 @@
 }
 
 - (void)addDiff:(SKCollectionDiff *)diff {
-    [self.addedObjects addObjectsFromArray:[diff.addedObjects allObjects]];
-    [self.deletedObjects addObjectsFromArray:[diff.deletedObjects allObjects]];
+    for (id object in diff.addedObjects) {
+        if ([self.deletedObjects containsObject:object]) {
+            [self.deletedObjects removeObject:object];
+        } else {
+            [self.addedObjects addObject:object];
+        }
+    }
+    
+    for (id deletedObject in diff.deletedObjects) {
+        if ([self.addedObjects containsObject:deletedObject]) {
+            [self.addedObjects removeObject:deletedObject];
+        } else {
+            [self.deletedObjects addObject:deletedObject];
+        }
+    }
 }
 
 + (SKCollectionDiff *)diff {

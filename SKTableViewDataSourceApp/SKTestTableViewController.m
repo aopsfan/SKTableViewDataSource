@@ -19,6 +19,12 @@
         data = [[NSSet alloc] initWithObjects:emily, bruce, tom, michael, emilysTwin, brucesTwin, tomsTwin, michaelsTwin, nil];
         
         dataSource = [[SKTableViewDataSource alloc] initWithSet:data target:self sortSelector:@selector(height)];
+        SKDataFilter *dataFilter = [[[SKDataFilter alloc] initWithSelector:@selector(height)
+                                                          comparisonObject:[NSNumber numberWithInt:100]
+                                                                filterType:SKDataFilterTypeExclude
+                                                        comparisonOperator:SKDataFilterComparisonOperatorLessThan] autorelease];
+        [dataSource addFilter:dataFilter];
+        [dataSource removeFilter:dataFilter];
         
         self.tableView.dataSource = dataSource;
         
