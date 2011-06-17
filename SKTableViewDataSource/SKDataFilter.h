@@ -29,6 +29,13 @@ typedef enum {
             filterType:(SKDataFilterType)aFilterType
     comparisonOperator:(SKDataFilterComparisonOperator)aComparisonOperator;
 
++ (SKDataFilter *)where:(NSString *)selectorString isEqualTo:(id)value;
++ (SKDataFilter *)where:(NSString *)selectorString isNotEqualTo:(id)value;
++ (SKDataFilter *)where:(NSString *)selectorString isGreaterThan:(id)value;
++ (SKDataFilter *)where:(NSString *)selectorString isNotGreaterThan:(id)value;
++ (SKDataFilter *)where:(NSString *)selectorString isLessThan:(id)value;
++ (SKDataFilter *)where:(NSString *)selectorString isNotLessThan:(id)value;
+
 - (NSSet *)setWithObjects:(NSSet *)objects;
 - (BOOL)matchesObject:(id)object;
 

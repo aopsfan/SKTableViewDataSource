@@ -5,9 +5,7 @@
 
 - (void)setUp {
     [super setUp];
-    
-    heightFilter = [[SKDataFilter alloc] initWithSelector:@selector(height) comparisonObject:[NSNumber numberWithInt:67]
-                                               filterType:SKDataFilterTypeIncludeOnly comparisonOperator:SKDataFilterComparisonOperatorGreaterThan];    
+    heightFilter = [[SKDataFilter where:@"height" isGreaterThan:[NSNumber numberWithInt:67]] retain];
     nameFilter   = [[SKDataFilter alloc] initWithSelector:@selector(name) comparisonObject:@"Michael Jordan"];
 }
 
