@@ -56,7 +56,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release">
+      buildConfiguration = "Debug">
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

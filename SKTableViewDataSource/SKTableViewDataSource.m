@@ -75,6 +75,15 @@
     return self;
 }
 
+- (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget predicateFilter:(SKDataFilter *)predicateFilter {
+    if ((self = [self init])) {
+        target = aTarget;
+        objects = [[SKFilteredSet alloc] initWithPredicateFilter:predicateFilter objects:initialObjects];
+    }
+    
+    return self;
+}
+
 - (id)initWithEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context target:(id)aTarget {
     if ((self = [self init])) {
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName inManagedObjectContext:context];

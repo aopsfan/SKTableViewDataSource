@@ -1,28 +1,28 @@
 h1. SKTableViewDataSource
 
-h2. Overview (Layman)
+h2. Overview
 
 @SKTableViewDataSource@ is an Objective-C library that simplifies @NSFetchedResultsController@. Many times we need a quick way to display an array of custom object data in a sectioned list; this now very straight-forward. @SKTableViewDataSource@ also implements certain @UITableViewDataSource@ protocol methods so you don't have to. In short, it sorts a collection into a displayable list. Please note that @SKTableViewDataSource@ is designed only for @UIKit@, so it won't work on your Mac apps.
 
-h2. Overview (Compared to NSFetchedResultsController)
+h2. Compared to NSFetchedResultsController
 
 @NSFetchedResultsController@ uses a complex key-value system to sort your @UITableView@. @SKTableViewDataSource@ relies on a single @sortSelector@. This way, you can section your table by non-accessor values. For instance, if you have a collection of @Dude@ objects, you could sort them by the first letter of their last name (like in the Contacts app) with a @-initial@ method on @Dude@. This is much less of a hassle than creating a @initial@ instance variable and having to update him whenever the appropriate @Dude@ 's name changes.
 
-h2. How to get this awesome project on your computer
+h2. Getting SKTableViewDataSource in your project
 
-@cd@ into your project directory and run <code>git clone git@github.com:aopsfan/SKTableViewDataSource.git</code>. Feel free to send me a pull request if you make some good changes!
+@cd@ into your project directory and run <code>git clone git@github.com:aopsfan/SKTableViewDataSource.git</code>.
+
+You'll notice that this repository comes with @SKTableViewDataSource@ itself, @SKTableViewController@ (a convenient subclass of @UITableViewController@), two dummy data models for testing (@Dude@ and @Transaction@), and three test projects; one uses @SKTableViewController@ for a very simple project; one is like the first except doesn't use @SKTableViewController@; and one is more complex, showing off Core Data integration and subclassing.
+
+Fire up both your project's @.xcodeproj@ and @SKTableViewDataSource.xcodeproj@. Drag the group titled "SKTableViewDataSource" over to your project (remember that this is a group, and the folder you will see in the Finder doesn't include all of the necessary tools). Uncheck the box that wants to copy files over; if copies are created, they will not be linked to this repo.
+
+In Xcode 4, click on the big cell above all your files in the file viewer. Click on your application's _target_, not _project_. Then select "Build Phases" from the tab bar at the top of the view. Drag all of the @.m@ files in the SKTableViewDataSource group (and any sub-groups) over to "Compile Sources".
+
+When done, just import the @.h@ files you need and you're ready to go.
 
 h2. How it works
 
 SKTableViewDataSource takes an NSSet of custom objects, and, given a selector to sort with, creates an organized UITableView.  It implements @numberOfSectionsInTableView@ and @numberOfRowsInSection:@, and produces helpful convenience methods so you can customize your table, such as @identifierForSection:@ and @objectForIndexPath:@.
-
-h2. What you get
-
-This repository comes with @SKTableViewDataSource@ itself, @SKTableViewController@ (a convenient subclass of @UITableViewController@), two dummy data models for testing (@Dude@ and @Transaction@), and three test projects; one uses @SKTableViewController@ for a very simple project; one is like the first except doesn't use @SKTableViewController@; and one is more complex, demonstrating how to subclass @SKTableViewDataSource@ for more advanced work.
-
-h2. Usage
-
-After cloning the repo in your project directory, open the @.xcodeproj@ files for both your project and @SKTableViewDataSource@. Drag over the @SKTableViewDataSource@ group and deselect the option to copy files. This will give you just the essentials to work with.
 
 h2. Example
 
@@ -86,7 +86,7 @@ dataSource.sortSelector = @selector(height);
 self.title = @"Dudes";
 </code></pre>
 
-@dataSource setObjects@ lets your dataSource know what set of data to format for your tables.
+@dataSource setObjects@ lets your data source know what set of data to format for your tables.
 <code>dataSource.sortSelector = @selector(height)</code> tells the dataSource to section the table by the height method on Dude. (Remember, getters are still methods.)
 
 Make sure the @numberOfSectionsInTableView@ and @numberOfRowsInSection:@ methods are not implemented; SKTableViewDataSource will do this job.
@@ -111,6 +111,12 @@ h3. Thats It! Your table should look like this:
 !https://github.com/aopsfan/SKTableViewDataSource/raw/master/screenshot.png!
 
 h2. Doing More
+
+h3. cellForObject:
+
+If you're implementing the SKTableViewDataSource protocol (this is automatic when subclassing @SKTableViewController@), you can implement @- (UITableViewCell *)cellObject:(id)object@ instead of @tableView:cellForRowAtIndexPath:@. You can then replace your cell configuration lines with this one:
+
+<pre><code>cell.textLabel.text = [(Dude *)object name];<pre><code>
 
 h3. Ascending and Descending
 

@@ -85,7 +85,20 @@
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    return self;
+    return [[SKDataFilter alloc] initWithSelector:selector comparisonObject:comparisonObject filterType:filterType comparisonOperator:comparisonOperator];
+}
+
+- (BOOL)isEqual:(id)object {
+    SKDataFilter *filter = (SKDataFilter *)object;
+    
+    if ((filter.selector == self.selector) &&
+        (filter.filterType == self.filterType) &&
+        ([filter.comparisonObject isEqual:self.comparisonObject]) &&
+        (filter.comparisonOperator == self.comparisonOperator)) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)dealloc {

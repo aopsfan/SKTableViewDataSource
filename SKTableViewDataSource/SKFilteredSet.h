@@ -13,6 +13,10 @@
 @property (readonly) NSMutableSet *filteredObjects;
 @property BOOL ignoresFilters;
 
+#pragma mark Initializers
+
+- (id)initWithPredicateFilter:(SKDataFilter *)filter objects:(NSSet *)objects;
+
 #pragma mark Getting Objects
 
 - (NSSet *)unfilteredObjects;

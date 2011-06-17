@@ -29,7 +29,8 @@
 #pragma mark Actions
 
 - (void)setObjects:(NSSet *)objects forIdentifier:(id)identifier {
-    [dictionary setObject:[objects mutableCopy] forKey:identifier];
+    [dictionary setObject:[[objects mutableCopy] autorelease]
+                   forKey:identifier];
 }
 
 - (void)removeObjectsForIdentifier:(id)identifier {

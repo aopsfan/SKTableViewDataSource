@@ -3,7 +3,7 @@
 @implementation SKFilteredSet
 @synthesize ignoresFilters;
 
-#pragma mark Object Management
+#pragma mark Initializers (and dealloc)
 
 - (id)init {
     if ((self = [super init])) {
@@ -13,6 +13,18 @@
         ignoresFilters  = NO;
         
         shouldReloadObjects = NO;
+    }
+    
+    return self;
+}
+
+- (id)initWithPredicateFilter:(SKDataFilter *)filter objects:(NSSet *)objects {
+    if ((self = [self init])) {
+        for (id object in objects) {
+            if ([filter matchesObject:object]) {
+                [allObjects addObject:object];
+            }
+        }
     }
     
     return self;
@@ -110,7 +122,11 @@
 }
 
 - (void)removeFilter:(SKDataFilter *)filter {
-    [filterData removeObjectForKey:filter];
+    for (SKDataFilter *key in [filterData allKeys]) {
+        if ([key isEqual:filter]) {
+            [filterData removeObjectForKey:key];
+        }
+    }
     
     shouldReloadObjects = YES;
 }
