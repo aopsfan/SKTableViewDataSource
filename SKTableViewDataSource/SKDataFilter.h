@@ -6,12 +6,12 @@ typedef enum {
 }  SKDataFilterType;
 
 typedef enum {
-    SKDataFilterComparisonOperatorLessThan = 0,
+    SKDataFilterComparisonOperatorLessThan = -1,
     SKDataFilterComparisonOperatorEquals,
     SKDataFilterComparisonOperatorGreaterThan
 } SKDataFilterComparisonOperator;
 
-@interface SKDataFilter : NSObject {
+@interface SKDataFilter : NSObject <NSCopying> {
     SEL selector;
     SKDataFilterType filterType;
     SKDataFilterComparisonOperator comparisonOperator;
@@ -24,10 +24,12 @@ typedef enum {
 @property SKDataFilterComparisonOperator comparisonOperator;
 
 - (id)initWithSelector:(SEL)aSelector comparisonObject:(id)aComparisonObject;
-
 - (id)initWithSelector:(SEL)aSelector
       comparisonObject:(id)aComparisonObject
             filterType:(SKDataFilterType)aFilterType
     comparisonOperator:(SKDataFilterComparisonOperator)aComparisonOperator;
+
+- (NSSet *)setWithObjects:(NSSet *)objects;
+- (BOOL)matchesObject:(id)object;
 
 @end

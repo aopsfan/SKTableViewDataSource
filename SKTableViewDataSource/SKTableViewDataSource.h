@@ -38,8 +38,8 @@
 
 #pragma mark Data
 
-- (NSSet *)objects;
-- (NSUInteger)numberOfObjects;
+- (NSSet *)allObjects;
+- (NSSet *)displayedObjects;
 
 #pragma mark Updating Content
 
@@ -58,9 +58,6 @@
 
 #pragma mark Filtering Objects
 
-- (NSSet *)filteredObjects;
-- (NSSet *)allObjects;
-- (void)deleteFilteredObjects;
 - (void)addFilter:(SKDataFilter *)filter;
 - (void)removeFilter:(SKDataFilter *)filter;
 

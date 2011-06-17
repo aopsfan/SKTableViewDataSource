@@ -25,14 +25,13 @@
 
 #pragma mark Data
 
-- (NSSet *)objects {
+- (NSSet *)allObjects {
     return [NSSet setWithSet:[objects allObjects]];
 }
 
-- (NSUInteger)numberOfObjects {
-    return [[objects allObjects] count];
+- (NSSet *)displayedObjects {
+    return [NSSet setWithSet:[objects unfilteredObjects]];
 }
-
 
 #pragma mark Content Updating
 
@@ -211,24 +210,13 @@
 
 #pragma mark Filtering Objects
 
-- (NSSet *)filteredObjects {
-    return [objects filteredObjects];
-}
-
-- (NSSet *)allObjects {
-    return [objects allObjects];
-}
-
-- (void)deleteFilteredObjects {
-    [objects deleteFilteredObjects];
-}
-
 - (void)addFilter:(SKDataFilter *)filter {
     NSSet *old = [objects unfilteredObjects];
     [objects addFilter:filter];
     NSSet *new = [objects unfilteredObjects];
     
     [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:old newObjects:new]];
+    shouldReloadDictionary = YES;
 }
 
 - (void)removeFilter:(SKDataFilter *)filter {
@@ -238,6 +226,7 @@
     
     SKCollectionDiff *diff = [SKCollectionDiff diffWithOldObjects:old newObjects:new];
     [currentDiff addDiff:diff];
+    shouldReloadDictionary = YES;
 }
 
 

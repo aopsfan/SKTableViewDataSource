@@ -2,14 +2,19 @@
 #import "SKDataFilter.h"
 
 @interface SKFilteredSet : NSObject {
-    NSMutableSet *filters;
+    NSMutableDictionary *filterData;
     NSMutableSet *allObjects;
     NSMutableSet *filteredObjects;
+    BOOL ignoresFilters;
+    
+    BOOL shouldReloadObjects;
 }
+
+@property (readonly) NSMutableSet *filteredObjects;
+@property BOOL ignoresFilters;
 
 #pragma mark Getting Objects
 
-- (NSSet *)filteredObjects;
 - (NSSet *)unfilteredObjects;
 - (NSSet *)allObjects;
 
@@ -23,7 +28,6 @@
 
 #pragma mark Filter Actions
 
-- (void)deleteFilteredObjects;
 - (void)addFilter:(SKDataFilter *)filter;
 - (void)removeFilter:(SKDataFilter *)filter;
 

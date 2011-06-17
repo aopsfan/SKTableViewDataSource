@@ -3,17 +3,34 @@
 
 @implementation SKDataFilterTests
 
-- (void)testFilter {
-    SKDataFilter *dataFilter = [[[SKDataFilter alloc] init] autorelease];
-    dataFilter.selector = @selector(height);
-    dataFilter.filterType = SKDataFilterTypeExclude;
-    dataFilter.comparisonOperator = SKDataFilterComparisonOperatorEquals;
-    dataFilter.comparisonObject = [NSNumber numberWithInt:67];
+- (void)setUp {
+    [super setUp];
     
-    [dataSource addFilter:dataFilter];
-    [dataSource removeFilteredObjects];
+    heightFilter = [[SKDataFilter alloc] initWithSelector:@selector(height) comparisonObject:[NSNumber numberWithInt:67]
+                                               filterType:SKDataFilterTypeIncludeOnly comparisonOperator:SKDataFilterComparisonOperatorGreaterThan];    
+    nameFilter   = [[SKDataFilter alloc] initWithSelector:@selector(name) comparisonObject:@"Michael Jordan"];
+}
+
+- (void)testAddFilter {    
+    [dataSource addFilter:heightFilter];
     
-    STAssertTrue([dataSource numberOfObjects] == 4, @"You have %i objects", [dataSource numberOfObjects]);
+    STAssertTrue([[dataSource allObjects] count] == 8, @"you have numberOfObjects = %i", [[dataSource allObjects] count]);
+    STAssertTrue([[dataSource displayedObjects] count], @"you have %i unfiltered objects", [[dataSource displayedObjects] count]);
+    
+    [dataSource removeFilter:heightFilter];
+}
+
+- (void)testRemoveFilter {
+    [dataSource addFilter:heightFilter];
+    [dataSource addFilter:nameFilter];
+    
+    STAssertTrue([[dataSource displayedObjects] count] == 1, @"you have %i unfiltered objects", [[dataSource displayedObjects] count]);
+    
+    [dataSource removeFilter:nameFilter];
+    
+    STAssertTrue([[dataSource displayedObjects] count], @"you have %i unfiltered objects", [[dataSource displayedObjects] count]);
+    
+    [dataSource removeFilter:heightFilter];
 }
 
 @end
