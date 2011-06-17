@@ -15,7 +15,7 @@
     [dataSource addFilter:heightFilter];
     
     STAssertTrue([[dataSource allObjects] count] == 8, @"you have numberOfObjects = %i", [[dataSource allObjects] count]);
-    STAssertTrue([[dataSource displayedObjects] count], @"you have %i unfiltered objects", [[dataSource displayedObjects] count]);
+    STAssertTrue([[dataSource displayedObjects] count] == 4, @"you have %i unfiltered objects", [[dataSource displayedObjects] count]);
     
     [dataSource removeFilter:heightFilter];
 }
@@ -28,7 +28,7 @@
     
     [dataSource removeFilter:nameFilter];
     
-    STAssertTrue([[dataSource displayedObjects] count], @"you have %i unfiltered objects", [[dataSource displayedObjects] count]);
+    STAssertTrue([[dataSource displayedObjects] count] == 4, @"you have %i unfiltered objects", [[dataSource displayedObjects] count]);
     
     [dataSource removeFilter:heightFilter];
 }

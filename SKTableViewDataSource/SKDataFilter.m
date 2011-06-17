@@ -43,8 +43,7 @@
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    SKDataFilter *dataFilter = [[SKDataFilter alloc] initWithSelector:selector comparisonObject:comparisonObject filterType:filterType comparisonOperator:comparisonOperator];
-    return dataFilter;
+    return self;
 }
 
 - (void)dealloc {

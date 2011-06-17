@@ -34,7 +34,7 @@
     }
     
     [filteredObjects removeAllObjects];
-    
+        
     for (id object in allObjects) {
         for (SKDataFilter *filter in [filterData allKeys]) {
             if (![filter matchesObject:object]) {
@@ -43,6 +43,8 @@
             }
         }
     }
+    
+    shouldReloadObjects = NO;
     
     return filteredObjects;
 }
