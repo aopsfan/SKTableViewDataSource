@@ -17,9 +17,19 @@
         numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         
-        dataSource = [[TransactionDataSource alloc] initWithEntityName:@"Transaction"
-                                                inManagedObjectContext:context
-                                                                target:self];
+//        dataSource = [[TransactionDataSource alloc] initWithEntityName:@"Transaction"
+//                                                inManagedObjectContext:context
+//                                                                target:self];
+        NSDate *date = [[NSDate dateWithTimeIntervalSinceNow:-86400] dateWithoutTime];
+        SKDataFilter *pFilter = [SKDataFilter where:@"displayableDate" isNotEqualTo:date];
+        
+        dataSource = [[TransactionDataSource alloc] initWithSortSelector:@selector(displayableDate)
+                                                                 options:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                          @"Transaction", @"entityName",
+                                                                          context       , @"managedObjectContext",
+                                                                          self          , @"target",
+                                                                          pFilter       , @"predicateFilter", nil]];
+        
         dataSource.sortSelector = @selector(displayableDate);
         dataSource.sectionOrderAscending = NO;
         

@@ -29,6 +29,7 @@
 - (void)removeObject:(id)object;
 - (void)removeAllObjects;
 - (void)removeFilteredObjects;
+- (void)setObjectsWithPredicateFilter:(SKDataFilter *)filter objects:(NSSet *)objects;
 
 #pragma mark Filter Actions
 

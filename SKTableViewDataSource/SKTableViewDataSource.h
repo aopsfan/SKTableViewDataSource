@@ -45,6 +45,7 @@
 
 - (id)initWithSet:(NSSet *)initialObjects;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget;
+- (id)initWithSortSelector:(SEL)aSortSelector options:(NSDictionary *)options;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget sortSelector:(SEL)aSortSelector;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget predicateFilter:(SKDataFilter *)predicateFilter;
 - (id)initWithEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context target:(id)aTarget;

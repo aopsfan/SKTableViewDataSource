@@ -20,11 +20,7 @@
 
 - (id)initWithPredicateFilter:(SKDataFilter *)filter objects:(NSSet *)objects {
     if ((self = [self init])) {
-        for (id object in objects) {
-            if ([filter matchesObject:object]) {
-                [allObjects addObject:object];
-            }
-        }
+        [self setObjectsWithPredicateFilter:filter objects:objects];
     }
     
     return self;
@@ -110,6 +106,14 @@
     [filteredObjects setSet:[NSSet set]];
     
     shouldReloadObjects = YES;
+}
+
+- (void)setObjectsWithPredicateFilter:(SKDataFilter *)filter objects:(NSSet *)objects {
+    for (id object in objects) {
+        if ([filter matchesObject:object]) {
+            [allObjects addObject:object];
+        }
+    }
 }
 
 
