@@ -1,6 +1,7 @@
 #import "SKAdvancedTestTableViewController.h"
 #import <CoreData/CoreData.h>
 #import "Transaction.h"
+#import "SKOptionKeys.h"
 
 @implementation SKAdvancedTestTableViewController
 
@@ -26,10 +27,10 @@
         
         dataSource = [[TransactionDataSource alloc] initWithSortSelector:@selector(displayableDate)
                                                                  options:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                          @"Transaction", @"entityName",
-                                                                          context       , @"managedObjectContext",
-                                                                          self          , @"target",
-                                                                          pFilter       , @"predicateFilter", nil]];
+                                                                          @"Transaction", [SKOptionKeys entityNameOption],
+                                                                          context       , [SKOptionKeys managedObjectContextOption],
+                                                                          self          , [SKOptionKeys targetOption],
+                                                                          pFilter       , [SKOptionKeys predicateFilterOption], nil]];
         
         dataSource.sortSelector = @selector(displayableDate);
         dataSource.sectionOrderAscending = NO;
