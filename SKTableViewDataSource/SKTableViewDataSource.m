@@ -5,19 +5,7 @@
 
 #pragma mark Private
 
-- (NSMutableSet *)objectsFromFetchRequest:(NSFetchRequest *)fetchRequest
-                   inManagedObjectContext:(NSManagedObjectContext *)context
-                     predicateFilterIfAny:(SKDataFilter *)predicateFilter {
-    NSError *error = nil;
-    NSMutableSet *set = [NSMutableSet setWithArray:[context executeFetchRequest:fetchRequest error:&error]];
-    
-    if (set == nil) {
-        NSException *exception = [NSException exceptionWithName:@"Entity name/context should be valid"
-                                                         reason:[NSString stringWithFormat:@"Error is %@", error]
-                                                       userInfo:nil];
-        [exception raise];
-    }
-    
+- (NSSet *)objectsFromSet:(NSSet *)set predicateFilterIfAny:(SKDataFilter *)predicateFilter {
     NSMutableSet *filteredSet = [NSMutableSet set];
     
     if (predicateFilter) {
@@ -31,7 +19,22 @@
     }
     
     return filteredSet;
+}
+
+- (NSMutableSet *)objectsFromFetchRequest:(NSFetchRequest *)fetchRequest
+                   inManagedObjectContext:(NSManagedObjectContext *)context
+                     predicateFilterIfAny:(SKDataFilter *)predicateFilter {
+    NSError *error = nil;
+    NSMutableSet *set = [NSMutableSet setWithArray:[context executeFetchRequest:fetchRequest error:&error]];
     
+    if (set == nil) {
+        NSException *exception = [NSException exceptionWithName:@"Entity name/context should be valid"
+                                                         reason:[NSString stringWithFormat:@"Error is %@", error]
+                                                       userInfo:nil];
+        [exception raise];
+    }
+    
+    return [[self objectsFromSet:set predicateFilterIfAny:predicateFilter] mutableCopy];
 }
 
 - (NSMutableSet *)objectsFromEntityName:(NSString *)entityName
@@ -131,67 +134,6 @@
     return self;
 }
 
-- (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget sortSelector:(SEL)aSortSelector {
-    if ((self = [self initWithSet:initialObjects target:aTarget])) {
-        sortSelector = aSortSelector;
-    }
-    
-    return self;
-}
-
-- (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget predicateFilter:(SKDataFilter *)predicateFilter {
-    if ((self = [self init])) {
-        target = aTarget;
-        objects = [[SKFilteredSet alloc] initWithPredicateFilter:predicateFilter objects:initialObjects];
-    }
-    
-    return self;
-}
-
-- (id)initWithEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context target:(id)aTarget {
-    if ((self = [self init])) {
-        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName inManagedObjectContext:context];
-        NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-        [fetchRequest setEntity:entityDescription];
-        
-        NSError *error = nil;
-        NSMutableSet *set = [NSMutableSet setWithArray:[context executeFetchRequest:fetchRequest error:&error]];
-        
-        if (set == nil) {
-            NSException *exception = [NSException exceptionWithName:@"Entity name/context should be valid"
-                                                             reason:[NSString stringWithFormat:@"Error is %@", error]
-                                                           userInfo:nil];
-            [exception raise];
-        }
-        
-        [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:set deletedObjects:[NSSet set]]];
-        [objects submitDiff:currentDiff];
-                
-        target = aTarget;
-    }
-    
-    return self;
-}
-
-- (id)initWithFetchRequest:(NSFetchRequest *)fetchRequest inManagedObjectContext:(NSManagedObjectContext *)context {
-    if ((self = [self init])) {
-        NSError *error = nil;
-        NSMutableSet *set = [NSMutableSet setWithArray:[context executeFetchRequest:fetchRequest error:&error]];
-        
-        if (set == nil) {
-            NSException *exception = [NSException exceptionWithName:@"Entity name/context should be valid"
-                                                             reason:[NSString stringWithFormat:@"Error is %@", error]
-                                                           userInfo:nil];
-            [exception raise];
-        }
-        
-        [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:set deletedObjects:[NSSet set]]];
-        [objects submitDiff:currentDiff];
-    }
-    
-    return self;
-}
-
 - (void)setObjects:(NSSet *)newObjects {
     [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:[objects allObjects] newObjects:newObjects]];
     [objects submitDiff:currentDiff];
@@ -225,7 +167,8 @@
     for (NSString *key in acceptedKeys) {
         if ([keys containsObject:key]) {
             if (key == @"objects") {
-                [self setObjects:(NSSet *)[options objectForKey:key]];
+                [self setObjects:[self objectsFromSet:(NSSet *)[options objectForKey:key]
+                                 predicateFilterIfAny:(SKDataFilter *)[options objectForKey:@"predicateFilter"]]];
             } else if (key == @"entityName" || key == @"fetchRequest") {
                 if (!context) {
                     NSException *contextException = [NSException exceptionWithName:@"@\"context\" should be a key in the options dictionary"
@@ -241,44 +184,6 @@
             }
         }
     }
-}
-
-- (void)setObjectsWithEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context {
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName inManagedObjectContext:context];
-    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-    [fetchRequest setEntity:entityDescription];
-    
-    NSError *error = nil;
-    NSMutableSet *set = [NSMutableSet setWithArray:[context executeFetchRequest:fetchRequest error:&error]];
-    
-    if (set == nil) {
-        NSException *exception = [NSException exceptionWithName:@"Entity name/context should be valid"
-                                                         reason:[NSString stringWithFormat:@"Error is %@", error]
-                                                       userInfo:nil];
-        [exception raise];
-    }
-    
-    [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:[objects allObjects] newObjects:set]];
-    [objects submitDiff:currentDiff];
-    
-    [self contentUpdated];
-    
-    shouldReloadDictionary = YES;
-}
-
-- (void)setObjectsWithFetchRequest:(NSFetchRequest *)fetchRequest inManagedObjectContext:(NSManagedObjectContext *)context {
-    NSError *error = nil;
-    NSMutableSet *set = [NSMutableSet setWithArray:[context executeFetchRequest:fetchRequest error:&error]];
-    
-    if (set == nil) {
-        NSException *exception = [NSException exceptionWithName:@"Entity name/context should be valid"
-                                                         reason:[NSString stringWithFormat:@"Error is %@", error]
-                                                       userInfo:nil];
-        [exception raise];
-    }
-    
-    [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:set deletedObjects:[NSSet set]]];
-    [objects submitDiff:currentDiff];
 }
 
 - (void)addObject:(id)anObject {

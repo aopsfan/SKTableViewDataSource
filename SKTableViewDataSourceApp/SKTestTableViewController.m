@@ -1,4 +1,5 @@
 #import "SKTestTableViewController.h"
+#import "SKOptionKeys.h"
 #import "Dude.h"
 
 @implementation SKTestTableViewController
@@ -18,10 +19,16 @@
         Dude *michaelsTwin = [[Dude alloc] initWithName:@"Sleahcim Jordan" hairColor:[UIColor clearColor] height:[NSNumber numberWithInt:100]];
         data = [[NSSet alloc] initWithObjects:emily, bruce, tom, michael, emilysTwin, brucesTwin, tomsTwin, michaelsTwin, nil];
         
-        dataSource = [[SKTableViewDataSource alloc] initWithSet:data target:self sortSelector:@selector(height)];
-        
         SKDataFilter *dataFilter = [SKDataFilter where:@"height" isNotEqualTo:[NSNumber numberWithInt:83]];
-        [dataSource addFilter:dataFilter];
+        
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    data, [SKOptionKeys objectsOption],
+                                    self, [SKOptionKeys targetOption],
+                                    dataFilter, [SKOptionKeys predicateFilterOption], nil];
+        
+        dataSource = [[SKTableViewDataSource alloc] initWithSortSelector:@selector(height) options:dictionary];
+        
+//        [dataSource addFilter:dataFilter];
         
         self.tableView.dataSource = dataSource;
         
