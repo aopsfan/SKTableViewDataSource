@@ -31,6 +31,7 @@
 }
 
 @property (readonly) SKTableViewInfo *tableViewInfo;
+@property (nonatomic, retain) SKCollectionDiff *currentDiff;
 @property BOOL sectionOrderAscending;
 @property BOOL rowOrderAscending;
 @property SEL sortSelector;
