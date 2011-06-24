@@ -161,4 +161,4 @@ If you would like to filter out certain @Dude@ objects, you can use an @SKDataFi
 [dataSource addFilter:filter];
 [self.tableView reloadData];</code></pre>
 
-This keeps all other data in store, so 
+You can then run @[dataSource removeFilter:filter]@ to restore it to it's original data.
