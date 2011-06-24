@@ -125,45 +125,7 @@
 - (id)initWithSortSelector:(SEL)aSortSelector options:(NSDictionary *)options {
     if ((self = [self init])) {
         sortSelector = aSortSelector;
-        NSArray *keys = [options allKeys];
-        NSMutableSet *acceptedKeys = [NSMutableSet setWithObjects:
-                                      @"objects", @"entityName",
-                                      @"fetchRequest",
-                                      @"target", nil];
-        NSUInteger objectOptionsCount = [keys containsObject:@"objects"] + [keys containsObject:@"entityName"] + [keys containsObject:@"fetchRequest"];
-        NSManagedObjectContext *context = nil;
-        
-        if ([keys containsObject:@"managedObjectContext"]) {
-            context = [[(NSManagedObjectContext *)[options objectForKey:@"managedObjectContext"] retain] autorelease];
-        }
-        
-        if (objectOptionsCount > 1) {
-            NSException *exc = [NSException exceptionWithName:@"There should be at least 1 way to store objects"
-                                                       reason:[NSString stringWithFormat:
-                                                               @"You have provided %i options to store objects in the following options dictionary:",
-                                                               objectOptionsCount, options] userInfo:nil];
-            [exc raise];
-        }
-        
-        for (NSString *key in acceptedKeys) {
-            if ([keys containsObject:key]) {
-                if (key == @"objects") {
-                    [self setObjects:(NSSet *)[options objectForKey:key]];
-                } else if (key == @"entityName" || key == @"fetchRequest") {
-                    if (!context) {
-                        NSException *contextException = [NSException exceptionWithName:@"@\"context\" should be a key in the options dictionary"
-                                                                                reason:@"You passed in an entityName or fetchRequest without specifying a context"
-                                                                              userInfo:nil];
-                        [contextException raise];
-                    }
-                    
-                    NSArray *coreDataOptions = [NSArray arrayWithObjects:[options objectForKey:key], context, nil];
-                    [self setObjectsWithCoreDataOptions:coreDataOptions predicateFilterIfAny:[options objectForKey:@"predicateFilter"]]; 
-                } else if (key == @"target" ) {
-                    target = [options objectForKey:key];
-                }
-            }
-        }        
+        [self setObjectsWithOptions:options];
     }
     
     return self;
@@ -237,6 +199,48 @@
     [self contentUpdated];
     
     shouldReloadDictionary = YES;
+}
+
+- (void)setObjectsWithOptions:(NSDictionary *)options {
+    NSArray *keys = [options allKeys];
+    NSMutableSet *acceptedKeys = [NSMutableSet setWithObjects:
+                                  @"objects", @"entityName",
+                                  @"fetchRequest",
+                                  @"target", nil];
+    NSUInteger objectOptionsCount = [keys containsObject:@"objects"] + [keys containsObject:@"entityName"] + [keys containsObject:@"fetchRequest"];
+    NSManagedObjectContext *context = nil;
+    
+    if ([keys containsObject:@"managedObjectContext"]) {
+        context = [[(NSManagedObjectContext *)[options objectForKey:@"managedObjectContext"] retain] autorelease];
+    }
+    
+    if (objectOptionsCount > 1) {
+        NSException *exc = [NSException exceptionWithName:@"There should be at least 1 way to store objects"
+                                                   reason:[NSString stringWithFormat:
+                                                           @"You have provided %i options to store objects in the following options dictionary:",
+                                                           objectOptionsCount, options] userInfo:nil];
+        [exc raise];
+    }
+    
+    for (NSString *key in acceptedKeys) {
+        if ([keys containsObject:key]) {
+            if (key == @"objects") {
+                [self setObjects:(NSSet *)[options objectForKey:key]];
+            } else if (key == @"entityName" || key == @"fetchRequest") {
+                if (!context) {
+                    NSException *contextException = [NSException exceptionWithName:@"@\"context\" should be a key in the options dictionary"
+                                                                            reason:@"You passed in an entityName or fetchRequest without specifying a context"
+                                                                          userInfo:nil];
+                    [contextException raise];
+                }
+                
+                NSArray *coreDataOptions = [NSArray arrayWithObjects:[options objectForKey:key], context, nil];
+                [self setObjectsWithCoreDataOptions:coreDataOptions predicateFilterIfAny:[options objectForKey:@"predicateFilter"]]; 
+            } else if (key == @"target" ) {
+                target = [options objectForKey:key];
+            }
+        }
+    }
 }
 
 - (void)setObjectsWithEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)context {

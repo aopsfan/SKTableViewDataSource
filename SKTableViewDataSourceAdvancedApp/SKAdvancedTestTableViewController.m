@@ -17,11 +17,12 @@
         numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         
-//        dataSource = [[TransactionDataSource alloc] initWithEntityName:@"Transaction"
-//                                                inManagedObjectContext:context
-//                                                                target:self];
         NSDate *date = [[NSDate dateWithTimeIntervalSinceNow:-86400] dateWithoutTime];
         SKDataFilter *pFilter = [SKDataFilter where:@"displayableDate" isNotEqualTo:date];
+        
+        NSEntityDescription *description = [NSEntityDescription entityForName:@"Transaction" inManagedObjectContext:context];
+        NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+        [fetchRequest setEntity:description];
         
         dataSource = [[TransactionDataSource alloc] initWithSortSelector:@selector(displayableDate)
                                                                  options:[NSDictionary dictionaryWithObjectsAndKeys:

@@ -101,6 +101,12 @@
 		10D652E7138DD9BE00BFA33D /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D652E6138DD9BE00BFA33D /* Transaction.m */; };
 		10D652E8138DD9BE00BFA33D /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D652E6138DD9BE00BFA33D /* Transaction.m */; };
 		10D8D482138E99250032ABFF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
+		10E4880013B4D7E600341AD9 /* SKOptionKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 10E487FE13B4D7E600341AD9 /* SKOptionKeys.h */; };
+		10E4880113B4D7E600341AD9 /* SKOptionKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E487FF13B4D7E600341AD9 /* SKOptionKeys.m */; };
+		10E4880213B4D9A300341AD9 /* SKOptionKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E487FF13B4D7E600341AD9 /* SKOptionKeys.m */; };
+		10E4880313B4D9AE00341AD9 /* SKOptionKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E487FF13B4D7E600341AD9 /* SKOptionKeys.m */; };
+		10E4880413B4D9B700341AD9 /* SKOptionKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E487FF13B4D7E600341AD9 /* SKOptionKeys.m */; };
+		10E4880513B4D9BE00341AD9 /* SKOptionKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E487FF13B4D7E600341AD9 /* SKOptionKeys.m */; };
 		10E8046C13452B73001F253F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
 		10E8047713452B73001F253F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8047613452B73001F253F /* UIKit.framework */; };
 		10E8047813452B73001F253F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
@@ -188,6 +194,8 @@
 		10D652E2138DD84700BFA33D /* TransactionDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TransactionDataModel.xcdatamodel; sourceTree = "<group>"; };
 		10D652E5138DD9BE00BFA33D /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		10D652E6138DD9BE00BFA33D /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
+		10E487FE13B4D7E600341AD9 /* SKOptionKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKOptionKeys.h; sourceTree = "<group>"; };
+		10E487FF13B4D7E600341AD9 /* SKOptionKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKOptionKeys.m; sourceTree = "<group>"; };
 		10E8046813452B73001F253F /* libSKTableViewDataSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSKTableViewDataSource.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E8046B13452B73001F253F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		10E8046F13452B73001F253F /* SKTableViewDataSource-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewDataSource-Prefix.pch"; sourceTree = "<group>"; };
@@ -199,7 +207,7 @@
 		10E8048413452B73001F253F /* SKTableViewDataSourceTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewDataSourceTests-Prefix.pch"; sourceTree = "<group>"; };
 		10E8048513452B73001F253F /* SKTableViewDataSourceTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKTableViewDataSourceTests.h; sourceTree = "<group>"; };
 		10E8048713452B73001F253F /* SKTableViewDataSourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKTableViewDataSourceTests.m; sourceTree = "<group>"; };
-		10E8049113452C0B001F253F /* SKTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SKTableViewDataSource.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		10E8049113452C0B001F253F /* SKTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SKTableViewDataSource.h; sourceTree = "<group>"; };
 		10E8049213452C0B001F253F /* SKTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SKTableViewDataSource.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		10E8049613452C86001F253F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -418,6 +426,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		10E487FC13B4D7B100341AD9 /* SKOptionKeys */ = {
+			isa = PBXGroup;
+			children = (
+				10E487FE13B4D7E600341AD9 /* SKOptionKeys.h */,
+				10E487FF13B4D7E600341AD9 /* SKOptionKeys.m */,
+			);
+			name = SKOptionKeys;
+			sourceTree = "<group>";
+		};
 		10E8045D13452B73001F253F = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +486,7 @@
 				106A4863138B16710011AF47 /* SKTableViewInfo */,
 				102754A013A04E1F00F36FA4 /* SKDataFilter */,
 				10B88B3A13869FFA00B76488 /* SKTableViewController */,
+				10E487FC13B4D7B100341AD9 /* SKOptionKeys */,
 			);
 			path = SKTableViewDataSource;
 			sourceTree = "<group>";
@@ -535,6 +553,7 @@
 				1027549D13A0469500F36FA4 /* TestFileSetup.h in Headers */,
 				102754A313A04E3700F36FA4 /* SKDataFilter.h in Headers */,
 				10B2209413A1004000918783 /* SKFilteredSet.h in Headers */,
+				10E4880013B4D7E600341AD9 /* SKOptionKeys.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +754,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E4880513B4D9BE00341AD9 /* SKOptionKeys.m in Sources */,
 				10959D7813A66FB8002D738B /* SKDataFilter.m in Sources */,
 				106A486B138B30D70011AF47 /* SKTableViewInfo.m in Sources */,
 				1073EE0F138AC8FC00C886A5 /* SKCollectionDiff.m in Sources */,
@@ -756,6 +776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E4880413B4D9B700341AD9 /* SKOptionKeys.m in Sources */,
 				10959D7713A66FAD002D738B /* SKFilteredSet.m in Sources */,
 				10959D7613A66FA8002D738B /* SKDataFilter.m in Sources */,
 				106A486A138B30D10011AF47 /* SKTableViewInfo.m in Sources */,
@@ -787,6 +808,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E4880313B4D9AE00341AD9 /* SKOptionKeys.m in Sources */,
 				10959D7513A66F98002D738B /* SKFilteredSet.m in Sources */,
 				10959D7413A66F92002D738B /* SKDataFilter.m in Sources */,
 				106A486D138B30DF0011AF47 /* SKTableViewInfo.m in Sources */,
@@ -814,6 +836,7 @@
 				10B88B671386A41C00B76488 /* SKControllerTestViewController.m in Sources */,
 				102754A413A04E3700F36FA4 /* SKDataFilter.m in Sources */,
 				10B2209613A1004000918783 /* SKFilteredSet.m in Sources */,
+				10E4880113B4D7E600341AD9 /* SKOptionKeys.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +844,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E4880213B4D9A300341AD9 /* SKOptionKeys.m in Sources */,
 				102754A513A04E7700F36FA4 /* SKDataFilter.m in Sources */,
 				1027549F13A0493700F36FA4 /* TestFileSetup.m in Sources */,
 				106A4869138B30CA0011AF47 /* SKTableViewInfo.m in Sources */,
