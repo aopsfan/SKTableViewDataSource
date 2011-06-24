@@ -1,7 +1,3 @@
-//
-// Prefix header for all source files of the 'SKTableViewControllerApp' target in the 'SKTableViewControllerApp' project
-//
-
 #import <Availability.h>
 
 #ifndef __IPHONE_3_0
