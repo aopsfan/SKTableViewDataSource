@@ -75,8 +75,10 @@
     [dataSource addObject:newDude];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    NSUInteger count = [[dataSource allObjects] count];
     
     STAssertEqualObjects([dataSource indexPathForObject:newDude], indexPath, @"index path is %@", [dataSource indexPathForObject:newDude]);
+    STAssertTrue(count == [objects count]+1, @"you have count = %i, it should be %i", count, [objects count]+1);
     
     [dataSource deleteObject:newDude];
 }
