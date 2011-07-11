@@ -5,6 +5,19 @@
 
 @implementation SKAdvancedTestTableViewController
 
+- (void)didPressAdd:(id)sender {
+    Transaction *transaction = [NSEntityDescription insertNewObjectForEntityForName:@"Transaction" inManagedObjectContext:context];
+    transaction.date = [NSDate date];
+    transaction.title = @"New Transaction";
+    transaction.price = [NSNumber numberWithFloat:2.99];
+    
+    [context save:nil];
+    
+    [dataSource addObject:transaction];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[dataSource indexPathForObject:transaction]]
+                          withRowAnimation:UITableViewRowAnimationTop];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style context:(NSManagedObjectContext *)aContext
 {
     self = [super initWithStyle:style];
@@ -51,6 +64,19 @@
     [super dealloc];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAdd:)] autorelease];
+    [self.navigationItem setRightBarButtonItem:addButton animated:YES];
+}
+
+#pragma mark - SKTableViewDataSource (protocol)
+
+- (void)objectDeleted:(id)object {
+    [context deleteObject:object];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -75,7 +101,6 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [context deleteObject:[dataSource objectForIndexPath:indexPath]];
         BOOL shouldDeleteSection = [dataSource deleteObjectAtIndexPath:indexPath];
         
         if (shouldDeleteSection) {
@@ -84,6 +109,9 @@
         } else {
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
         }
+        
+        NSError *error = nil;
+        [context save:&error];
     }
 }
 
