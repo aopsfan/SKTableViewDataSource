@@ -187,7 +187,7 @@
 }
 
 - (void)addObject:(id)anObject {
-    [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:[NSSet setWithObject:anObject] deletedObjects:[NSSet set]]];
+    [currentDiff.addedObjects addObject:anObject];
     [objects addObject:anObject];
     
     [self contentUpdated];
@@ -197,7 +197,7 @@
 }
 
 - (void)deleteObject:(id)anObject {
-    [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:[NSSet set] deletedObjects:[NSSet setWithObject:anObject]]];
+    [currentDiff.deletedObjects addObject:anObject];
     [objects removeObject:anObject];
     
     [self contentUpdated];
