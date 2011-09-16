@@ -1,7 +1,7 @@
 #import "SKTableViewDataSource.h"
 
 @implementation SKTableViewDataSource
-@synthesize sortSelector, sectionOrderAscending, rowOrderAscending, target, tableViewInfo, currentDiff;
+@dynamic sortSelector, sectionOrderAscending, rowOrderAscending, target, tableViewInfo, currentDiff;
 
 #pragma mark Private
 
