@@ -25,13 +25,11 @@
     SEL sortSelector;
     
     BOOL shouldReloadDictionary;
-    SKCollectionDiff *currentDiff;
     
     id<SKTableViewDataSource, UITableViewDataSource> target;
 }
 
 @property (readonly) SKTableViewInfo *tableViewInfo;
-@property (nonatomic, retain) SKCollectionDiff *currentDiff;
 @property BOOL sectionOrderAscending;
 @property BOOL rowOrderAscending;
 @property SEL sortSelector;
@@ -52,7 +50,7 @@
 - (void)addObject:(id)anObject;
 - (void)deleteObject:(id)anObject;
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;
-- (void)removeFilteredObjects;
+- (void)removeHiddenObjects;
 
 #pragma mark Filtering Objects
 

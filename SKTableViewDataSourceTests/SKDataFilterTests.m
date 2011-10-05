@@ -33,7 +33,7 @@
 
 - (void)testPredicateFilter {
     SKDataFilter *dataFilter = [SKDataFilter where:@"name" isEqualTo:@"Bruce Young Ricketts"];
-    SKFilteredSet *set = [[[SKFilteredSet alloc] initWithPredicateFilter:dataFilter objects:[NSSet setWithArray:objects]] autorelease];
+    SKFilteredSet *set = [[[SKFilteredSet alloc] initWithObjects:[NSSet setWithArray:objects] predicateFilter:dataFilter] autorelease];
     NSUInteger count = [[set allObjects] count];
     
     STAssertTrue(count == 1, @"you have %i objects", count);

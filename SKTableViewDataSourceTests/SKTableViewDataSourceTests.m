@@ -100,8 +100,11 @@
     NSArray *testArrayInSectionZero = [NSArray arrayWithObjects:dude1, emilysTwin, brucesTwin, nil];
     NSArray *testArrayInSectionOne  = [NSArray arrayWithObjects:dude2, tomsTwin, nil];
     
+    [dataSource.tableViewInfo log];
+    
     STAssertEqualObjects([dataSource orderedObjectsForSection:0], testArrayInSectionZero, @"");
     STAssertEqualObjects([dataSource orderedObjectsForSection:1], testArrayInSectionOne, @"");
+    STAssertEqualObjects([NSNumber numberWithInt:[[dataSource allObjects] count]], [NSNumber numberWithInt:5], @"Your count should be 5, it is %i", [[dataSource allObjects] count]);
     
     [dataSource setObjects:[NSSet setWithArray:objects]];
 }

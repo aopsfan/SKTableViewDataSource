@@ -27,9 +27,7 @@
                                     dataFilter, [SKOptionKeys predicateFilterOption], nil];
         
         dataSource = [[SKTableViewDataSource alloc] initWithSortSelector:@selector(height) options:dictionary];
-        
-//        [dataSource addFilter:dataFilter];
-        
+                
         self.tableView.dataSource = dataSource;
         
         self.title = @"Dudes";

@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "CollectionDefs.h"
 
-@interface SKCollectionDiff : NSObject {
+@interface SKCollectionDiff : NSObject <NSCopying> {
     NSMutableSet *addedObjects;
     NSMutableSet *deletedObjects;
 }
@@ -16,5 +16,7 @@
 - (void)setDiff:(SKCollectionDiff *)diff;
 - (void)addDiff:(SKCollectionDiff *)diff;
 + (SKCollectionDiff *)diff;
+- (void)addObject:(id)object;
+- (void)deleteObject:(id)object;
 
 @end

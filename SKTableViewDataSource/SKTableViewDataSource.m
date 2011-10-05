@@ -1,7 +1,8 @@
 #import "SKTableViewDataSource.h"
 
 @implementation SKTableViewDataSource
-@synthesize sortSelector, sectionOrderAscending, rowOrderAscending, target, tableViewInfo, currentDiff;
+@synthesize target, tableViewInfo;
+@dynamic sortSelector, sectionOrderAscending, rowOrderAscending;
 
 #pragma mark Private
 
@@ -39,7 +40,7 @@
 
 - (NSMutableSet *)objectsFromEntityName:(NSString *)entityName
                  inManagedObjectContext:(NSManagedObjectContext *)context
-                   predicateFilterIfAny:(SKDataFilter *)predicateFilter {
+                   predicateFilterIfAny:(SKDataFilter *)predicateFilter {    
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
     [fetchRequest setEntity:entityDescription];
@@ -88,7 +89,7 @@
 }
 
 - (NSSet *)displayedObjects {
-    return [NSSet setWithSet:[objects unfilteredObjects]];
+    return [NSSet setWithSet:[objects displayedObjects]];
 }
 
 #pragma mark Content Updating
@@ -100,7 +101,6 @@
         sectionOrderAscending = YES;
         rowOrderAscending = YES;
         shouldReloadDictionary = NO;
-        currentDiff = [[SKCollectionDiff alloc] initWithAddedObjects:[NSSet set] deletedObjects:[NSSet set]];
     }
     
     return self;
@@ -108,8 +108,8 @@
 
 - (id)initWithSet:(NSSet *)initialObjects {
     if ((self = [self init])) {
-        [currentDiff addDiff:[SKCollectionDiff diffWithAddedObjects:initialObjects deletedObjects:[NSSet set]]];
-        [objects addObjectsFromArray:[initialObjects allObjects]];
+        [self setObjects:initialObjects];
+//        [objects addObjectsFromArray:[initialObjects allObjects]];
         
         shouldReloadDictionary = YES;
     }
@@ -135,8 +135,7 @@
 }
 
 - (void)setObjects:(NSSet *)newObjects {
-    [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:[objects allObjects] newObjects:newObjects]];
-    [objects submitDiff:currentDiff];
+    [objects setObjects:newObjects];
     
     [self contentUpdated];
     
@@ -172,7 +171,7 @@
             } else if (key == @"entityName" || key == @"fetchRequest") {
                 if (!context) {
                     NSException *contextException = [NSException exceptionWithName:@"@\"context\" should be a key in the options dictionary"
-                                                                            reason:@"You passed in an entityName or fetchRequest without specifying a context"
+                                                                            reason:@"You passed in an entityName or fetchRequest without specifying an NSManagedObjectContext."
                                                                           userInfo:nil];
                     [contextException raise];
                 }
@@ -186,8 +185,7 @@
     }
 }
 
-- (void)addObject:(id)anObject {
-    [currentDiff.addedObjects addObject:anObject];
+- (void)addObject:(id)anObject { 
     [objects addObject:anObject];
     
     [self contentUpdated];
@@ -197,7 +195,6 @@
 }
 
 - (void)deleteObject:(id)anObject {
-    [currentDiff.deletedObjects addObject:anObject];
     [objects removeObject:anObject];
     
     [self contentUpdated];
@@ -215,15 +212,14 @@
     return retVal;
 }
 
-- (void)removeFilteredObjects {
-    [objects removeFilteredObjects];
+- (void)removeHiddenObjects {
+    [objects removeHiddenObjects];
 }
 
 - (void)dealloc {
     [objects release];
     [tableViewInfo release];
     [target release];
-    [currentDiff release];
     
     [super dealloc];
 }
@@ -231,21 +227,14 @@
 #pragma mark Filtering Objects
 
 - (void)addFilter:(SKDataFilter *)filter {
-    NSSet *old = [objects unfilteredObjects];
     [objects addFilter:filter];
-    NSSet *new = [objects unfilteredObjects];
     
-    [currentDiff addDiff:[SKCollectionDiff diffWithOldObjects:old newObjects:new]];
     shouldReloadDictionary = YES;
 }
 
 - (void)removeFilter:(SKDataFilter *)filter {
-    NSSet *old = [objects unfilteredObjects];
     [objects removeFilter:filter];
-    NSSet *new = [objects unfilteredObjects];
     
-    SKCollectionDiff *diff = [SKCollectionDiff diffWithOldObjects:old newObjects:new];
-    [currentDiff addDiff:diff];
     shouldReloadDictionary = YES;
 }
 
@@ -262,7 +251,7 @@
         [exc raise];
     }
     
-    for (id object in currentDiff.addedObjects) {
+    for (id object in objects.filteredDiff.addedObjects) {
         if (![object respondsToSelector:sortSelector]) {
             NSException *exception = [NSException exceptionWithName:@"Objects should respond to your sortSelector"
                                                              reason:[NSString stringWithFormat:@"The following object doesn't respond to your sortSelector (%@): %@", NSStringFromSelector(sortSelector), object]
@@ -280,9 +269,9 @@
         }
     }
     
-    for (id deleteObject in currentDiff.deletedObjects) {        
+    for (id deleteObject in objects.filteredDiff.deletedObjects) {        
         NSMutableSet *set = [tableViewInfo objectsForIdentifier:[deleteObject performSelector:sortSelector]];
-                
+        
         [set removeObject:deleteObject];
         
         if ([set count] == 0) {
@@ -291,7 +280,7 @@
     }
     
     shouldReloadDictionary = NO;
-    [currentDiff setDiff:[SKCollectionDiff diff]];
+    [objects setFilteredDiff:[SKCollectionDiff diff]];
     
     return tableViewInfo;
 }

@@ -1,118 +1,159 @@
 #import "SKFilteredSet.h"
 
 @implementation SKFilteredSet
-@synthesize ignoresFilters;
+@synthesize filteredDiff;
 
-#pragma mark Initializers (and dealloc)
+#pragma mark Initializers
 
 - (id)init {
-    if ((self = [super init])) {
-        filterData      = [[NSMutableDictionary alloc] init];
-        allObjects      = [[NSMutableSet alloc] init];
-        filteredObjects = [[NSMutableSet alloc] init];
-        ignoresFilters  = NO;
-        
-        shouldReloadObjects = NO;
+    self = [super init];
+    if (self) {
+        filters = [[NSMutableSet alloc] init];
+        objects = [[NSMutableArray alloc] init];
+        filteredDiff = [[SKCollectionDiff alloc] init];
     }
-    
-    return self;
-}
-
-- (id)initWithPredicateFilter:(SKDataFilter *)filter objects:(NSSet *)objects {
-    if ((self = [self init])) {
-        [self setObjectsWithPredicateFilter:filter objects:objects];
-    }
-    
     return self;
 }
 
 - (void)dealloc {
-    [filterData release];
-    [allObjects release];
-    [filteredObjects release];
-    
+    [filters release];
+    [objects release];
+    [filteredDiff release];
+        
     [super dealloc];
 }
 
-#pragma mark Property Overrides
-
-- (NSMutableSet *)filteredObjects {
-    if (!shouldReloadObjects) {
-        return [NSMutableSet setWithSet:filteredObjects];
+- (id)initWithObjects:(id)firstObject, ...
+{
+    if ((self = [super init])) {
+        NSMutableSet *set = [NSMutableSet set];
+        
+        va_list args;
+        va_start(args, firstObject);
+        
+        for (id arg = firstObject; arg != nil; arg = va_arg(args, id))
+        {
+            [set addObject:arg];
+        }
+        va_end(args);
+        
+        [self setObjects:set];
     }
     
-    [filteredObjects removeAllObjects];
+    return self;
+}
+
+- (id)initWithObjects:(NSSet *)newObjects predicateFilter:(SKDataFilter *)predicateFilter {
+    if ((self = [self init])) {
+        [self setObjects:newObjects predicateFilter:predicateFilter];
+    }
+
+    return self;
+}
+
+
+#pragma mark Getting Data
+
+- (NSSet *)displayedObjects {    
+    NSMutableSet *set = [NSMutableSet set];
+    
+    for (id object in objects) {
+        if ([self filtersMatchObject:object]) {
+            [set addObject:object];
+        }
+    }
         
-    for (id object in allObjects) {
-        for (SKDataFilter *filter in [filterData allKeys]) {
+    return [NSSet setWithSet:set];
+}
+
+- (NSSet *)hiddenObjects {
+    NSMutableSet *set = [NSMutableSet set];
+    
+    for (id object in objects) {
+        if (![self filtersMatchObject:object]) {
+            [set addObject:object];
+        }
+    }
+    
+    return [NSSet setWithSet:set];
+}
+
+- (NSSet *)allObjects {
+    return [NSSet setWithArray:objects];
+}
+
+- (NSSet *)filters {
+    return [NSSet setWithSet:filters];
+}
+
+- (BOOL)filtersMatchObject:(id)object {
+    if ([filters count] > 0) {
+        for (SKDataFilter *filter in filters) {
             if (![filter matchesObject:object]) {
-                [filteredObjects addObject:object];
-                break;
+                return NO;
             }
         }
     }
     
-    shouldReloadObjects = NO;
-    
-    return filteredObjects;
+    return YES;
 }
 
-#pragma mark Getting Objects
-
-- (NSSet *)unfilteredObjects {
-    if (ignoresFilters) {
-        return [NSSet setWithSet:allObjects];
-    }
-    
-    NSMutableSet *unfilteredObjects = [NSMutableSet setWithSet:allObjects];
-    
-    for (id object in self.filteredObjects) {
-        [unfilteredObjects removeObject:object];
-    }
-    
-    return [NSSet setWithSet:unfilteredObjects];
-}
-
-- (NSSet *)allObjects {
-    return [NSSet setWithSet:allObjects];
-}
 
 #pragma mark Managing Objects
 
-- (void)addObject:(id)object {
-    [allObjects addObject:object];
+- (void)setObjects:(NSSet *)newObjects predicateFilter:(SKDataFilter *)filter {
+    NSMutableSet *filteredNewObjects = [NSMutableSet set];
     
-    shouldReloadObjects = YES;
+    for (id object in newObjects) {
+        if ([self filtersMatchObject:object] && (!filter || [filter matchesObject:object])) {
+            [filteredNewObjects addObject:object];
+        }
+    }
+    
+    [self.filteredDiff addDiff:[SKCollectionDiff diffWithOldObjects:[self displayedObjects] newObjects:filteredNewObjects]];
+    
+    [objects setArray:[filteredNewObjects allObjects]];
+    
+    NSLog(@"%@", self.filteredDiff);
 }
 
-- (void)addObjectsFromArray:(NSArray *)array {
-    [allObjects addObjectsFromArray:array];
+- (void)setObjects:(NSSet *)newObjects {
+    [self setObjects:newObjects predicateFilter:nil];
+}
+
+- (void)addObject:(id)object {
+    if ([self filtersMatchObject:object]) {
+        [filteredDiff.addedObjects addObject:object];
+    }
     
-    shouldReloadObjects = YES;
+    [objects addObject:object];
 }
 
 - (void)removeObject:(id)object {
-    [allObjects removeObject:object];
+    if ([self filtersMatchObject:object]) {
+        [filteredDiff.deletedObjects addObject:object];
+    }
     
-    shouldReloadObjects = YES;
+    [objects removeObject:object];
+}
+
+- (void)addObjectsFromArray:(NSArray *)array {
+    for (id object in array) {
+        [self addObject:object];
+    }
 }
 
 - (void)removeAllObjects {
-    [allObjects removeAllObjects];
-}
-
-- (void)removeFilteredObjects {
-    [allObjects setSet:[self unfilteredObjects]];
-    [filteredObjects setSet:[NSSet set]];
+    NSSet *set = [NSSet setWithSet:self.displayedObjects];
     
-    shouldReloadObjects = YES;
+    for (id object in set) {
+        [filteredDiff.deletedObjects setSet:set];
+    }
 }
 
-- (void)setObjectsWithPredicateFilter:(SKDataFilter *)filter objects:(NSSet *)objects {
-    for (id object in objects) {
-        if ([filter matchesObject:object]) {
-            [allObjects addObject:object];
-        }
+- (void)removeHiddenObjects {
+    for (id object in [self hiddenObjects]) {
+        [objects removeObject:object];
     }
 }
 
@@ -120,19 +161,29 @@
 #pragma mark Filter Actions
 
 - (void)addFilter:(SKDataFilter *)filter {
-    [filterData setObject:[filter setWithObjects:allObjects] forKey:filter];
+    [filters addObject:filter];
     
-    shouldReloadObjects = YES;
+    for (id object in self.displayedObjects) {
+        if (![self filtersMatchObject:object]) {
+            [filteredDiff.deletedObjects addObject:object];
+        }
+    }
 }
 
 - (void)removeFilter:(SKDataFilter *)filter {
-    for (SKDataFilter *key in [filterData allKeys]) {
-        if ([key isEqual:filter]) {
-            [filterData removeObjectForKey:key];
+    [filters removeObject:filter];
+    
+    for (id object in [self hiddenObjects]) {
+        if ([self filtersMatchObject:object]) {
+            [filteredDiff.addedObjects addObject:object];
         }
     }
+}
+
+- (void)removeAllFilters {
+    [filters removeAllObjects];
     
-    shouldReloadObjects = YES;
+    [filteredDiff.addedObjects addObjectsFromArray:[[self hiddenObjects] allObjects]];
 }
 
 @end

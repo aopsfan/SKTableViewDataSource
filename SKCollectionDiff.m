@@ -82,11 +82,61 @@
     return [SKCollectionDiff diffWithAddedObjects:[NSSet set] deletedObjects:[NSSet set]];
 }
 
+- (void)addObject:(id)object {
+    if ([self.deletedObjects containsObject:object]) {
+        [self.deletedObjects removeObject:object];
+    } else {
+        [self.addedObjects addObject:object];
+    }
+}
+
+- (void)deleteObject:(id)object {
+    if ([self.addedObjects containsObject:object]) {
+        [self.addedObjects removeObject:object];
+    } else {
+        [self.deletedObjects addObject:object];
+    }    
+}
+
 - (void)dealloc {
     [addedObjects release];
     [deletedObjects release];
     
     [super dealloc];
+}
+
+#pragma mark Property overrides
+
+- (void)setAddedObjects:(NSMutableSet *)newAddedObjects {
+    for (id object in newAddedObjects) {
+        if ([self.deletedObjects containsObject:object]) {
+            [self.deletedObjects removeObject:object];
+        } else {
+            [self.addedObjects addObject:object];
+        }
+    }
+}
+
+- (void)setDeletedObjects:(NSMutableSet *)newDeletedObjects {
+    for (id object in newDeletedObjects) {
+        if ([self.addedObjects containsObject:object]) {
+            [self.addedObjects removeObject:object];
+        } else {
+            [self.deletedObjects addObject:object];
+        }
+    }
+}
+
+#pragma mark Logging
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"SKCollectionDiff %@: addedObjects = %@, deletedObjects = %@", [super description], self.addedObjects, self.deletedObjects];
+}
+
+#pragma mark NSCopying Protocol
+
+- (id)copyWithZone:(NSZone *)zone {
+    return [[SKCollectionDiff alloc] initWithAddedObjects:self.addedObjects deletedObjects:self.deletedObjects];
 }
 
 @end
