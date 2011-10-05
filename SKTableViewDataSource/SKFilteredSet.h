@@ -1,39 +1,43 @@
 #import <Foundation/Foundation.h>
 #import "SKDataFilter.h"
+#import "SKCollectionDiff.h"
 
 @interface SKFilteredSet : NSObject {
-    NSMutableDictionary *filterData;
-    NSMutableSet *allObjects;
-    NSMutableSet *filteredObjects;
-    BOOL ignoresFilters;
+    NSMutableSet *filters;
+    NSMutableArray *objects;
     
-    BOOL shouldReloadObjects;
+    SKCollectionDiff *filteredDiff;
 }
 
-@property (readonly) NSMutableSet *filteredObjects;
-@property BOOL ignoresFilters;
+@property (nonatomic, copy) SKCollectionDiff *filteredDiff;
 
 #pragma mark Initializers
 
-- (id)initWithPredicateFilter:(SKDataFilter *)filter objects:(NSSet *)objects;
+- (id)initWithObjects:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
+- (id)initWithObjects:(NSSet *)newObjects predicateFilter:(SKDataFilter *)predicateFilter;
 
-#pragma mark Getting Objects
+#pragma mark Getting Data
 
-- (NSSet *)unfilteredObjects;
+- (NSSet *)displayedObjects;
+- (NSSet *)hiddenObjects;
 - (NSSet *)allObjects;
+- (NSSet *)filters;
+- (BOOL)filtersMatchObject:(id)object;
 
 #pragma mark Managing Objects
 
+- (void)setObjects:(NSSet *)newObjects predicateFilter:(SKDataFilter *)filter;
+- (void)setObjects:(NSSet *)newObjects;
 - (void)addObject:(id)object;
-- (void)addObjectsFromArray:(NSArray *)array;
 - (void)removeObject:(id)object;
+- (void)addObjectsFromArray:(NSArray *)array;
 - (void)removeAllObjects;
-- (void)removeFilteredObjects;
-- (void)setObjectsWithPredicateFilter:(SKDataFilter *)filter objects:(NSSet *)objects;
+- (void)removeHiddenObjects;
 
 #pragma mark Filter Actions
 
 - (void)addFilter:(SKDataFilter *)filter;
 - (void)removeFilter:(SKDataFilter *)filter;
+- (void)removeAllFilters;
 
 @end

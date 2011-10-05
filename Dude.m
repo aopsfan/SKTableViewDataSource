@@ -50,6 +50,10 @@
     return initial;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"name is %@, height is %i", self.name, [self.height intValue]];
+}
+
 @end
 
 
