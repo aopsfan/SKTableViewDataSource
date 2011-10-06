@@ -2,7 +2,6 @@
 
 @implementation SKTableViewDataSource
 @synthesize target, tableViewInfo;
-@dynamic sortSelector, sectionOrderAscending, rowOrderAscending;
 
 #pragma mark Private
 
@@ -291,16 +290,28 @@
     shouldReloadDictionary = YES;
 }
 
+- (SEL)sortSelector {
+    return sortSelector;
+}
+
 - (void)setRowOrderAscending:(BOOL)newRowOrderAscending {
     rowOrderAscending = newRowOrderAscending;
     
     shouldReloadDictionary = YES;
 }
 
+- (BOOL)rowOrderAscending {
+    return rowOrderAscending;
+}
+
 - (void)setSectionOrderAscending:(BOOL)newSectionOrderAscending {
     sectionOrderAscending = newSectionOrderAscending;
     
     shouldReloadDictionary = YES;
+}
+
+- (BOOL)sectionOrderAscending {
+    return sectionOrderAscending;
 }
 
 #pragma mark Table View Management
