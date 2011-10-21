@@ -113,8 +113,6 @@
     [self.filteredDiff addDiff:[SKCollectionDiff diffWithOldObjects:[self displayedObjects] newObjects:filteredNewObjects]];
     
     [objects setArray:[filteredNewObjects allObjects]];
-    
-    NSLog(@"%@", self.filteredDiff);
 }
 
 - (void)setObjects:(NSSet *)newObjects {
