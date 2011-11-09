@@ -39,6 +39,7 @@
 
 - (NSSet *)allObjects;
 - (NSSet *)displayedObjects;
+- (NSSet *)filters;
 
 #pragma mark Updating Content
 

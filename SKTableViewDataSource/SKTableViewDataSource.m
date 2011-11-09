@@ -92,6 +92,10 @@
     return [NSSet setWithSet:[objects displayedObjects]];
 }
 
+- (NSSet *)filters {
+    return [NSSet setWithSet:[objects filters]];
+}
+
 #pragma mark Content Updating
 
 - (id)init {
@@ -276,6 +280,8 @@
         
         if ([set count] == 0) {
             [tableViewInfo removeObjectsForIdentifier:[deleteObject performSelector:sortSelector]];
+        } else {
+            [tableViewInfo setObjects:set forIdentifier:[deleteObject performSelector:sortSelector]];
         }
     }
     

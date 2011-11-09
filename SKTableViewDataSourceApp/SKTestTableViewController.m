@@ -21,12 +21,13 @@
         
         SKDataFilter *dataFilter = [SKDataFilter where:@"height" isNotEqualTo:[NSNumber numberWithInt:83]];
         
-        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    data, [SKOptionKeys objectsOption],
-                                    self, [SKOptionKeys targetOption],
-                                    dataFilter, [SKOptionKeys predicateFilterOption], nil];
+        dataSource = [[SKTableViewDataSource alloc] init];
         
-        dataSource = [[SKTableViewDataSource alloc] initWithSortSelector:@selector(height) options:dictionary];
+        [dataSource setSortSelector:@selector(height)];
+        [dataSource setObjects:data];
+        [dataSource setTarget:self];
+        [dataSource addFilter:dataFilter];
+        
                 
         self.tableView.dataSource = dataSource;
         

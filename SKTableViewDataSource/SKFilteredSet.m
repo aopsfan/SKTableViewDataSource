@@ -113,8 +113,6 @@
     [self.filteredDiff addDiff:[SKCollectionDiff diffWithOldObjects:[self displayedObjects] newObjects:filteredNewObjects]];
     
     [objects setArray:[filteredNewObjects allObjects]];
-    
-    NSLog(@"%@", self.filteredDiff);
 }
 
 - (void)setObjects:(NSSet *)newObjects {
@@ -161,19 +159,20 @@
 #pragma mark Filter Actions
 
 - (void)addFilter:(SKDataFilter *)filter {
-    [filters addObject:filter];
-    
-    for (id object in self.displayedObjects) {
-        if (![self filtersMatchObject:object]) {
+    for (id object in [self displayedObjects]) {
+        if (![filter matchesObject:object]) {
             [filteredDiff.deletedObjects addObject:object];
         }
     }
+        
+    [filters addObject:filter];
 }
 
 - (void)removeFilter:(SKDataFilter *)filter {
+    NSSet *hiddenObjects = [self hiddenObjects];
     [filters removeObject:filter];
     
-    for (id object in [self hiddenObjects]) {
+    for (id object in hiddenObjects) {
         if ([self filtersMatchObject:object]) {
             [filteredDiff.addedObjects addObject:object];
         }
