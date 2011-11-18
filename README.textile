@@ -11,14 +11,16 @@ h2. Compared to NSFetchedResultsController
 h2. Getting SKTableViewDataSource in your project
 
 @cd@ into your project directory and run <code>git clone git@github.com:aopsfan/SKTableViewDataSource.git</code>.
+Now run @cd SKTableViewDataSource@ and run @open .@.
 
 You'll notice that this repository comes with @SKTableViewDataSource@ itself, @SKTableViewController@ (a convenient subclass of @UITableViewController@), two dummy data models for testing (@Dude@ and @Transaction@), and three test projects; one uses @SKTableViewController@ for a very simple project; one is like the first except doesn't use @SKTableViewController@; and one is more complex, showing off Core Data integration and subclassing.
 
-Fire up both your project's @.xcodeproj@ and @SKTableViewDataSource.xcodeproj@. Drag the group titled "SKTableViewDataSource" over to your project (remember that this is a group, and the folder you will see in the Finder doesn't include all of the necessary tools). Uncheck the box that wants to copy files over; if copies are created, they will not be linked to this repo.
+Fire up your project's @.xcodeproj@. Drag the folders titled "SKTableViewDataSource" and "SKTableViewController" over to your project (remember that this is a group, and the folder you will see in the Finder doesn't include all of the necessary tools). Uncheck the box that wants to copy files over; if copies are created, they will not be linked to this repo.
 
-In Xcode 4, click on the big cell above all your files in the file viewer. Click on your application's _target_, not _project_. Then select "Build Phases" from the tab bar at the top of the view. Drag all of the @.m@ files in the SKTableViewDataSource group (and any sub-groups) over to "Compile Sources".
-
-When done, just import the @.h@ files you need and you're ready to go.
+Now drag the following classes (their @.h@ and @.m@ files) over to your project:
+@CollectionDefs@, 
+@SKCollectionDiff@, and
+@SKTableViewInfo@.
 
 h2. How it works
 
@@ -116,7 +118,7 @@ h3. cellForObject:
 
 If you're implementing the SKTableViewDataSource protocol (this is automatic when subclassing @SKTableViewController@), you can implement @- (UITableViewCell *)cellObject:(id)object@ instead of @tableView:cellForRowAtIndexPath:@. You can then replace your cell configuration lines with this one:
 
-<pre><code>cell.textLabel.text = [(Dude *)object name];<pre><code>
+<pre><code>cell.textLabel.text = [(Dude *)object name];</code></pre>
 
 h3. Ascending and Descending
 
