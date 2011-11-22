@@ -13,6 +13,7 @@
 
 - (void)setObjects:(NSSet *)objects forIdentifier:(id)identifier;
 - (void)removeObjectsForIdentifier:(id)identifier;
+- (void)removeAllData;
 - (void)log;
 
 @end

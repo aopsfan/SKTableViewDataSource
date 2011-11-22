@@ -37,6 +37,10 @@
     [dictionary removeObjectForKey:identifier];
 }
 
+- (void)removeAllData {
+    [dictionary removeAllObjects];
+}
+
 - (void)log {
     NSLog(@"instance is %@", self);
     NSLog(@"dictionary is %@", dictionary);

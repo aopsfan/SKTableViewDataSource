@@ -109,4 +109,13 @@
     [dataSource setObjects:[NSSet setWithArray:objects]];
 }
 
+- (void)testReloadData {
+    emily.height = [NSNumber numberWithInt:80];
+    [dataSource reloadData];
+    
+    NSInteger count = [[dataSource.tableViewInfo objectsForIdentifier:emily.height] count];
+    
+    STAssertTrue(count == 1, @"You have count = %i, you should have 1", count);
+}
+
 @end

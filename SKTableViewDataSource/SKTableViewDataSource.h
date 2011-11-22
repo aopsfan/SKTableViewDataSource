@@ -52,6 +52,7 @@
 - (void)deleteObject:(id)anObject;
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removeHiddenObjects;
+- (void)reloadData;
 
 #pragma mark Filtering Objects
 

@@ -219,6 +219,33 @@
     [objects removeHiddenObjects];
 }
 
+- (void)reloadData {
+    if (!sortSelector) {
+        NSException *exc = [NSException exceptionWithName:@"sortSelector should not be null" reason:[NSString stringWithFormat:@"Your sortSelector for the following instance of SKTableViewDataSource is null: %@", self] userInfo:nil];
+        [exc raise];
+    }
+    
+    [tableViewInfo removeAllData];
+    
+    for (id object in [objects displayedObjects]) {
+        if (![object respondsToSelector:sortSelector]) {
+            NSException *exception = [NSException exceptionWithName:@"Objects should respond to your sortSelector"
+                                                             reason:[NSString stringWithFormat:@"The following object doesn't respond to your sortSelector (%@): %@", NSStringFromSelector(sortSelector), object]
+                                                           userInfo:nil];
+            [exception raise];
+        }
+        if (![tableViewInfo objectsForIdentifier:[object performSelector:sortSelector]]) {
+            [tableViewInfo setObjects:[NSSet setWithObject:object]
+                        forIdentifier:[object performSelector:sortSelector]];
+        } else {
+            NSMutableSet *tempObjects = [NSMutableSet setWithSet:[tableViewInfo objectsForIdentifier:[object performSelector:sortSelector]]];
+            [tempObjects addObject:object];
+            [tableViewInfo setObjects:[NSSet setWithSet:tempObjects]
+                        forIdentifier:[object performSelector:sortSelector]];
+        }
+    }
+}
+
 - (void)dealloc {
     [objects release];
     [tableViewInfo release];
@@ -240,7 +267,6 @@
     
     shouldReloadDictionary = YES;
 }
-
 
 #pragma mark Property overrides
 
