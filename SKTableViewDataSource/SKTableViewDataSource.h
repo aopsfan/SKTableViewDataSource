@@ -2,8 +2,10 @@
 #import "SKCollectionDiff.h"
 #import "SKTableViewInfo.h"
 #import "SKFilteredSet.h"
+#import "SKOptionKeys.h"
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <AvailabilityMacros.h>
 
 @protocol SKTableViewDataSource <NSObject>
 @optional
@@ -45,9 +47,11 @@
 
 - (id)initWithSet:(NSSet *)initialObjects;
 - (id)initWithSet:(NSSet *)initialObjects target:(id)aTarget;
-- (id)initWithSortSelector:(SEL)aSortSelector options:(NSDictionary *)options;
+- (id)initWithSortSelector:(SEL)aSortSelector options:(NSDictionary *)options DEPRECATED_ATTRIBUTE;
+- (id)initWithSortSelector:(SEL)aSortSelector optionKeys:(SKOptionKeys *)optionKeys;
 - (void)setObjects:(NSSet *)newObjects;
-- (void)setObjectsWithOptions:(NSDictionary *)options;
+- (void)setObjectsWithOptions:(NSDictionary *)options DEPRECATED_ATTRIBUTE;
+- (void)setObjectsWithOptionKeys:(SKOptionKeys *)optionKeys;
 - (void)addObject:(id)anObject;
 - (void)deleteObject:(id)anObject;
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;

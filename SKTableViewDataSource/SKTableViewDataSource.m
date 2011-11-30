@@ -137,6 +137,15 @@
     return self;
 }
 
+- (id)initWithSortSelector:(SEL)aSortSelector optionKeys:(SKOptionKeys *)optionKeys {
+    if ((self = [self init])) {
+        sortSelector = aSortSelector;
+        [self setObjectsWithOptionKeys:optionKeys];
+    }
+    
+    return self;
+}
+
 - (void)setObjects:(NSSet *)newObjects {
     [objects setObjects:newObjects];
     
@@ -185,6 +194,37 @@
                 target = [options objectForKey:key];
             }
         }
+    }
+}
+
+- (void)setObjectsWithOptionKeys:(SKOptionKeys *)optionKeys {
+    if (optionKeys.objectOptionsCount > 1) {
+        NSException *exc = [NSException exceptionWithName:@"There should be at least 1 way to store objects"
+                                                   reason:[NSString stringWithFormat:
+                                                           @"You have provided %i options to store objects in the following SKOptionKeys instance: %@",
+                                                           optionKeys.objectOptionsCount, optionKeys] userInfo:nil];
+        [exc raise];
+    }
+    
+    if ((optionKeys.entityName || optionKeys.fetchRequest) && !optionKeys.managedObjectContext) {
+        NSException *contextException = [NSException exceptionWithName:@"@\"context\" should be in the option keys"
+                                                                reason:@"You passed in an entityName or fetchRequest without specifying an NSManagedObjectContext."
+                                                              userInfo:nil];
+        [contextException raise];
+    }
+    
+    if (optionKeys.objects) {
+        [self setObjects:optionKeys.objects];
+    } else if (optionKeys.entityName) {
+        NSArray *coreDataOptions = [NSArray arrayWithObjects:optionKeys.entityName, optionKeys.managedObjectContext, nil];
+        [self setObjectsWithCoreDataOptions:coreDataOptions predicateFilterIfAny:optionKeys.predicateFilter]; 
+    } else if (optionKeys.fetchRequest) {
+        NSArray *coreDataOptions = [NSArray arrayWithObjects:optionKeys.fetchRequest, optionKeys.managedObjectContext, nil];
+        [self setObjectsWithCoreDataOptions:coreDataOptions predicateFilterIfAny:optionKeys.predicateFilter]; 
+    }
+    
+    if (optionKeys.target) {
+        self.target = optionKeys.target;
     }
 }
 

@@ -33,13 +33,14 @@
         
         NSDate *date = [[NSDate dateWithTimeIntervalSinceNow:-86400] dateWithoutTime];
         SKDataFilter *pFilter = [SKDataFilter where:@"displayableDate" isNotEqualTo:date];
-                
+        
+        SKOptionKeys *optionKeys = [[SKOptionKeys alloc] init];
+        optionKeys.entityName = [@"Transaction" mutableCopy];
+        optionKeys.managedObjectContext = context;
+        optionKeys.target = self;
+        optionKeys.predicateFilter = pFilter;
         dataSource = [[TransactionDataSource alloc] initWithSortSelector:@selector(displayableDate)
-                                                                 options:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                          @"Transaction", [SKOptionKeys entityNameOption],
-                                                                          context       , [SKOptionKeys managedObjectContextOption],
-                                                                          self          , [SKOptionKeys targetOption],
-                                                                          pFilter       , [SKOptionKeys predicateFilterOption], nil]];
+                                                              optionKeys:optionKeys];
         
         dataSource.sortSelector = @selector(displayableDate);
         dataSource.sectionOrderAscending = NO;
