@@ -121,6 +121,12 @@
 		10E8049713452C86001F253F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8049613452C86001F253F /* UIKit.framework */; };
 		10ED2056138FF7F500DEC984 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
 		10ED2057138FF7FB00DEC984 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
+		10EEF95D14898B2F00C2199B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EEF95B14898B2F00C2199B /* Icon.png */; };
+		10EEF95E14898B2F00C2199B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EEF95C14898B2F00C2199B /* Icon@2x.png */; };
+		10EEF96214898BA900C2199B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EEF96014898BA900C2199B /* Icon.png */; };
+		10EEF96314898BA900C2199B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EEF96114898BA900C2199B /* Icon@2x.png */; };
+		10EEF96614898C5D00C2199B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EEF96414898C5D00C2199B /* Icon.png */; };
+		10EEF96714898C5D00C2199B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EEF96514898C5D00C2199B /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +216,12 @@
 		10E8049113452C0B001F253F /* SKTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SKTableViewDataSource.h; sourceTree = "<group>"; };
 		10E8049213452C0B001F253F /* SKTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SKTableViewDataSource.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		10E8049613452C86001F253F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		10EEF95B14898B2F00C2199B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		10EEF95C14898B2F00C2199B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		10EEF96014898BA900C2199B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		10EEF96114898BA900C2199B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		10EEF96414898C5D00C2199B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		10EEF96514898C5D00C2199B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +295,8 @@
 		102048E81356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp */ = {
 			isa = PBXGroup;
 			children = (
+				10EEF96014898BA900C2199B /* Icon.png */,
+				10EEF96114898BA900C2199B /* Icon@2x.png */,
 				102048F11356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.h */,
 				102048F21356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.m */,
 				102048F41356430F00F1CF43 /* MainWindow.xib */,
@@ -350,6 +364,8 @@
 		108A6D891355264800B9AAC4 /* SKTableViewDataSourceApp */ = {
 			isa = PBXGroup;
 			children = (
+				10EEF96414898C5D00C2199B /* Icon.png */,
+				10EEF96514898C5D00C2199B /* Icon@2x.png */,
 				108A6D921355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.h */,
 				108A6D931355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.m */,
 				108A6D951355264800B9AAC4 /* MainWindow.xib */,
@@ -405,6 +421,8 @@
 		10B88B521386A3E300B76488 /* SKTableViewControllerApp */ = {
 			isa = PBXGroup;
 			children = (
+				10EEF95B14898B2F00C2199B /* Icon.png */,
+				10EEF95C14898B2F00C2199B /* Icon@2x.png */,
 				10B88B5B1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.h */,
 				10B88B5C1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.m */,
 				10B88B5E1386A3E300B76488 /* MainWindow.xib */,
@@ -701,6 +719,8 @@
 			files = (
 				102048ED1356430F00F1CF43 /* InfoPlist.strings in Resources */,
 				102048F61356430F00F1CF43 /* MainWindow.xib in Resources */,
+				10EEF96214898BA900C2199B /* Icon.png in Resources */,
+				10EEF96314898BA900C2199B /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,6 +730,8 @@
 			files = (
 				108A6D8E1355264800B9AAC4 /* InfoPlist.strings in Resources */,
 				108A6D971355264800B9AAC4 /* MainWindow.xib in Resources */,
+				10EEF96614898C5D00C2199B /* Icon.png in Resources */,
+				10EEF96714898C5D00C2199B /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +741,8 @@
 			files = (
 				10B88B571386A3E300B76488 /* InfoPlist.strings in Resources */,
 				10B88B601386A3E300B76488 /* MainWindow.xib in Resources */,
+				10EEF95D14898B2F00C2199B /* Icon.png in Resources */,
+				10EEF95E14898B2F00C2199B /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

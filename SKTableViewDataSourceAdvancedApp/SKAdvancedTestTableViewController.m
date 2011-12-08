@@ -34,7 +34,7 @@
         NSDate *date = [[NSDate dateWithTimeIntervalSinceNow:-86400] dateWithoutTime];
         SKDataFilter *pFilter = [SKDataFilter where:@"displayableDate" isNotEqualTo:date];
         
-        SKOptionKeys *optionKeys = [[SKOptionKeys alloc] init];
+        SKOptionKeys *optionKeys = [[[SKOptionKeys alloc] init] autorelease];
         optionKeys.entityName = [@"Transaction" mutableCopy];
         optionKeys.managedObjectContext = context;
         optionKeys.target = self;
