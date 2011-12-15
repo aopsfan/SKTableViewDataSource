@@ -13,9 +13,7 @@
     
     [context save:nil];
     
-    [dataSource addObject:transaction];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[dataSource indexPathForObject:transaction]]
-                          withRowAnimation:UITableViewRowAnimationTop];
+    [dataSource addObject:transaction updateTable:YES];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style context:(NSManagedObjectContext *)aContext
@@ -44,6 +42,9 @@
         
         dataSource.sortSelector = @selector(displayableDate);
         dataSource.sectionOrderAscending = NO;
+        dataSource.tableView = self.tableView;
+        dataSource.editingStyleInsertRowAnimation = UITableViewRowAnimationRight;
+        dataSource.editingStyleDeleteRowAnimation = UITableViewRowAnimationLeft;
         
         self.tableView.dataSource = dataSource;
         
@@ -98,14 +99,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        BOOL shouldDeleteSection = [dataSource deleteObjectAtIndexPath:indexPath];
-        
-        if (shouldDeleteSection) {
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]
-                          withRowAnimation:YES];
-        } else {
-            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-        }
+        [dataSource deleteObjectAtIndexPath:indexPath updateTable:YES];
         
         NSError *error = nil;
         [context save:&error];

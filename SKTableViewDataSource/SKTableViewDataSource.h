@@ -24,18 +24,24 @@
     
     BOOL sectionOrderAscending;
     BOOL rowOrderAscending;
+    UITableViewRowAnimation editingStyleDeleteRowAnimation;
+    UITableViewRowAnimation editingStyleInsertRowAnimation;
     SEL sortSelector;
     
     BOOL shouldReloadDictionary;
     
     id<SKTableViewDataSource, UITableViewDataSource> target;
+    UITableView *tableView;
 }
 
 @property (readonly) SKTableViewInfo *tableViewInfo;
 @property BOOL sectionOrderAscending;
 @property BOOL rowOrderAscending;
+@property UITableViewRowAnimation editingStyleDeleteRowAnimation;
+@property UITableViewRowAnimation editingStyleInsertRowAnimation;
 @property SEL sortSelector;
 @property (nonatomic, retain) id target;
+@property (nonatomic, retain) UITableView *tableView;
 
 #pragma mark Data
 
@@ -53,10 +59,15 @@
 - (void)setObjectsWithOptions:(NSDictionary *)options DEPRECATED_ATTRIBUTE;
 - (void)setObjectsWithOptionKeys:(SKOptionKeys *)optionKeys;
 - (void)addObject:(id)anObject;
+- (void)addObject:(id)anObject updateTable:(BOOL)updateTable;
 - (void)deleteObject:(id)anObject;
+- (void)deleteObject:(id)anObject updateTable:(BOOL)updateTable;
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;
+- (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath updateTable:(BOOL)updateTable;
 - (void)removeHiddenObjects;
 - (void)reloadData;
+
+// more updateTable methods coming soon
 
 #pragma mark Filtering Objects
 

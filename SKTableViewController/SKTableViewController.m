@@ -6,6 +6,7 @@
     if ((self = [super init])) {
         dataSource = [[SKTableViewDataSource alloc] initWithSet:[NSSet set] target:self];
         self.tableView.dataSource = dataSource;
+        dataSource.tableView = self.tableView;
     }
     
     return self;
