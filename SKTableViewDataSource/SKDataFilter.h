@@ -19,7 +19,7 @@ typedef enum {
 }
 
 @property SEL selector;
-@property (nonatomic, retain) id comparisonObject;
+@property (nonatomic, strong) id comparisonObject;
 @property SKDataFilterType filterType;
 @property SKDataFilterComparisonOperator comparisonOperator;
 

@@ -12,12 +12,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [dataSource release];
-    
-    [super dealloc];
-}
 
 #pragma mark - Table view data source
 
@@ -27,7 +21,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     return cell;

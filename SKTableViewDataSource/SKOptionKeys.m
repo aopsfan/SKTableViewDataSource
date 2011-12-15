@@ -13,35 +13,16 @@
 }
 
 - (void)dealloc {
-    if (objects) {
-        [objects release];
-    }
-    if (entityName) {
-        [entityName release];
-    }
-    if (fetchRequest) {
-        [fetchRequest release];
-    }
-    if (target) {
-        [target release];
-    }
-    if (managedObjectContext) {
-        [managedObjectContext release];
-    }
-    if (predicateFilter) {
-        [predicateFilter release];
-    }
     
     objectOptionsCount = 0;  
     
-    [super dealloc];
 }
 
 - (void)setObjects:(NSMutableSet *)someObjects {
     if (!objects) {
         objects = [[NSMutableSet alloc] init];
     }
-    objects = [someObjects retain];
+    objects = someObjects;
     
     objectOptionsCount++;
 }
@@ -50,7 +31,7 @@
     if (!entityName) {
         entityName = [[NSMutableString alloc] init];
     }
-    entityName = [anEntityName retain];
+    entityName = anEntityName;
     
     objectOptionsCount++;
 }
@@ -59,7 +40,7 @@
     if (!fetchRequest) {
         fetchRequest = [[NSFetchRequest alloc] init];
     }
-    fetchRequest = [aFetchRequest retain];
+    fetchRequest = aFetchRequest;
     
     objectOptionsCount++;
 }
@@ -68,21 +49,21 @@
     if (!target) {
         target = [[NSObject alloc] init];
     }
-    target = [aTarget retain];
+    target = aTarget;
 }
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)aManagedObjectContext {
     if (!managedObjectContext) {
         managedObjectContext = [[NSManagedObjectContext alloc] init];
     }
-    managedObjectContext = [aManagedObjectContext retain];
+    managedObjectContext = aManagedObjectContext;
 }
 
 - (void)setPredicateFilter:(SKDataFilter *)aPredicateFilter {
     if (!predicateFilter) {
         predicateFilter = [[SKDataFilter alloc] init];
     }
-    predicateFilter = [aPredicateFilter retain];
+    predicateFilter = aPredicateFilter;
 }
 
 + (NSString *)objectsOption {

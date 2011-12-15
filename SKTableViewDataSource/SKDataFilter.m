@@ -39,45 +39,45 @@
 }
 
 + (SKDataFilter *)where:(NSString *)selectorString isEqualTo:(id)value {
-    return [[[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
+    return [[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
                                   comparisonObject:value
                                         filterType:SKDataFilterTypeIncludeOnly
-                                comparisonOperator:SKDataFilterComparisonOperatorEquals] autorelease];
+                                comparisonOperator:SKDataFilterComparisonOperatorEquals];
 }
 
 + (SKDataFilter *)where:(NSString *)selectorString isNotEqualTo:(id)value {
-    return [[[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
+    return [[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
                                   comparisonObject:value
                                         filterType:SKDataFilterTypeExclude
-                                comparisonOperator:SKDataFilterComparisonOperatorEquals] autorelease];
+                                comparisonOperator:SKDataFilterComparisonOperatorEquals];
 }
 
 + (SKDataFilter *)where:(NSString *)selectorString isGreaterThan:(id)value {
-    return [[[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
+    return [[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
                                   comparisonObject:value
                                         filterType:SKDataFilterTypeIncludeOnly
-                                comparisonOperator:SKDataFilterComparisonOperatorGreaterThan] autorelease];
+                                comparisonOperator:SKDataFilterComparisonOperatorGreaterThan];
 }
 
 + (SKDataFilter *)where:(NSString *)selectorString isNotGreaterThan:(id)value {
-    return [[[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
+    return [[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
                                   comparisonObject:value
                                         filterType:SKDataFilterTypeExclude
-                                comparisonOperator:SKDataFilterComparisonOperatorGreaterThan] autorelease];
+                                comparisonOperator:SKDataFilterComparisonOperatorGreaterThan];
 }
 
 + (SKDataFilter *)where:(NSString *)selectorString isLessThan:(id)value {
-    return [[[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
+    return [[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
                                   comparisonObject:value
                                         filterType:SKDataFilterTypeIncludeOnly
-                                comparisonOperator:SKDataFilterComparisonOperatorLessThan] autorelease];
+                                comparisonOperator:SKDataFilterComparisonOperatorLessThan];
 }
 
 + (SKDataFilter *)where:(NSString *)selectorString isNotLessThan:(id)value {
-    return [[[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
+    return [[SKDataFilter alloc] initWithSelector:NSSelectorFromString(selectorString)
                                   comparisonObject:value
                                         filterType:SKDataFilterTypeExclude
-                                comparisonOperator:SKDataFilterComparisonOperatorLessThan] autorelease];
+                                comparisonOperator:SKDataFilterComparisonOperatorLessThan];
 }
 
 - (BOOL)matchesObject:(id)object {
@@ -106,8 +106,6 @@
     filterType = 0;
     comparisonOperator = 0;
     
-    [comparisonObject release];
-    [super dealloc];
 }
 
 @end

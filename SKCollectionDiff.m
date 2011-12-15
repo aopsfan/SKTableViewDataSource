@@ -24,13 +24,13 @@
 
 
 + (SKCollectionDiff *)diffWithAddedObjects:(NSSet *)added deletedObjects:(NSSet *)deleted {
-    SKCollectionDiff *diff = [[[SKCollectionDiff alloc] initWithAddedObjects:added deletedObjects:deleted] autorelease];
+    SKCollectionDiff *diff = [[SKCollectionDiff alloc] initWithAddedObjects:added deletedObjects:deleted];
     return diff;
 }
 
 - (id)initWithOldObjects:(NSSet *)oldObjects newObjects:(NSSet *)newObjects {
     if ((self = [self init])) {
-        NSMutableSet *commonObjects = [[[NSMutableSet alloc] init] autorelease];
+        NSMutableSet *commonObjects = [[NSMutableSet alloc] init];
         
         for (id object in oldObjects) {
             if ([newObjects containsObject:object]) {
@@ -51,7 +51,7 @@
 }
 
 + (SKCollectionDiff *)diffWithOldObjects:(NSSet *)oldObjects newObjects:(NSSet *)newObjects {
-    SKCollectionDiff *diff = [[[SKCollectionDiff alloc] initWithOldObjects:oldObjects newObjects:newObjects] autorelease];
+    SKCollectionDiff *diff = [[SKCollectionDiff alloc] initWithOldObjects:oldObjects newObjects:newObjects];
     return diff;
 }
 
@@ -98,12 +98,6 @@
     }    
 }
 
-- (void)dealloc {
-    [addedObjects release];
-    [deletedObjects release];
-    
-    [super dealloc];
-}
 
 #pragma mark Property overrides
 

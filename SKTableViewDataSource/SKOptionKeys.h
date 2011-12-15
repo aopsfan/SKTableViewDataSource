@@ -15,12 +15,12 @@
     NSUInteger objectOptionsCount;
 }
 
-@property (nonatomic, retain)NSMutableSet *objects;
-@property (nonatomic, retain)NSMutableString *entityName;
-@property (nonatomic, retain)NSFetchRequest *fetchRequest;
-@property (nonatomic, retain)NSObject *target;
-@property (nonatomic, retain)NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain)SKDataFilter *predicateFilter;
+@property (nonatomic, strong)NSMutableSet *objects;
+@property (nonatomic, strong)NSMutableString *entityName;
+@property (nonatomic, strong)NSFetchRequest *fetchRequest;
+@property (nonatomic, strong)NSObject *target;
+@property (nonatomic, strong)NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong)SKDataFilter *predicateFilter;
 @property (nonatomic, readonly)NSUInteger objectOptionsCount;
 
 + (NSString *)objectsOption DEPRECATED_ATTRIBUTE;

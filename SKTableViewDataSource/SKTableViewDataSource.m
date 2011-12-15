@@ -41,7 +41,7 @@
                  inManagedObjectContext:(NSManagedObjectContext *)context
                    predicateFilterIfAny:(SKDataFilter *)predicateFilter {    
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName inManagedObjectContext:context];
-    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDescription];
     
     return [self objectsFromFetchRequest:fetchRequest inManagedObjectContext:context predicateFilterIfAny:predicateFilter];
@@ -167,7 +167,7 @@
     NSManagedObjectContext *context = nil;
     
     if ([keys containsObject:@"managedObjectContext"]) {
-        context = [[(NSManagedObjectContext *)[options objectForKey:@"managedObjectContext"] retain] autorelease];
+        context = (NSManagedObjectContext *)[options objectForKey:@"managedObjectContext"];
     }
     
     if (objectOptionsCount > 1) {
@@ -331,14 +331,6 @@
     }
 }
 
-- (void)dealloc {
-    [objects release];
-    [tableViewInfo release];
-    [target release];
-    [tableView release];
-    
-    [super dealloc];
-}
 
 #pragma mark Filtering Objects
 

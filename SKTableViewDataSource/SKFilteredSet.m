@@ -15,13 +15,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [filters release];
-    [objects release];
-    [filteredDiff release];
-        
-    [super dealloc];
-}
 
 - (id)initWithObjects:(id)firstObject, ...
 {

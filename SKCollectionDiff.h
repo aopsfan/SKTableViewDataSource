@@ -6,8 +6,8 @@
     NSMutableSet *deletedObjects;
 }
 
-@property (nonatomic, retain)NSMutableSet *addedObjects;
-@property (nonatomic, retain)NSMutableSet *deletedObjects;
+@property (nonatomic, strong)NSMutableSet *addedObjects;
+@property (nonatomic, strong)NSMutableSet *deletedObjects;
 
 - (id)initWithAddedObjects:(NSSet *)added deletedObjects:(NSSet *)deleted;
 + (SKCollectionDiff *)diffWithAddedObjects:(NSSet *)added deletedObjects:(NSSet *)deleted;

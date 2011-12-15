@@ -11,11 +11,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [dictionary release];
-    
-    [super dealloc];
-}
 
 #pragma mark Data
 - (NSMutableSet *)objectsForIdentifier:(id)identifier {
@@ -29,7 +24,7 @@
 #pragma mark Actions
 
 - (void)setObjects:(NSSet *)objects forIdentifier:(id)identifier {
-    [dictionary setObject:[[objects mutableCopy] autorelease]
+    [dictionary setObject:[objects mutableCopy]
                    forKey:identifier];
 }
 

@@ -40,8 +40,8 @@
 @property UITableViewRowAnimation editingStyleDeleteRowAnimation;
 @property UITableViewRowAnimation editingStyleInsertRowAnimation;
 @property SEL sortSelector;
-@property (nonatomic, retain) id target;
-@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, strong) id target;
+@property (nonatomic, strong) UITableView *tableView;
 
 #pragma mark Data
 
