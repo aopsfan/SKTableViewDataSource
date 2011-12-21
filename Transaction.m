@@ -3,7 +3,7 @@
 @implementation NSDate (DateWithoutTime)
 
 - (NSDate *)dateWithoutTime {
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     
     NSString *dateString = [formatter stringFromDate:self];
@@ -16,7 +16,7 @@
 @dynamic title, price, date;
 
 + (void)createDefaults:(NSManagedObjectContext *)context {
-    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"Transaction" inManagedObjectContext:context]];
     NSArray *array = [context executeFetchRequest:request error:nil];
     

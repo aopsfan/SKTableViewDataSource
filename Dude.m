@@ -16,7 +16,7 @@
 }
 
 + (Dude *)dudeWithName:(NSString *)aName hairColor:(UIColor *)aHairColor height:(NSNumber *)aHeight {
-    Dude *dude = [[[Dude alloc] initWithName:aName hairColor:aHairColor height:aHeight] autorelease];
+    Dude *dude = [[Dude alloc] initWithName:aName hairColor:aHairColor height:aHeight];
     return dude;
 }
 
@@ -33,12 +33,6 @@
     }
     
     return comparisonResult;
-}
-
-- (void)dealloc {
-    [hairColor release];
-    
-    [super dealloc];
 }
 
 - (NSString *)initial {

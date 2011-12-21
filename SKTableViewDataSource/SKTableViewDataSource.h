@@ -6,6 +6,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import <AvailabilityMacros.h>
+#import "NSObject-Selector.h"
 
 @protocol SKTableViewDataSource <NSObject>
 @optional

@@ -3,8 +3,8 @@
 @implementation SKTableViewDataSourceCoreDataTests
 
 - (void)setUp {
-    model = [[NSManagedObjectModel mergedModelFromBundles:
-              [NSArray arrayWithObject:[NSBundle bundleWithIdentifier:@"com.aopsfan.SKTableViewDataSourceTests"]]] retain];
+    model = [NSManagedObjectModel mergedModelFromBundles:
+              [NSArray arrayWithObject:[NSBundle bundleWithIdentifier:@"com.aopsfan.SKTableViewDataSourceTests"]]];
     coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
     context = [[NSManagedObjectContext alloc] init];
     [context setPersistentStoreCoordinator:coordinator];

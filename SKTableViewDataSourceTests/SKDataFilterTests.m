@@ -5,7 +5,7 @@
 
 - (void)setUp {
     [super setUp];
-    heightFilter = [[SKDataFilter where:@"height" isGreaterThan:[NSNumber numberWithInt:67]] retain];
+    heightFilter = [SKDataFilter where:@"height" isGreaterThan:[NSNumber numberWithInt:67]];
     nameFilter   = [[SKDataFilter alloc] initWithSelector:@selector(name) comparisonObject:@"Michael Jordan"];
 }
 
@@ -33,7 +33,7 @@
 
 - (void)testPredicateFilter {
     SKDataFilter *dataFilter = [SKDataFilter where:@"name" isEqualTo:@"Bruce Young Ricketts"];
-    SKFilteredSet *set = [[[SKFilteredSet alloc] initWithObjects:[NSSet setWithArray:objects] predicateFilter:dataFilter] autorelease];
+    SKFilteredSet *set = [[SKFilteredSet alloc] initWithObjects:[NSSet setWithArray:objects] predicateFilter:dataFilter];
     NSUInteger count = [[set allObjects] count];
     
     STAssertTrue(count == 1, @"you have %i objects", count);

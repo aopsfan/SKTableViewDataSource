@@ -23,20 +23,4 @@
     dataSource.rowOrderAscending     = YES;
 }
 
-- (void)tearDown
-{
-    [dataSource release];
-    [objects release];
-    [emily release];
-    [bruce release];
-    [tom release];
-    [michael release];
-    [emilysTwin release];
-    [tomsTwin release];
-    [brucesTwin release];
-    [michaelsTwin release];
-    
-    [super tearDown];
-}
-
 @end

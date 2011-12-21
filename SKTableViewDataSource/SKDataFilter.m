@@ -81,7 +81,7 @@
 }
 
 - (BOOL)matchesObject:(id)object {
-    return ([[object performSelector:selector] compare:comparisonObject] == comparisonOperator) != filterType;
+    return ([[object arcPerformSelector:selector] compare:comparisonObject] == comparisonOperator) != filterType;
 }
 
 - (id)copyWithZone:(NSZone *)zone {

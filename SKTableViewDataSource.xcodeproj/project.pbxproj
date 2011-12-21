@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1008B712149FA3ED0064CEEA /* SKTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1008B710149FA3ED0064CEEA /* SKTableViewController.h */; };
+		1008B713149FA3ED0064CEEA /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008B711149FA3ED0064CEEA /* SKTableViewController.m */; };
+		1008B714149FA3ED0064CEEA /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008B711149FA3ED0064CEEA /* SKTableViewController.m */; };
+		1008B715149FA3ED0064CEEA /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008B711149FA3ED0064CEEA /* SKTableViewController.m */; };
+		1008B716149FA3ED0064CEEA /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008B711149FA3ED0064CEEA /* SKTableViewController.m */; };
+		1008B717149FA3ED0064CEEA /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008B711149FA3ED0064CEEA /* SKTableViewController.m */; };
 		1017B70D138DDC9B0021BE50 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
 		102048E51356430F00F1CF43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8049613452C86001F253F /* UIKit.framework */; };
 		102048E61356430F00F1CF43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
@@ -17,22 +23,23 @@
 		102048F61356430F00F1CF43 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 102048F41356430F00F1CF43 /* MainWindow.xib */; };
 		102048FB1356431700F1CF43 /* Dude.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D9F13552CC100B9AAC4 /* Dude.m */; };
 		102048FC1356432200F1CF43 /* SKTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8049213452C0B001F253F /* SKTableViewDataSource.m */; };
-		102048FF1356435200F1CF43 /* SKAdvancedTestTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */; };
 		102049011356459400F1CF43 /* SKAdvancedTestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */; };
 		1027549613A0454700F36FA4 /* SKDataFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1027549513A0454700F36FA4 /* SKDataFilterTests.m */; };
-		1027549D13A0469500F36FA4 /* TestFileSetup.h in Headers */ = {isa = PBXBuildFile; fileRef = 1027549B13A0469500F36FA4 /* TestFileSetup.h */; };
 		1027549F13A0493700F36FA4 /* TestFileSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1027549C13A0469500F36FA4 /* TestFileSetup.m */; };
 		102754A313A04E3700F36FA4 /* SKDataFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 102754A113A04E3700F36FA4 /* SKDataFilter.h */; };
 		102754A413A04E3700F36FA4 /* SKDataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 102754A213A04E3700F36FA4 /* SKDataFilter.m */; };
 		102754A513A04E7700F36FA4 /* SKDataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 102754A213A04E3700F36FA4 /* SKDataFilter.m */; };
+		10562A7D149BDAEC0062158D /* NSObject-Selector.h in Headers */ = {isa = PBXBuildFile; fileRef = 10562A7B149BDAEC0062158D /* NSObject-Selector.h */; };
+		10562A7E149BDAEC0062158D /* NSObject-Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 10562A7C149BDAEC0062158D /* NSObject-Selector.m */; };
+		10562A7F149BDAEC0062158D /* NSObject-Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 10562A7C149BDAEC0062158D /* NSObject-Selector.m */; };
+		10562A80149BDAEC0062158D /* NSObject-Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 10562A7C149BDAEC0062158D /* NSObject-Selector.m */; };
+		10562A81149BDAEC0062158D /* NSObject-Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 10562A7C149BDAEC0062158D /* NSObject-Selector.m */; };
+		10562A82149BDAEC0062158D /* NSObject-Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 10562A7C149BDAEC0062158D /* NSObject-Selector.m */; };
 		106A4867138B16A90011AF47 /* SKTableViewInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 106A4865138B16A90011AF47 /* SKTableViewInfo.h */; };
 		106A4869138B30CA0011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
 		106A486A138B30D10011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
 		106A486B138B30D70011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
-		106A486C138B30DC0011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
 		106A486D138B30DF0011AF47 /* SKTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 106A4866138B16A90011AF47 /* SKTableViewInfo.m */; };
-		10717408135C5E6500CECDD8 /* TransactionDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 10717406135C5E6500CECDD8 /* TransactionDataSource.h */; };
-		10717409135C5E6500CECDD8 /* TransactionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10717407135C5E6500CECDD8 /* TransactionDataSource.m */; };
 		1071740B135C769500CECDD8 /* TransactionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10717407135C5E6500CECDD8 /* TransactionDataSource.m */; };
 		1073EE04138AC7D800C886A5 /* CollectionDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 1073EE02138AC7D800C886A5 /* CollectionDefs.h */; };
 		1073EE08138AC80D00C886A5 /* SKCollectionDiff.h in Headers */ = {isa = PBXBuildFile; fileRef = 1073EE06138AC80D00C886A5 /* SKCollectionDiff.h */; };
@@ -42,8 +49,6 @@
 		1073EE0D138AC8F400C886A5 /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
 		1073EE0E138AC8F900C886A5 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
 		1073EE0F138AC8FC00C886A5 /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
-		1073EE10138AC90000C886A5 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
-		1073EE11138AC90400C886A5 /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
 		1073EE12138AC90A00C886A5 /* CollectionDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE03138AC7D800C886A5 /* CollectionDefs.m */; };
 		1073EE13138AC90C00C886A5 /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
 		108A6D861355264800B9AAC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8049613452C86001F253F /* UIKit.framework */; };
@@ -54,10 +59,8 @@
 		108A6D941355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D931355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.m */; };
 		108A6D971355264800B9AAC4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108A6D951355264800B9AAC4 /* MainWindow.xib */; };
 		108A6D9C1355266800B9AAC4 /* SKTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8049213452C0B001F253F /* SKTableViewDataSource.m */; };
-		108A6DA013552CC100B9AAC4 /* Dude.h in Headers */ = {isa = PBXBuildFile; fileRef = 108A6D9E13552CC100B9AAC4 /* Dude.h */; };
 		108A6DA213552CC100B9AAC4 /* Dude.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D9F13552CC100B9AAC4 /* Dude.m */; };
 		108A6DA313552CC100B9AAC4 /* Dude.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D9F13552CC100B9AAC4 /* Dude.m */; };
-		10959D7213A66F4F002D738B /* SKDataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 102754A213A04E3700F36FA4 /* SKDataFilter.m */; };
 		10959D7413A66F92002D738B /* SKDataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 102754A213A04E3700F36FA4 /* SKDataFilter.m */; };
 		10959D7513A66F98002D738B /* SKFilteredSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B2209313A1004000918783 /* SKFilteredSet.m */; };
 		10959D7613A66FA8002D738B /* SKDataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 102754A213A04E3700F36FA4 /* SKDataFilter.m */; };
@@ -65,18 +68,9 @@
 		10959D7813A66FB8002D738B /* SKDataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 102754A213A04E3700F36FA4 /* SKDataFilter.m */; };
 		10A04D081355E4CD00EEC9D3 /* SKTestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04D071355E4CD00EEC9D3 /* SKTestTableViewController.m */; };
 		10B2209413A1004000918783 /* SKFilteredSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B2209213A1004000918783 /* SKFilteredSet.h */; };
-		10B2209513A1004000918783 /* SKFilteredSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B2209213A1004000918783 /* SKFilteredSet.h */; };
 		10B2209613A1004000918783 /* SKFilteredSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B2209313A1004000918783 /* SKFilteredSet.m */; };
-		10B2209713A1004000918783 /* SKFilteredSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B2209313A1004000918783 /* SKFilteredSet.m */; };
 		10B2209813A1004000918783 /* SKFilteredSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B2209313A1004000918783 /* SKFilteredSet.m */; };
 		10B2209913A1004000918783 /* SKFilteredSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B2209313A1004000918783 /* SKFilteredSet.m */; };
-		10B88B3913869FFA00B76488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
-		10B88B431386A04E00B76488 /* SKTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B88B411386A04E00B76488 /* SKTableViewController.h */; };
-		10B88B441386A04E00B76488 /* SKTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B88B411386A04E00B76488 /* SKTableViewController.h */; };
-		10B88B451386A04E00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
-		10B88B461386A04E00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
-		10B88B471386A04E00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
-		10B88B481386A04E00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
 		10B88B4F1386A3E300B76488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8049613452C86001F253F /* UIKit.framework */; };
 		10B88B501386A3E300B76488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8046B13452B73001F253F /* Foundation.framework */; };
 		10B88B511386A3E300B76488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8047913452B73001F253F /* CoreGraphics.framework */; };
@@ -84,14 +78,10 @@
 		10B88B5A1386A3E300B76488 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B591386A3E300B76488 /* main.m */; };
 		10B88B5D1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B5C1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.m */; };
 		10B88B601386A3E300B76488 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10B88B5E1386A3E300B76488 /* MainWindow.xib */; };
-		10B88B661386A41C00B76488 /* SKControllerTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B88B641386A41C00B76488 /* SKControllerTestViewController.h */; };
-		10B88B671386A41C00B76488 /* SKControllerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B651386A41C00B76488 /* SKControllerTestViewController.m */; };
-		10B88B681386A43B00B76488 /* SKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B421386A04E00B76488 /* SKTableViewController.m */; };
 		10B88B691386A44200B76488 /* SKTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E8049213452C0B001F253F /* SKTableViewDataSource.m */; };
 		10B88B6A1386A6A000B76488 /* SKControllerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B88B651386A41C00B76488 /* SKControllerTestViewController.m */; };
 		10B88B6B1386A6DD00B76488 /* Dude.m in Sources */ = {isa = PBXBuildFile; fileRef = 108A6D9F13552CC100B9AAC4 /* Dude.m */; };
 		10B9ACAC13902EBE0010E72B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
-		10B9ACAD13902EC80010E72B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
 		10B9ACAE13902ECE0010E72B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
 		10B9ACAF139039BD0010E72B /* SKCollectionDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073EE07138AC80D00C886A5 /* SKCollectionDiff.m */; };
 		10D652DC138DD4D700BFA33D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D652DB138DD4D700BFA33D /* CoreData.framework */; };
@@ -141,6 +131,8 @@
 
 /* Begin PBXFileReference section */
 		1003F4A5137DCE6D00A4C4F0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		1008B710149FA3ED0064CEEA /* SKTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKTableViewController.h; path = SKTableViewDataSource/SKTableViewController.h; sourceTree = SOURCE_ROOT; };
+		1008B711149FA3ED0064CEEA /* SKTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKTableViewController.m; path = SKTableViewDataSource/SKTableViewController.m; sourceTree = SOURCE_ROOT; };
 		102048E31356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKTableViewDataSourceAdvancedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		102048EA1356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKTableViewDataSourceAdvancedApp-Info.plist"; sourceTree = "<group>"; };
 		102048EC1356430F00F1CF43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -151,13 +143,15 @@
 		102048F51356430F00F1CF43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAdvancedTestTableViewController.h; sourceTree = "<group>"; };
 		102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SKAdvancedTestTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		10204903135671FB00F1CF43 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = README.textile; sourceTree = "<group>"; };
+		10204903135671FB00F1CF43 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; path = README.md; sourceTree = "<group>"; };
 		1027549413A0454700F36FA4 /* SKDataFilterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataFilterTests.h; sourceTree = "<group>"; };
 		1027549513A0454700F36FA4 /* SKDataFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataFilterTests.m; sourceTree = "<group>"; };
 		1027549B13A0469500F36FA4 /* TestFileSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFileSetup.h; sourceTree = "<group>"; };
 		1027549C13A0469500F36FA4 /* TestFileSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFileSetup.m; sourceTree = "<group>"; };
 		102754A113A04E3700F36FA4 /* SKDataFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataFilter.h; sourceTree = "<group>"; };
 		102754A213A04E3700F36FA4 /* SKDataFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataFilter.m; sourceTree = "<group>"; };
+		10562A7B149BDAEC0062158D /* NSObject-Selector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject-Selector.h"; sourceTree = "<group>"; };
+		10562A7C149BDAEC0062158D /* NSObject-Selector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject-Selector.m"; sourceTree = "<group>"; };
 		106A4865138B16A90011AF47 /* SKTableViewInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTableViewInfo.h; sourceTree = "<group>"; };
 		106A4866138B16A90011AF47 /* SKTableViewInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTableViewInfo.m; sourceTree = "<group>"; };
 		10717406135C5E6500CECDD8 /* TransactionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDataSource.h; sourceTree = "<group>"; };
@@ -180,10 +174,6 @@
 		10A04D071355E4CD00EEC9D3 /* SKTestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SKTestTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		10B2209213A1004000918783 /* SKFilteredSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKFilteredSet.h; sourceTree = "<group>"; };
 		10B2209313A1004000918783 /* SKFilteredSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKFilteredSet.m; sourceTree = "<group>"; };
-		10B88B3813869FFA00B76488 /* libSKTableViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSKTableViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		10B88B3C13869FFA00B76488 /* SKTableViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKTableViewController-Prefix.pch"; sourceTree = "<group>"; };
-		10B88B411386A04E00B76488 /* SKTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTableViewController.h; sourceTree = "<group>"; };
-		10B88B421386A04E00B76488 /* SKTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTableViewController.m; sourceTree = "<group>"; };
 		10B88B4D1386A3E300B76488 /* SKTableViewControllerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKTableViewControllerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B88B541386A3E300B76488 /* SKTableViewControllerApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKTableViewControllerApp-Info.plist"; sourceTree = "<group>"; };
 		10B88B561386A3E300B76488 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -244,15 +234,6 @@
 				108A6D861355264800B9AAC4 /* UIKit.framework in Frameworks */,
 				108A6D871355264800B9AAC4 /* Foundation.framework in Frameworks */,
 				108A6D881355264800B9AAC4 /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		10B88B3513869FFA00B76488 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				10B88B3913869FFA00B76488 /* Foundation.framework in Frameworks */,
-				10B9ACAD13902EC80010E72B /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +304,7 @@
 		10204902135671D200F1CF43 /* README */ = {
 			isa = PBXGroup;
 			children = (
-				10204903135671FB00F1CF43 /* README.textile */,
+				10204903135671FB00F1CF43 /* README.md */,
 			);
 			name = README;
 			sourceTree = "<group>";
@@ -402,20 +383,11 @@
 		10B88B3A13869FFA00B76488 /* SKTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				10B88B3B13869FFA00B76488 /* Supporting Files */,
-				10B88B411386A04E00B76488 /* SKTableViewController.h */,
-				10B88B421386A04E00B76488 /* SKTableViewController.m */,
+				1008B710149FA3ED0064CEEA /* SKTableViewController.h */,
+				1008B711149FA3ED0064CEEA /* SKTableViewController.m */,
 			);
 			name = SKTableViewController;
 			path = ../SKTableViewController;
-			sourceTree = "<group>";
-		};
-		10B88B3B13869FFA00B76488 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				10B88B3C13869FFA00B76488 /* SKTableViewController-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		10B88B521386A3E300B76488 /* SKTableViewControllerApp */ = {
@@ -476,7 +448,6 @@
 				10E8047513452B73001F253F /* SKTableViewDataSourceTests.octest */,
 				108A6D841355264700B9AAC4 /* SKTableViewDataSourceApp.app */,
 				102048E31356430F00F1CF43 /* SKTableViewDataSourceAdvancedApp.app */,
-				10B88B3813869FFA00B76488 /* libSKTableViewController.a */,
 				10B88B4D1386A3E300B76488 /* SKTableViewControllerApp.app */,
 			);
 			name = Products;
@@ -500,6 +471,8 @@
 				10E8046E13452B73001F253F /* Supporting Files */,
 				10E8049113452C0B001F253F /* SKTableViewDataSource.h */,
 				10E8049213452C0B001F253F /* SKTableViewDataSource.m */,
+				10562A7B149BDAEC0062158D /* NSObject-Selector.h */,
+				10562A7C149BDAEC0062158D /* NSObject-Selector.m */,
 				1073EE01138AC71100C886A5 /* SKCollectionDiff */,
 				106A4863138B16710011AF47 /* SKTableViewInfo */,
 				102754A013A04E1F00F36FA4 /* SKDataFilter */,
@@ -546,32 +519,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		10B88B3613869FFA00B76488 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				10B88B441386A04E00B76488 /* SKTableViewController.h in Headers */,
-				10B2209513A1004000918783 /* SKFilteredSet.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		10E8046613452B73001F253F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10E8049313452C0B001F253F /* SKTableViewDataSource.h in Headers */,
-				108A6DA013552CC100B9AAC4 /* Dude.h in Headers */,
-				102048FF1356435200F1CF43 /* SKAdvancedTestTableViewController.h in Headers */,
-				10717408135C5E6500CECDD8 /* TransactionDataSource.h in Headers */,
-				10B88B431386A04E00B76488 /* SKTableViewController.h in Headers */,
-				10B88B661386A41C00B76488 /* SKControllerTestViewController.h in Headers */,
-				1073EE04138AC7D800C886A5 /* CollectionDefs.h in Headers */,
 				1073EE08138AC80D00C886A5 /* SKCollectionDiff.h in Headers */,
+				1073EE04138AC7D800C886A5 /* CollectionDefs.h in Headers */,
 				106A4867138B16A90011AF47 /* SKTableViewInfo.h in Headers */,
-				1027549D13A0469500F36FA4 /* TestFileSetup.h in Headers */,
+				10E8049313452C0B001F253F /* SKTableViewDataSource.h in Headers */,
 				102754A313A04E3700F36FA4 /* SKDataFilter.h in Headers */,
 				10B2209413A1004000918783 /* SKFilteredSet.h in Headers */,
 				10E4880013B4D7E600341AD9 /* SKOptionKeys.h in Headers */,
+				10562A7D149BDAEC0062158D /* NSObject-Selector.h in Headers */,
+				1008B712149FA3ED0064CEEA /* SKTableViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,23 +571,6 @@
 			productName = SKTableViewDataSourceApp;
 			productReference = 108A6D841355264700B9AAC4 /* SKTableViewDataSourceApp.app */;
 			productType = "com.apple.product-type.application";
-		};
-		10B88B3713869FFA00B76488 /* SKTableViewController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 10B88B3F13869FFA00B76488 /* Build configuration list for PBXNativeTarget "SKTableViewController" */;
-			buildPhases = (
-				10B88B3413869FFA00B76488 /* Sources */,
-				10B88B3513869FFA00B76488 /* Frameworks */,
-				10B88B3613869FFA00B76488 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SKTableViewController;
-			productName = SKTableViewController;
-			productReference = 10B88B3813869FFA00B76488 /* libSKTableViewController.a */;
-			productType = "com.apple.product-type.library.static";
 		};
 		10B88B4C1386A3E300B76488 /* SKTableViewControllerApp */ = {
 			isa = PBXNativeTarget;
@@ -704,7 +647,6 @@
 			projectRoot = "";
 			targets = (
 				10E8046713452B73001F253F /* SKTableViewDataSource */,
-				10B88B3713869FFA00B76488 /* SKTableViewController */,
 				10E8047413452B73001F253F /* SKTableViewDataSourceTests */,
 				10B88B4C1386A3E300B76488 /* SKTableViewControllerApp */,
 				108A6D831355264700B9AAC4 /* SKTableViewDataSourceApp */,
@@ -790,10 +732,11 @@
 				102048FB1356431700F1CF43 /* Dude.m in Sources */,
 				102048F01356430F00F1CF43 /* main.m in Sources */,
 				102048F31356430F00F1CF43 /* SKTableViewDataSourceAdvancedAppAppDelegate.m in Sources */,
-				10B88B471386A04E00B76488 /* SKTableViewController.m in Sources */,
 				10D652E4138DD84700BFA33D /* TransactionDataModel.xcdatamodeld in Sources */,
 				10D652E8138DD9BE00BFA33D /* Transaction.m in Sources */,
 				10B2209913A1004000918783 /* SKFilteredSet.m in Sources */,
+				10562A82149BDAEC0062158D /* NSObject-Selector.m in Sources */,
+				1008B717149FA3ED0064CEEA /* SKTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,20 +755,8 @@
 				108A6D941355264800B9AAC4 /* SKTableViewDataSourceAppAppDelegate.m in Sources */,
 				108A6DA313552CC100B9AAC4 /* Dude.m in Sources */,
 				10A04D081355E4CD00EEC9D3 /* SKTestTableViewController.m in Sources */,
-				10B88B461386A04E00B76488 /* SKTableViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		10B88B3413869FFA00B76488 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				10959D7213A66F4F002D738B /* SKDataFilter.m in Sources */,
-				106A486C138B30DC0011AF47 /* SKTableViewInfo.m in Sources */,
-				1073EE11138AC90400C886A5 /* SKCollectionDiff.m in Sources */,
-				1073EE10138AC90000C886A5 /* CollectionDefs.m in Sources */,
-				10B88B481386A04E00B76488 /* SKTableViewController.m in Sources */,
-				10B2209713A1004000918783 /* SKFilteredSet.m in Sources */,
+				10562A81149BDAEC0062158D /* NSObject-Selector.m in Sources */,
+				1008B716149FA3ED0064CEEA /* SKTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,9 +773,10 @@
 				10B88B6B1386A6DD00B76488 /* Dude.m in Sources */,
 				10B88B6A1386A6A000B76488 /* SKControllerTestViewController.m in Sources */,
 				10B88B691386A44200B76488 /* SKTableViewDataSource.m in Sources */,
-				10B88B681386A43B00B76488 /* SKTableViewController.m in Sources */,
 				10B88B5A1386A3E300B76488 /* main.m in Sources */,
 				10B88B5D1386A3E300B76488 /* SKTableViewControllerAppAppDelegate.m in Sources */,
+				10562A80149BDAEC0062158D /* NSObject-Selector.m in Sources */,
+				1008B715149FA3ED0064CEEA /* SKTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,12 +788,11 @@
 				10ED2057138FF7FB00DEC984 /* CollectionDefs.m in Sources */,
 				10ED2056138FF7F500DEC984 /* SKTableViewInfo.m in Sources */,
 				10E8049413452C0B001F253F /* SKTableViewDataSource.m in Sources */,
-				10717409135C5E6500CECDD8 /* TransactionDataSource.m in Sources */,
-				10B88B451386A04E00B76488 /* SKTableViewController.m in Sources */,
-				10B88B671386A41C00B76488 /* SKControllerTestViewController.m in Sources */,
 				102754A413A04E3700F36FA4 /* SKDataFilter.m in Sources */,
 				10B2209613A1004000918783 /* SKFilteredSet.m in Sources */,
 				10E4880113B4D7E600341AD9 /* SKOptionKeys.m in Sources */,
+				10562A7E149BDAEC0062158D /* NSObject-Selector.m in Sources */,
+				1008B713149FA3ED0064CEEA /* SKTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +814,8 @@
 				10D652E7138DD9BE00BFA33D /* Transaction.m in Sources */,
 				1027549613A0454700F36FA4 /* SKDataFilterTests.m in Sources */,
 				10B2209813A1004000918783 /* SKFilteredSet.m in Sources */,
+				10562A7F149BDAEC0062158D /* NSObject-Selector.m in Sources */,
+				1008B714149FA3ED0064CEEA /* SKTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,32 +955,6 @@
 			};
 			name = Release;
 		};
-		10B88B3D13869FFA00B76488 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = /tmp/SKTableViewController.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SKTableViewController/SKTableViewController-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		10B88B3E13869FFA00B76488 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = /tmp/SKTableViewController.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SKTableViewController/SKTableViewController-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		10B88B621386A3E300B76488 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1121,8 +1028,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SKTableViewDataSource/SKTableViewDataSource-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				"INSTALL_PATH[sdk=*]" = "$(BUILT_PRODUCTS_DIR)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -1135,8 +1046,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SKTableViewDataSource/SKTableViewDataSource-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				"INSTALL_PATH[sdk=*]" = "$(BUILT_PRODUCTS_DIR)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -1201,15 +1116,6 @@
 			buildConfigurations = (
 				108A6D981355264800B9AAC4 /* Debug */,
 				108A6D991355264800B9AAC4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		10B88B3F13869FFA00B76488 /* Build configuration list for PBXNativeTarget "SKTableViewController" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				10B88B3D13869FFA00B76488 /* Debug */,
-				10B88B3E13869FFA00B76488 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

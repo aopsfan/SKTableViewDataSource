@@ -241,12 +241,12 @@
 }
 
 - (void)addObject:(id)anObject updateTable:(BOOL)updateTable {
-    BOOL createSection = ![[self.tableViewInfo allIdentifiers] containsObject:[anObject performSelector:sortSelector]];
+    BOOL createSection = ![[self.tableViewInfo allIdentifiers] containsObject:[anObject arcPerformSelector:sortSelector]];
     [self addObject:anObject];
         
     if (updateTable) {
         if (createSection) {
-            [tableView insertSections:[NSIndexSet indexSetWithIndex:[self sectionForSectionIdentifier:[anObject performSelector:sortSelector]]]
+            [tableView insertSections:[NSIndexSet indexSetWithIndex:[self sectionForSectionIdentifier:[anObject arcPerformSelector:sortSelector]]]
                      withRowAnimation:editingStyleInsertRowAnimation];
         } else {
             [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForObject:anObject]]
@@ -265,7 +265,7 @@
 }
 
 - (void)deleteObject:(id)anObject updateTable:(BOOL)updateTable {
-    id identifier = [anObject performSelector:sortSelector];
+    id identifier = [anObject arcPerformSelector:sortSelector];
     BOOL deleteSection = [[self.tableViewInfo objectsForIdentifier:identifier] count] == 1;
     NSIndexPath *indexPath = [self indexPathForObject:anObject];
     
@@ -319,14 +319,14 @@
                                                            userInfo:nil];
             [exception raise];
         }
-        if (![tableViewInfo objectsForIdentifier:[object performSelector:sortSelector]]) {
+        if (![tableViewInfo objectsForIdentifier:[object arcPerformSelector:sortSelector]]) {
             [tableViewInfo setObjects:[NSSet setWithObject:object]
-                        forIdentifier:[object performSelector:sortSelector]];
+                        forIdentifier:[object arcPerformSelector:sortSelector]];
         } else {
-            NSMutableSet *tempObjects = [NSMutableSet setWithSet:[tableViewInfo objectsForIdentifier:[object performSelector:sortSelector]]];
+            NSMutableSet *tempObjects = [NSMutableSet setWithSet:[tableViewInfo objectsForIdentifier:[object arcPerformSelector:sortSelector]]];
             [tempObjects addObject:object];
             [tableViewInfo setObjects:[NSSet setWithSet:tempObjects]
-                        forIdentifier:[object performSelector:sortSelector]];
+                        forIdentifier:[object arcPerformSelector:sortSelector]];
         }
     }
 }
@@ -365,26 +365,26 @@
                                                            userInfo:nil];
             [exception raise];
         }
-        if (![tableViewInfo objectsForIdentifier:[object performSelector:sortSelector]]) {
+        if (![tableViewInfo objectsForIdentifier:[object arcPerformSelector:sortSelector]]) {
             [tableViewInfo setObjects:[NSSet setWithObject:object]
-                        forIdentifier:[object performSelector:sortSelector]];
+                        forIdentifier:[object arcPerformSelector:sortSelector]];
         } else {
-            NSMutableSet *tempObjects = [NSMutableSet setWithSet:[tableViewInfo objectsForIdentifier:[object performSelector:sortSelector]]];
+            NSMutableSet *tempObjects = [NSMutableSet setWithSet:[tableViewInfo objectsForIdentifier:[object arcPerformSelector:sortSelector]]];
             [tempObjects addObject:object];
             [tableViewInfo setObjects:[NSSet setWithSet:tempObjects]
-                        forIdentifier:[object performSelector:sortSelector]];
+                        forIdentifier:[object arcPerformSelector:sortSelector]];
         }
     }
     
     for (id deleteObject in objects.filteredDiff.deletedObjects) {        
-        NSMutableSet *set = [tableViewInfo objectsForIdentifier:[deleteObject performSelector:sortSelector]];
+        NSMutableSet *set = [tableViewInfo objectsForIdentifier:[deleteObject arcPerformSelector:sortSelector]];
         
         [set removeObject:deleteObject];
         
         if ([set count] == 0) {
-            [tableViewInfo removeObjectsForIdentifier:[deleteObject performSelector:sortSelector]];
+            [tableViewInfo removeObjectsForIdentifier:[deleteObject arcPerformSelector:sortSelector]];
         } else {
-            [tableViewInfo setObjects:set forIdentifier:[deleteObject performSelector:sortSelector]];
+            [tableViewInfo setObjects:set forIdentifier:[deleteObject arcPerformSelector:sortSelector]];
         }
     }
     
@@ -580,7 +580,7 @@
 }
 
 - (NSIndexPath *)indexPathForObject:(id)object {
-    id identifier = [object performSelector:sortSelector];
+    id identifier = [object arcPerformSelector:sortSelector];
     NSUInteger section = [self sectionForSectionIdentifier:identifier];
     NSArray *array = [self orderedObjectsForSection:section];
     NSUInteger row;
