@@ -10,17 +10,7 @@
 
 ## Getting SKTableViewDataSource in your project
 
-`cd` into your project directory and run <code>git clone git@github.com:aopsfan/SKTableViewDataSource.git</code>.
-Now run `cd SKTableViewDataSource` and run `open .`.
-
-You'll notice that this repository comes with `SKTableViewDataSource` itself, `SKTableViewController` (a convenient subclass of `UITableViewController`), two dummy data models for testing (`Dude` and `Transaction`), and three test projects; one uses `SKTableViewController` for a very simple project; one is like the first except doesn't use `SKTableViewController`; and one is more complex, showing off Core Data integration and subclassing.
-
-Fire up your project's `.xcodeproj`. Drag the folders titled "SKTableViewDataSource" and "SKTableViewController" over to your project (remember that this is a group, and the folder you will see in the Finder doesn't include all of the necessary tools). Uncheck the box that wants to copy files over; if copies are created, they will not be linked to this repo.
-
-Now drag the following classes (their `.h` and `.m` files) over to your project:
-`CollectionDefs`, 
-`SKCollectionDiff`, and
-`SKTableViewInfo`.
+Check out the [Installation Guide](https://github.com/aopsfan/SKTableViewDataSource/wiki/Installation-Guide).
 
 ## How it works
 
