@@ -12,6 +12,11 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [dataSource takeTableViewSnapshot];
+}
 
 #pragma mark - Table view data source
 

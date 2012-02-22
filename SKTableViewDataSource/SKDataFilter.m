@@ -1,6 +1,5 @@
 #import "SKDataFilter.h"
 
-
 @implementation SKDataFilter
 @synthesize selector, comparisonObject, filterType, comparisonOperator;
 

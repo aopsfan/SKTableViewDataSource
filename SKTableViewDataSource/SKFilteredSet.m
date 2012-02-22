@@ -91,7 +91,6 @@
     return YES;
 }
 
-
 #pragma mark Managing Objects
 
 - (void)setObjects:(NSSet *)newObjects predicateFilter:(SKDataFilter *)filter {
@@ -103,7 +102,7 @@
         }
     }
     
-    [self.filteredDiff addDiff:[SKCollectionDiff diffWithOldObjects:[self displayedObjects] newObjects:filteredNewObjects]];
+    [filteredDiff addDiff:[SKCollectionDiff diffWithOldObjects:[self displayedObjects] newObjects:filteredNewObjects]];        
     
     [objects setArray:[filteredNewObjects allObjects]];
 }
@@ -148,7 +147,6 @@
     }
 }
 
-
 #pragma mark Filter Actions
 
 - (void)addFilter:(SKDataFilter *)filter {
@@ -173,9 +171,9 @@
 }
 
 - (void)removeAllFilters {
-    [filters removeAllObjects];
-    
     [filteredDiff.addedObjects addObjectsFromArray:[[self hiddenObjects] allObjects]];
+    
+    [filters removeAllObjects];
 }
 
 @end

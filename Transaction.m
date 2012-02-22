@@ -8,6 +8,8 @@
     
     NSString *dateString = [formatter stringFromDate:self];
     return [formatter dateFromString:dateString];
+    
+    // Use NSDateComponents?
 }
 
 @end

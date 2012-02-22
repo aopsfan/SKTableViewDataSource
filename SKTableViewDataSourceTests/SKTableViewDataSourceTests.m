@@ -10,7 +10,7 @@
 
 - (void)testSectionOrderAscending {
     dataSource.sectionOrderAscending = YES;
-    NSNumber *height = (NSNumber *)[[dataSource orderedSectionsForTableView] objectAtIndex:0];
+    NSNumber *height = (NSNumber *)[[dataSource orderedSectionsForTableViewInfo:dataSource.tableViewInfo] objectAtIndex:0];
     NSNumber *testHeight = [NSNumber numberWithInt:67];
     
     STAssertEqualObjects(height, testHeight, @"The first object in the ordered sections should be 67, it is %@", height);
@@ -38,7 +38,7 @@
 
 - (void)testSectionOrderDescending {
     dataSource.sectionOrderAscending = NO;
-    NSNumber *height = (NSNumber *)[[dataSource orderedSectionsForTableView] objectAtIndex:1];
+    NSNumber *height = (NSNumber *)[[dataSource orderedSectionsForTableViewInfo:dataSource.tableViewInfo] objectAtIndex:1];
     NSNumber *testHeight = [NSNumber numberWithInt:83];
     
     STAssertEqualObjects(height, testHeight, @"The second object in the ordered sections should be 83, it is %@", height);
@@ -47,14 +47,14 @@
 }
 
 - (void)testObjectsInSection {
-    NSSet *someObjects = [NSSet setWithArray:[dataSource orderedObjectsForSection:0]];
+    NSSet *someObjects = [NSSet setWithArray:[dataSource orderedObjectsForSection:0 inTableViewInfo:dataSource.tableViewInfo]];
     NSSet *testObjects = [NSSet setWithObjects:emily, emilysTwin, bruce, brucesTwin, nil];
     
     STAssertEqualObjects(someObjects, testObjects, @"In section 0, you have %@ instead of %@", someObjects, testObjects);
 }
 
 - (void)testOrderOfObjectsInSectionZero {
-    Dude *dude = (Dude *)[[dataSource orderedObjectsForSection:0] objectAtIndex:0];
+    Dude *dude = (Dude *)[[dataSource orderedObjectsForSection:0 inTableViewInfo:dataSource.tableViewInfo] objectAtIndex:0];
     
     STAssertEqualObjects(dude, emily, @"dude (%@) should be emily (%@)", dude.name, emily.name);
 }
@@ -102,8 +102,8 @@
     
     [dataSource.tableViewInfo log];
     
-    STAssertEqualObjects([dataSource orderedObjectsForSection:0], testArrayInSectionZero, @"");
-    STAssertEqualObjects([dataSource orderedObjectsForSection:1], testArrayInSectionOne, @"");
+    STAssertEqualObjects([dataSource orderedObjectsForSection:0 inTableViewInfo:dataSource.tableViewInfo], testArrayInSectionZero, @"");
+    STAssertEqualObjects([dataSource orderedObjectsForSection:1 inTableViewInfo:dataSource.tableViewInfo], testArrayInSectionOne, @"");
     STAssertEqualObjects([NSNumber numberWithInt:[[dataSource allObjects] count]], [NSNumber numberWithInt:5], @"Your count should be 5, it is %i", [[dataSource allObjects] count]);
     
     [dataSource setObjects:[NSSet setWithArray:objects]];
