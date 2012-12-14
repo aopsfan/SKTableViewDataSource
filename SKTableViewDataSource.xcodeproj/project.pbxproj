@@ -143,7 +143,7 @@
 		102048F51356430F00F1CF43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		102048FD1356435200F1CF43 /* SKAdvancedTestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAdvancedTestTableViewController.h; sourceTree = "<group>"; };
 		102048FE1356435200F1CF43 /* SKAdvancedTestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SKAdvancedTestTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		10204903135671FB00F1CF43 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; path = README.md; sourceTree = "<group>"; };
+		10204903135671FB00F1CF43 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = README.md; sourceTree = "<group>"; };
 		1027549413A0454700F36FA4 /* SKDataFilterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDataFilterTests.h; sourceTree = "<group>"; };
 		1027549513A0454700F36FA4 /* SKDataFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDataFilterTests.m; sourceTree = "<group>"; };
 		1027549B13A0469500F36FA4 /* TestFileSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFileSetup.h; sourceTree = "<group>"; };
@@ -631,7 +631,7 @@
 		10E8045F13452B73001F253F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "n-genius";
 			};
 			buildConfigurationList = 10E8046213452B73001F253F /* Build configuration list for PBXProject "SKTableViewDataSource" */;
