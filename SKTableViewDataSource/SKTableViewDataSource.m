@@ -173,7 +173,7 @@
     if (objectOptionsCount > 1) {
         NSException *exc = [NSException exceptionWithName:@"There should be at least 1 way to store objects"
                                                    reason:[NSString stringWithFormat:
-                                                           @"You have provided %i options to store objects in the following options dictionary:",
+                                                           @"You have provided %i options to store objects in the following options dictionary: %@",
                                                            objectOptionsCount, options] userInfo:nil];
         [exc raise];
     }
