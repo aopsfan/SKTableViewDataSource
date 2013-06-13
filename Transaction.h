@@ -8,9 +8,9 @@
 @end
 
 @interface Transaction : NSManagedObject
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSNumber *price;
-@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSNumber *price;
+@property (nonatomic, strong) NSDate *date;
 
 - (NSDate *)displayableDate;
 - (NSComparisonResult)compare:(Transaction *)transaction;

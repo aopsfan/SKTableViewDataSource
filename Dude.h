@@ -9,8 +9,8 @@
 }
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, retain) UIColor *hairColor;
-@property (nonatomic, retain) NSNumber *height;
+@property (nonatomic, strong) UIColor *hairColor;
+@property (nonatomic, strong) NSNumber *height;
 
 - (id)initWithName:(NSString *)aName hairColor:(UIColor *)aHairColor height:(NSNumber *)aHeight;
 + (Dude *)dudeWithName:(NSString *)aName hairColor:(UIColor *)aHairColor height:(NSNumber *)aHeight;

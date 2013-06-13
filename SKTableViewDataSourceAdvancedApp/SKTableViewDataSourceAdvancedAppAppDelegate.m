@@ -17,8 +17,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Transaction createDefaults:self.managedObjectContext];
-    SKAdvancedTestTableViewController *rootController = [[[SKAdvancedTestTableViewController alloc] initWithStyle:UITableViewStylePlain
-                                                                                                          context:self.managedObjectContext] autorelease];
+    SKAdvancedTestTableViewController *rootController = [[SKAdvancedTestTableViewController alloc] initWithStyle:UITableViewStylePlain
+                                                                                                          context:self.managedObjectContext];
     navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     
     [self.window addSubview:navController.view];
@@ -107,12 +107,5 @@
 }
 
 
-- (void)dealloc
-{
-    [navController release];
-    
-    [_window release];
-    [super dealloc];
-}
 
 @end

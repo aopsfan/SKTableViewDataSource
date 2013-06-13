@@ -101,12 +101,14 @@
     if ((self = [super init])) {
         objects = [[SKFilteredSet alloc] init];
         tableViewInfo = [[SKTableViewInfo alloc] init];
+        tableViewSnapshot = [[SKTableViewInfo alloc] init];
         sectionOrderAscending = YES;
         rowOrderAscending = YES;
         editingStyleDeleteRowAnimation = UITableViewRowAnimationNone;
         editingStyleInsertRowAnimation = UITableViewRowAnimationNone;
         shouldReloadDictionary = NO;
         tableView = [[UITableView alloc] init];
+        
     }
     
     return self;
@@ -115,7 +117,6 @@
 - (id)initWithSet:(NSSet *)initialObjects {
     if ((self = [self init])) {
         [self setObjects:initialObjects];
-//        [objects addObjectsFromArray:[initialObjects allObjects]];
         
         shouldReloadDictionary = YES;
     }
@@ -155,6 +156,42 @@
     [self contentUpdated];
     
     shouldReloadDictionary = YES;
+}
+
+- (void)setObjects:(NSSet *)newObjects updateTable:(BOOL)updateTable {
+    [self setObjects:newObjects];
+    
+    if (updateTable == NO) {
+        NSSet *addedObjects = [NSSet setWithSet:objects.filteredDiff.addedObjects];
+        NSSet *deletedObjects = [NSSet setWithSet:objects.filteredDiff.deletedObjects];
+        
+        BOOL createSection;
+        for (id object in addedObjects) {
+            createSection = ![[self.tableViewInfo allIdentifiers] containsObject:[object arcPerformSelector:sortSelector]];
+            if (createSection) {
+                [tableView insertSections:[NSIndexSet indexSetWithIndex:[self sectionForSectionIdentifier:[object arcPerformSelector:sortSelector]]]
+                         withRowAnimation:editingStyleInsertRowAnimation];
+            } else {
+                [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForObject:object]]
+                                 withRowAnimation:editingStyleInsertRowAnimation];
+            }
+        }
+        
+        BOOL deleteSection;
+        NSIndexPath *indexPath = [[NSIndexPath alloc] init];
+        for (id deletedObject in deletedObjects) {
+            deleteSection = ![[self.tableViewInfo objectsForIdentifier:[deletedObject arcPerformSelector:sortSelector]] count] == 1;
+            if (deleteSection) {
+                [tableView deleteSections:[NSIndexSet indexSetWithIndex:[self sectionForSectionIdentifier:[deletedObject arcPerformSelector:sortSelector]]]
+                         withRowAnimation:editingStyleDeleteRowAnimation];
+            } else {
+                indexPath = [self indexPathForObject:deletedObject];
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]] 
+                                 withRowAnimation:editingStyleInsertRowAnimation];
+            }
+        }
+    }
+    
 }
 
 - (void)setObjectsWithOptions:(NSDictionary *)options {
@@ -331,6 +368,77 @@
     }
 }
 
+- (void)updateTableAnimated:(BOOL)animated {
+    NSDictionary *compareDictionary = [tableViewSnapshot compareWithTableViewInfo:self.tableViewInfo];
+    
+    SKTableViewInfo *addedInfo = [compareDictionary objectForKey:ADDED_INFO];
+    SKTableViewInfo *deletedInfo = [compareDictionary objectForKey:DELETED_INFO];
+    
+    // FIXME: deletedInfo not working at all
+    
+    // Added objects
+    NSArray *currentOrderedSections = [self orderedSectionsForTableViewInfo:self.tableViewInfo];
+    NSMutableArray *addedSectionIndexes = [NSMutableArray array];
+    NSMutableArray *addedRowIndexPaths = [NSMutableArray array];
+    NSUInteger currentSectionIndex = 0;
+    
+    for (id identifier in [addedInfo allIdentifiers]) {
+        currentSectionIndex = [currentOrderedSections indexOfObject:identifier];
+        
+        if ([[tableViewSnapshot allIdentifiers] containsObject:identifier]) {
+            for (id object in [addedInfo objectsForIdentifier:identifier]) {
+                [addedRowIndexPaths addObject:[NSIndexPath indexPathForRow:[[self orderedObjectsForSection:currentSectionIndex 
+                                                                                           inTableViewInfo:self.tableViewInfo] indexOfObject:object] 
+                                                                 inSection:currentSectionIndex]];
+            }
+        } else {
+            [addedSectionIndexes addObject:[NSNumber numberWithInt:currentSectionIndex]];
+        }
+    }
+    
+    // Deleted objects
+    NSArray *snapshotedOrderedSections = [self orderedSectionsForTableViewInfo:tableViewSnapshot];
+    NSMutableArray *deletedSectionIndexes = [NSMutableArray array];
+    NSMutableArray *deletedRowIndexPaths = [NSMutableArray array];
+    currentSectionIndex = 0;
+    
+    for (id identifier in [deletedInfo allIdentifiers]) {
+        currentSectionIndex = [snapshotedOrderedSections indexOfObject:identifier];
+        
+        if ([[self.tableViewInfo allIdentifiers] containsObject:identifier]) {
+            for (id object in [deletedInfo objectsForIdentifier:identifier]) {
+                [deletedRowIndexPaths addObject:[NSIndexPath indexPathForRow:[[self orderedObjectsForSection:currentSectionIndex 
+                                                                                             inTableViewInfo:tableViewSnapshot] indexOfObject:object] 
+                                                                   inSection:currentSectionIndex]];
+            }
+        } else {
+            [deletedSectionIndexes addObject:[NSNumber numberWithInt:currentSectionIndex]];
+        }
+    }
+    
+    [addedSectionIndexes sortUsingSelector:@selector(compare:)];
+    [deletedSectionIndexes sortUsingSelector:@selector(compare:)];
+    
+    [tableView beginUpdates];
+    
+    for (NSNumber *deletedIndex in deletedSectionIndexes) {
+        [tableView deleteSections:[NSIndexSet indexSetWithIndex:[deletedIndex unsignedIntegerValue]] withRowAnimation:editingStyleDeleteRowAnimation];
+    }
+    [tableView deleteRowsAtIndexPaths:deletedRowIndexPaths withRowAnimation:editingStyleDeleteRowAnimation];
+    
+    for (NSNumber *index in addedSectionIndexes) {
+        [tableView insertSections:[NSIndexSet indexSetWithIndex:[index unsignedIntegerValue]] withRowAnimation:editingStyleInsertRowAnimation];
+    }
+    [tableView insertRowsAtIndexPaths:addedRowIndexPaths withRowAnimation:editingStyleInsertRowAnimation];
+    
+    [tableView endUpdates];
+    
+    [self takeTableViewSnapshot];
+}
+
+- (void)takeTableViewSnapshot {
+    tableViewSnapshot.dictionary = [NSMutableDictionary dictionaryWithDictionary:self.tableViewInfo.dictionary];
+}
 
 #pragma mark Filtering Objects
 
@@ -427,7 +535,7 @@
 #pragma mark Table View Management
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
-    return [[self orderedObjectsForSection:section] count];
+    return [[self orderedObjectsForSection:section inTableViewInfo:self.tableViewInfo] count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
@@ -517,9 +625,9 @@
 
 #pragma mark Ordering
 
-- (NSArray *)orderedObjectsForSection:(NSUInteger)section {    
-    id identifier = [self identifierForSection:section];
-    NSSet *set = [self.tableViewInfo objectsForIdentifier:identifier];
+- (NSArray *)orderedObjectsForSection:(NSUInteger)section inTableViewInfo:(SKTableViewInfo *)info {    
+    id identifier = [[self orderedSectionsForTableViewInfo:info] objectAtIndex:section];
+    NSSet *set = [info objectsForIdentifier:identifier];
     
     for (id object in set) {
         if (![object respondsToSelector:@selector(compare:)]) {
@@ -539,8 +647,8 @@
     return newArray;
 }
 
-- (NSArray *)orderedSectionsForTableView {
-    for (id object in [self.tableViewInfo allIdentifiers]) {
+- (NSArray *)orderedSectionsForTableViewInfo:(SKTableViewInfo *)info {
+    for (id object in [info allIdentifiers]) {
         if (![object respondsToSelector:@selector(compare:)]) {
             NSException *exception = [NSException exceptionWithName:@"Object should respond to compare:"
                                                              reason:[NSString stringWithFormat:@"The following section identifier does not implement @selector(compare:), therefore I can't order your sections: %@", object]
@@ -548,7 +656,7 @@
             [exception raise];
         }
     }
-    NSArray *retVal = [[[self.tableViewInfo allIdentifiers] allObjects] sortedArrayUsingSelector:@selector(compare:)];
+    NSArray *retVal = [[[info allIdentifiers] allObjects] sortedArrayUsingSelector:@selector(compare:)];
     
     if (!sectionOrderAscending) {
         retVal = [[retVal reverseObjectEnumerator] allObjects];
@@ -560,13 +668,13 @@
 #pragma mark Other
 
 - (id)identifierForSection:(NSUInteger)section {
-    return [[self orderedSectionsForTableView] objectAtIndex:section];    
+    return [[self orderedSectionsForTableViewInfo:self.tableViewInfo] objectAtIndex:section];    
 }
 
 - (NSUInteger)sectionForSectionIdentifier:(id)identifier {
     for (id key in [self.tableViewInfo allIdentifiers]) {
         if ([key isEqual:identifier]) {
-            return [[self orderedSectionsForTableView] indexOfObject:key];
+            return [[self orderedSectionsForTableViewInfo:self.tableViewInfo] indexOfObject:key];
         }
     }
     
@@ -574,7 +682,7 @@
 }
 
 - (id)objectForIndexPath:(NSIndexPath *)indexPath {
-    NSArray *array = [self orderedObjectsForSection:indexPath.section];
+    NSArray *array = [self orderedObjectsForSection:indexPath.section inTableViewInfo:self.tableViewInfo];
     
     return [array objectAtIndex:indexPath.row];
 }
@@ -582,7 +690,7 @@
 - (NSIndexPath *)indexPathForObject:(id)object {
     id identifier = [object arcPerformSelector:sortSelector];
     NSUInteger section = [self sectionForSectionIdentifier:identifier];
-    NSArray *array = [self orderedObjectsForSection:section];
+    NSArray *array = [self orderedObjectsForSection:section inTableViewInfo:self.tableViewInfo];
     NSUInteger row;
     
     for (id anObject in array) {

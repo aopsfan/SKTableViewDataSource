@@ -11,9 +11,16 @@
     transaction.title = @"New Transaction";
     transaction.price = [NSNumber numberWithFloat:2.99];
     
+    Transaction *anotherTransation = [NSEntityDescription insertNewObjectForEntityForName:@"Transaction" inManagedObjectContext:context];
+    anotherTransation.date = [NSDate dateWithTimeIntervalSinceNow:86400*2];
+    anotherTransation.title = @"OMG It hasn't been bought yet!";
+    anotherTransation.price = [NSNumber numberWithFloat:3.99];
+    
     [context save:nil];
     
-    [dataSource addObject:transaction updateTable:YES];
+    [dataSource addObject:transaction];
+    [dataSource addObject:anotherTransation];
+    [dataSource updateTableAnimated:YES];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style context:(NSManagedObjectContext *)aContext
@@ -28,15 +35,16 @@
         
         numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+//        NSDate *date = [[NSDate dateWithTimeIntervalSinceNow:-86400] dateWithoutTime];
+//        SKDataFilter *pFilter = [SKDataFilter where:@"displayableDate" isNotEqualTo:date];
+
         
-        NSDate *date = [[NSDate dateWithTimeIntervalSinceNow:-86400] dateWithoutTime];
-        SKDataFilter *pFilter = [SKDataFilter where:@"displayableDate" isNotEqualTo:date];
-        
-        SKOptionKeys *optionKeys = [[[SKOptionKeys alloc] init] autorelease];
+        SKOptionKeys *optionKeys = [[SKOptionKeys alloc] init];
         optionKeys.entityName = [@"Transaction" mutableCopy];
         optionKeys.managedObjectContext = context;
         optionKeys.target = self;
-        optionKeys.predicateFilter = pFilter;
+//        optionKeys.predicateFilter = pFilter;
+
         dataSource = [[TransactionDataSource alloc] initWithSortSelector:@selector(displayableDate)
                                                               optionKeys:optionKeys];
         
@@ -53,20 +61,18 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [dataSource release];
-    [dateFormatter release];
-    [numberFormatter release];
-    
-    [super dealloc];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAdd:)] autorelease];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAdd:)];
     [self.navigationItem setRightBarButtonItem:addButton animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [dataSource takeTableViewSnapshot];
 }
 
 #pragma mark - SKTableViewDataSource (protocol)
@@ -87,7 +93,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
     Transaction *transaction = (Transaction *)[dataSource objectForIndexPath:indexPath];
@@ -99,7 +105,10 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [dataSource deleteObjectAtIndexPath:indexPath updateTable:YES];
+        Transaction *object = (Transaction *)[dataSource objectForIndexPath:indexPath];
+        [dataSource deleteObject:object];
+        [dataSource updateTableAnimated:YES];
+//        [context deleteObject:object];
         
         NSError *error = nil;
         [context save:&error];

@@ -3,8 +3,8 @@
 
 @implementation TransactionDataSource
 
-- (NSArray *)orderedSectionsForTableView {
-    NSMutableArray *initialSections = [NSMutableArray arrayWithArray:[super orderedSectionsForTableView]];
+- (NSArray *)orderedSectionsForTableViewInfo:(SKTableViewInfo *)info {
+    NSMutableArray *initialSections = [NSMutableArray arrayWithArray:[super orderedSectionsForTableViewInfo:info]];
     NSMutableArray *newSections = [NSMutableArray arrayWithCapacity:[initialSections count]-1];
     NSDate *deleteThisDate = nil;
     

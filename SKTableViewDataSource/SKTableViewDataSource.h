@@ -22,6 +22,7 @@
 @interface SKTableViewDataSource : NSObject <UITableViewDataSource> {
     SKFilteredSet *objects;
     SKTableViewInfo *tableViewInfo;
+    SKTableViewInfo *tableViewSnapshot;
     
     BOOL sectionOrderAscending;
     BOOL rowOrderAscending;
@@ -57,6 +58,7 @@
 - (id)initWithSortSelector:(SEL)aSortSelector options:(NSDictionary *)options DEPRECATED_ATTRIBUTE;
 - (id)initWithSortSelector:(SEL)aSortSelector optionKeys:(SKOptionKeys *)optionKeys;
 - (void)setObjects:(NSSet *)newObjects;
+- (void)setObjects:(NSSet *)newObjects updateTable:(BOOL)updateTable;
 - (void)setObjectsWithOptions:(NSDictionary *)options DEPRECATED_ATTRIBUTE;
 - (void)setObjectsWithOptionKeys:(SKOptionKeys *)optionKeys;
 - (void)addObject:(id)anObject;
@@ -67,6 +69,8 @@
 - (BOOL)deleteObjectAtIndexPath:(NSIndexPath *)indexPath updateTable:(BOOL)updateTable;
 - (void)removeHiddenObjects;
 - (void)reloadData;
+- (void)updateTableAnimated:(BOOL)animated;
+- (void)takeTableViewSnapshot;
 
 // more updateTable methods coming soon
 
@@ -77,8 +81,8 @@
 
 #pragma mark Ordering
 
-- (NSArray *)orderedObjectsForSection:(NSUInteger)section;
-- (NSArray *)orderedSectionsForTableView;
+- (NSArray *)orderedObjectsForSection:(NSUInteger)section inTableViewInfo:(SKTableViewInfo *)info;
+- (NSArray *)orderedSectionsForTableViewInfo:(SKTableViewInfo *)info;
 
 #pragma mark Other
 

@@ -22,7 +22,8 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [(NSNumber *)[dataSource identifierForSection:section] stringValue];
+    NSString *string = [(NSNumber *)[dataSource identifierForSection:section] stringValue];
+    return [NSString stringWithFormat:@"Height is %@", string];
 }
 
 - (UITableViewCell *)cellForObject:(id)object {
