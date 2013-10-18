@@ -217,10 +217,10 @@
     
     for (NSString *key in acceptedKeys) {
         if ([keys containsObject:key]) {
-            if (key == @"objects") {
+            if ([key isEqualToString:@"objects"]) {
                 [self setObjects:[self objectsFromSet:(NSSet *)[options objectForKey:key]
                                  predicateFilterIfAny:(SKDataFilter *)[options objectForKey:@"predicateFilter"]]];
-            } else if (key == @"entityName" || key == @"fetchRequest") {
+            } else if ([key isEqualToString:@"entityName"] || [key isEqualToString:@"fetchRequest"]) {
                 if (!context) {
                     NSException *contextException = [NSException exceptionWithName:@"@\"context\" should be a key in the options dictionary"
                                                                             reason:@"You passed in an entityName or fetchRequest without specifying an NSManagedObjectContext."
@@ -230,7 +230,7 @@
                 
                 NSArray *coreDataOptions = [NSArray arrayWithObjects:[options objectForKey:key], context, nil];
                 [self setObjectsWithCoreDataOptions:coreDataOptions predicateFilterIfAny:[options objectForKey:@"predicateFilter"]]; 
-            } else if (key == @"target" ) {
+            } else if ([key isEqualToString:@"target"] ) {
                 target = [options objectForKey:key];
             }
         }
